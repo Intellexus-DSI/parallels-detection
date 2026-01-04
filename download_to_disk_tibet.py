@@ -7,7 +7,7 @@ from tqdm import tqdm
 # CONFIGURATION
 # ============================================================================
 ACCOUNT_URL = "https://intlxresearchstorage.file.core.windows.net"
-SAS_TOKEN = "sv=2025-07-05&ss=f&srt=co&se=2025-12-14T14%3A28%3A16Z&sp=rl&sig=HpovNbfMPNsqnIu7NrjHz6AE8Wx0mNUuLXeMegvAUEo%3D"
+SAS_TOKEN = ""
 SHARE_NAME = "intlx-gpu-fs"
 AZURE_FILE_PATH = "data/05_clean_data/00_tibetan/Tibetan_1.jsonl"
 
