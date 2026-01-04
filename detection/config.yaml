@@ -1,0 +1,40 @@
+# Parallels Pipeline Configuration
+
+# Input paths (supports .csv or .xlsx)
+segments_csv: "data/full_segmentation.xlsx"
+embeddings_path: "data/embeddings.npy"
+
+# Output path
+output_path: "output/parallels.csv"
+
+# Matching configuration
+matching:
+  # Strategy: "threshold" finds all pairs above similarity threshold
+  #           "knn" finds k nearest neighbors per segment
+  strategy: "threshold"
+  
+  # Similarity threshold (0.0 to 1.0) - used with threshold strategy
+  threshold: 0.85
+  
+  # Number of neighbors - used with knn strategy
+  k: 10
+  
+  # Minimum threshold for knn strategy (optional, 0.0 to 1.0)
+  min_threshold: 0.0
+
+# Processing options
+processing:
+  # Number of segments to process per batch
+  batch_size: 1000
+  
+  # L2-normalize embeddings for cosine similarity
+  # Set to false if embeddings are already normalized
+  normalize_embeddings: true
+
+# Output options
+output:
+  # Output format: "csv", "parquet", or "json"
+  format: "csv"
+  
+  # Include segment EWTS text in output
+  include_text: true
