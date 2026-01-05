@@ -1,0 +1,34 @@
+# Segmentation Pipeline Configuration
+
+# Input file path (JSONL format)
+input_file: "data/05_clean_data/00_tibetan/Tibetan_1.jsonl"
+
+# Segmentation engine settings
+segmentation:
+  # Engine: "botok" (high accuracy) or "regex" (high speed)
+  engine: "regex"
+  
+  # Minimum syllables per segment
+  min_syllables: 4
+  
+  # Segmentation mode
+  use_overlapping: true
+  
+  # Overlapping mode parameters
+  overlap_max_atoms: 8        # Maximum atoms per span
+  overlap_min_chars: 8        # Minimum characters per span
+  overlap_max_chars: 350      # Maximum characters per span
+  max_spans_per_line: 300     # Safety cap on spans per line
+
+# Output settings
+output:
+  output_dir: "data/segmented_output"
+  save_single_lines: true     # Save individual line files
+  save_full_files: true       # Save aggregated full files
+
+# Azure storage configuration (optional, for downloading files)
+azure:
+  account_url: "https://intlxresearchstorage.file.core.windows.net"
+  sas_token: ""  # Set your SAS token here or pass via CLI
+  share_name: "intlx-gpu-fs"
+  file_path: "data/05_clean_data/00_tibetan/Tibetan_1.jsonl"
