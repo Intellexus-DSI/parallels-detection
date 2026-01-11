@@ -1,0 +1,20 @@
+# Core dependencies for the indexing stage
+numpy>=1.21.0
+pandas>=1.3.0
+pydantic>=2.0.0
+pyyaml>=6.0
+tqdm>=4.60.0
+openpyxl>=3.0.0
+
+# Embedding model dependencies
+sentence-transformers>=2.2.0
+torch>=2.0.0
+transformers>=4.30.0
+
+# Optional: For GPU acceleration
+# torch with CUDA support - install separately based on your CUDA version
+# See: https://pytorch.org/get-started/locally/
+
+# Development dependencies
+pytest>=7.0.0
+

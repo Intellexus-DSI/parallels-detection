@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+check_*.py
+
+# Model cache
+.cache/
+
+# Data files (embeddings are too large)
+embeddings_by_line/
+embeddings_by_source/
+*.npy
+
+# Excel temp files
+~$*.xlsx
+~$*.xls
