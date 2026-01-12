@@ -1,0 +1,87 @@
+{
+  "model_name": "Intellexus/Bi-Tib-mbert-v1",
+  "num_segments": 890,
+  "embedding_dimension": 768,
+  "normalized": true,
+  "created_at": "2026-01-11T15:02:14.541777",
+  "config": {
+    "input": {
+      "segments_dir": "..\\data\\05_clean_data\\00_tibetan\\segmented_output\\overlapping\\Full_Files",
+      "text_column": "Segmented_Text_EWTS",
+      "id_column": "Segment_ID"
+    },
+    "embedding": {
+      "model_name": "Intellexus/Bi-Tib-mbert-v1",
+      "batch_size": 32,
+      "max_length": 512,
+      "normalize": true,
+      "device": "cpu",
+      "show_progress": true
+    },
+    "output": {
+      "output_dir": "..\\detection\\data",
+      "mode": "per_line",
+      "embeddings_file": "embeddings.npy",
+      "segments_file": "full_segmentation.xlsx",
+      "per_file_subdir": "embeddings_by_source",
+      "per_line_subdir": "embeddings_by_line",
+      "metadata_file": "embeddings_metadata.json",
+      "segments_format": "xlsx"
+    },
+    "processing": {
+      "skip_existing": false,
+      "max_segments": 890,
+      "num_workers": 0,
+      "chunk_size": 10000
+    }
+  },
+  "output_mode": "per_line",
+  "num_line_files": 4,
+  "line_numbers": {
+    "min": 114,
+    "max": 11164,
+    "count": 4
+  },
+  "files": [
+    {
+      "source_line_number": 114,
+      "embeddings_file": "line_000114_embeddings.npy",
+      "segments_file": "line_000114_segments.xlsx",
+      "num_segments": 298,
+      "embedding_shape": [
+        298,
+        768
+      ]
+    },
+    {
+      "source_line_number": 115,
+      "embeddings_file": "line_000115_embeddings.npy",
+      "segments_file": "line_000115_segments.xlsx",
+      "num_segments": 108,
+      "embedding_shape": [
+        108,
+        768
+      ]
+    },
+    {
+      "source_line_number": 116,
+      "embeddings_file": "line_000116_embeddings.npy",
+      "segments_file": "line_000116_segments.xlsx",
+      "num_segments": 184,
+      "embedding_shape": [
+        184,
+        768
+      ]
+    },
+    {
+      "source_line_number": 11164,
+      "embeddings_file": "line_011164_embeddings.npy",
+      "segments_file": "line_011164_segments.xlsx",
+      "num_segments": 300,
+      "embedding_shape": [
+        300,
+        768
+      ]
+    }
+  ]
+}
