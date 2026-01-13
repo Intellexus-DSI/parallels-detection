@@ -1,7 +1,7 @@
-"""Configuration management for the parallels pipeline."""
+"""Configuration for the parallels detection pipeline."""
 
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 import yaml
 from pydantic import BaseModel, Field, field_validator
@@ -30,20 +30,20 @@ class OutputConfig(BaseModel):
     include_text: bool = True
 
 
-class Config(BaseModel):
-    """Main configuration for the parallels pipeline."""
+class BatchedConfig(BaseModel):
+    """Main configuration for the parallels detection pipeline."""
 
-    segments_csv: Path  # Can be .csv or .xlsx
-    embeddings_path: Path
+    data_dir: Path                    # Directory with per-file embeddings
     output_path: Path = Path("output/parallels.csv")
+    batch_size: int = Field(default=5, ge=1)  # Number of files in index at once
 
     matching: MatchingConfig = Field(default_factory=MatchingConfig)
     processing: ProcessingConfig = Field(default_factory=ProcessingConfig)
     output: OutputConfig = Field(default_factory=OutputConfig)
 
-    @field_validator("segments_csv", "embeddings_path", mode="before")
+    @field_validator("data_dir", mode="before")
     @classmethod
-    def convert_to_path(cls, v):
+    def convert_data_dir_to_path(cls, v):
         """Convert string to Path."""
         return Path(v) if isinstance(v, str) else v
 
@@ -54,18 +54,8 @@ class Config(BaseModel):
         return Path(v) if isinstance(v, str) else v
 
     @classmethod
-    def from_yaml(cls, path: str | Path) -> "Config":
+    def from_yaml(cls, path: str | Path) -> "BatchedConfig":
         """Load configuration from a YAML file."""
         with open(path, "r") as f:
             data = yaml.safe_load(f)
         return cls(**data)
-
-    def to_yaml(self, path: str | Path) -> None:
-        """Save configuration to a YAML file."""
-        data = self.model_dump(mode="json")
-        # Convert Path objects to strings for YAML
-        data["segments_csv"] = str(data["segments_csv"])
-        data["embeddings_path"] = str(data["embeddings_path"])
-        data["output_path"] = str(data["output_path"])
-        with open(path, "w") as f:
-            yaml.dump(data, f, default_flow_style=False)

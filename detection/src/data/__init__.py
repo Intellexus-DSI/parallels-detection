@@ -1,6 +1,6 @@
 """Data loading and output modules."""
 
-from .segment_store import SegmentStore
+from .corpus_loader import CorpusLoader
 from .output_writer import OutputWriter
 
-__all__ = ["SegmentStore", "OutputWriter"]
+__all__ = ["CorpusLoader", "OutputWriter"]
