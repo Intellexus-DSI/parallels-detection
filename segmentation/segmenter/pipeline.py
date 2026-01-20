@@ -27,6 +27,24 @@ def sanitize_filename(name: str) -> str:
     return re.sub(r'[<>:"/\\|?*]', "_", name).strip()
 
 
+# Regex pattern for illegal Excel characters (control chars except tab, newline, carriage return)
+ILLEGAL_EXCEL_CHARS = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
+
+
+def sanitize_for_excel(text: str) -> str:
+    """Remove characters that are illegal in Excel worksheets.
+
+    Args:
+        text: Input text
+
+    Returns:
+        Sanitized text safe for Excel
+    """
+    if not text:
+        return text
+    return ILLEGAL_EXCEL_CHARS.sub('', text)
+
+
 class SegmentationPipeline:
     """Pipeline for segmenting Tibetan text files."""
 
@@ -243,6 +261,11 @@ class SegmentationPipeline:
                         # Save individual line Excel
                         if self.config.output.save_single_lines:
                             single_df = pd.DataFrame(single_line_rows)
+                            # Sanitize text columns for Excel
+                            for col in single_df.select_dtypes(include=['object']).columns:
+                                single_df[col] = single_df[col].apply(
+                                    lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
+                                )
                             single_filename = (
                                 f"Line_{line_num}_{clean_name[:30]}.xlsx"
                             )
@@ -262,6 +285,11 @@ class SegmentationPipeline:
                 if not rows:
                     continue
                 df = pd.DataFrame(rows)
+                # Sanitize text columns for Excel
+                for col in df.select_dtypes(include=['object']).columns:
+                    df[col] = df[col].apply(
+                        lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
+                    )
                 save_path = full_dir / f"{filename}.xlsx"
                 try:
                     df.to_excel(save_path, index=False)

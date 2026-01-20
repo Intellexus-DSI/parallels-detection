@@ -1,71 +1,17 @@
-# Indexing Stage Configuration
-# Generates embeddings for segmented Tibetan text
+# Embedding Stage Configuration
+# For standalone use: cd embedding && python -m embedding.cli --config config.yaml
 
-# Input configuration
 input:
-  # Directory containing segmented Excel files from Stage 1
-  segments_dir: "../data/05_clean_data/00_tibetan/segmented_output/overlapping/Full_Files"
-  
-  # Column names in input Excel files
-  text_column: "Segmented_Text_EWTS"  # Use EWTS transliteration for embeddings
-  id_column: "Segment_ID"  # Unique identifier for each segment
+  segments_dir: "../segmentation/output/overlapping/Full_Files"
+  text_column: "Segmented_Text_EWTS"
 
-# Embedding model configuration
 embedding:
-  # Model from HuggingFace - Tibetan-specific sentence transformer
   model_name: "Intellexus/Bi-Tib-mbert-v1"
-  
-  # Batch size for processing (adjust based on GPU/CPU memory)
   batch_size: 32
-  
-  # Maximum sequence length (tokens)
-  max_length: 512
-  
-  # Normalize embeddings for cosine similarity
-  normalize: true
-  
-  # Device: "cuda" for GPU, "cpu" for CPU, or "auto" to auto-detect
   device: "auto"
-  
-  # Show progress bar
-  show_progress: true
+  normalize: true
 
-# Output configuration
 output:
-  # Directory for output files
-  output_dir: "../detection/data"
-  
-  # Output mode: "combined" (one file), "per_file" (separate files per source), or "per_line" (separate files per Source_Line_Number)
+  output_dir: "output"
   mode: "per_line"
-  
-  # Output file names (for combined mode)
-  embeddings_file: "embeddings.npy"
-  segments_file: "full_segmentation.xlsx"
-  
-  # Output subdirectory for per-file mode
-  per_file_subdir: "embeddings_by_source"
-  
-  # Output subdirectory for per-line mode
   per_line_subdir: "embeddings_by_line"
-  
-  # Metadata file (stores embedding dimensions, model info, etc.)
-  metadata_file: "embeddings_metadata.json"
-  
-  # Save format for segments: "xlsx" or "csv"
-  segments_format: "xlsx"
-
-# Processing options
-processing:
-  # Skip files that have already been processed (for incremental updates)
-  skip_existing: false
-  
-  # Maximum number of segments to process (useful for testing)
-  # Set to null or -1 for no limit
-  max_segments: null
-  
-  # Number of workers for data loading (0 = main thread only)
-  num_workers: 0
-  
-  # Chunk size for memory-efficient processing of large datasets
-  chunk_size: 10000
-

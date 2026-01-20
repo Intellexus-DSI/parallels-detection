@@ -1,20 +1,31 @@
 #!/usr/bin/env python
-"""Main orchestrator for the parallel text detection pipeline.
+"""Pipeline orchestrator for parallel text detection.
 
 Runs all three stages in sequence:
 1. Segmentation: Break texts into segments
-2. Indexing: Generate embeddings
+2. Embedding: Generate vector embeddings
 3. Detection: Find parallel matches
+
+Data flow:
+  data/*.jsonl -> segmentation/output/ -> embedding/output/ -> detection/output/ -> output/
 """
 
 import argparse
 import logging
-import sys
+import shutil
 import subprocess
+import sys
 from pathlib import Path
-from typing import Optional
 
 import yaml
+
+
+def get_python_executable(root_dir: Path) -> str:
+    """Get the Python executable, preferring venv if available."""
+    venv_python = root_dir / ".venv" / "bin" / "python"
+    if venv_python.exists():
+        return str(venv_python)
+    return sys.executable
 
 
 def setup_logging(verbose: bool = False) -> None:
@@ -27,230 +38,226 @@ def setup_logging(verbose: bool = False) -> None:
     )
 
 
-def run_command(cmd: list[str], cwd: Optional[Path] = None) -> int:
-    """Run a shell command and return exit code.
-    
-    Args:
-        cmd: Command and arguments as list
-        cwd: Working directory
-        
-    Returns:
-        Exit code (0 = success)
-    """
+def run_command(cmd: list[str], cwd: Path = None) -> int:
+    """Run a shell command and return exit code."""
     logging.info(f"Running: {' '.join(cmd)}")
+    if cwd:
+        logging.info(f"  in: {cwd}")
     result = subprocess.run(cmd, cwd=cwd)
     return result.returncode
 
 
-def run_segmentation(config: dict) -> int:
-    """Run the segmentation stage.
-    
-    Args:
-        config: Configuration dictionary
-        
-    Returns:
-        Exit code (0 = success)
-    """
+def run_segmentation(config: dict, root_dir: Path) -> int:
+    """Run the segmentation stage."""
     logging.info("=" * 60)
     logging.info("STAGE 1: SEGMENTATION")
     logging.info("=" * 60)
-    
+
     seg_config = config.get("segmentation", {})
-    
-    # Check if segmentation script exists
-    script_path = Path("segmentation/tibet_segmentation.py")
-    if not script_path.exists():
-        logging.error(f"Segmentation script not found: {script_path}")
+    input_file = root_dir / seg_config.get("input_file", "data/input.jsonl")
+    output_dir = root_dir / seg_config.get("output_dir", "segmentation/output")
+
+    if not input_file.exists():
+        logging.error(f"Input file not found: {input_file}")
         return 1
-    
-    # For now, just inform user to configure and run manually
-    logging.info("Segmentation stage needs to be configured manually.")
-    logging.info(f"Please edit: {script_path}")
-    logging.info("Then run: python segmentation/tibet_segmentation.py")
-    logging.info("")
-    logging.info("Configuration from pipeline_config.yaml:")
-    for key, value in seg_config.items():
-        logging.info(f"  {key}: {value}")
-    
-    # TODO: When segmentation gets CLI support, call it programmatically
-    # cmd = ["python", "segmentation/tibet_segmentation.py"]
-    # return run_command(cmd)
-    
-    return 0
+
+    # Build command for segmenter CLI
+    python_exe = get_python_executable(root_dir)
+    cmd = [
+        python_exe, "-m", "segmenter.cli", "segment",
+        "--input", str(input_file),
+        "--output", str(output_dir),
+        "--engine", seg_config.get("engine", "regex"),
+        "--min-syllables", str(seg_config.get("min_syllables", 4)),
+    ]
+
+    if seg_config.get("use_overlapping", True):
+        cmd.append("--overlapping")
+        if seg_config.get("overlap_max_atoms"):
+            cmd.extend(["--max-atoms", str(seg_config["overlap_max_atoms"])])
+
+    return run_command(cmd, cwd=root_dir / "segmentation")
 
 
-def run_indexing(config: dict) -> int:
-    """Run the indexing stage.
-    
-    Args:
-        config: Configuration dictionary
-        
-    Returns:
-        Exit code (0 = success)
-    """
+def run_embedding(config: dict, root_dir: Path) -> int:
+    """Run the embedding stage."""
     logging.info("=" * 60)
-    logging.info("STAGE 2: INDEXING")
+    logging.info("STAGE 2: EMBEDDING")
     logging.info("=" * 60)
-    
-    idx_config = config.get("indexing", {})
-    
-    logging.info("Indexing stage is not yet implemented.")
-    logging.info("This stage will:")
-    logging.info("  1. Load segmented Excel files")
-    logging.info("  2. Generate embeddings using transformer model")
-    logging.info("  3. Save embeddings.npy and full_segmentation.xlsx")
-    logging.info("")
-    logging.info("Configuration from pipeline_config.yaml:")
-    for key, value in idx_config.items():
-        logging.info(f"  {key}: {value}")
-    
-    # TODO: Implement indexing stage
-    # cmd = ["python", "-m", "indexer.cli", "--config", "indexing/config.yaml"]
-    # return run_command(cmd, cwd=Path("indexing"))
-    
-    return 0
+
+    emb_config = config.get("embedding", {})
+    input_dir = root_dir / emb_config.get("input_dir", "segmentation/output/overlapping/Full_Files")
+    output_dir = root_dir / emb_config.get("output_dir", "embedding/output")
+
+    if not input_dir.exists():
+        logging.error(f"Input directory not found: {input_dir}")
+        logging.error("Did segmentation stage complete?")
+        return 1
+
+    # Build command for embedding CLI
+    python_exe = get_python_executable(root_dir)
+    cmd = [
+        python_exe, "-m", "embedding.cli",
+        "--input-dir", str(input_dir),
+        "--output-dir", str(output_dir),
+        "--model", emb_config.get("model", "Intellexus/Bi-Tib-mbert-v1"),
+        "--batch-size", str(emb_config.get("batch_size", 32)),
+        "--mode", emb_config.get("mode", "per_line"),
+    ]
+
+    if emb_config.get("device"):
+        cmd.extend(["--device", emb_config["device"]])
+
+    return run_command(cmd, cwd=root_dir / "embedding")
 
 
-def run_detection(config: dict) -> int:
-    """Run the detection stage.
-    
-    Args:
-        config: Configuration dictionary
-        
-    Returns:
-        Exit code (0 = success)
-    """
+def run_detection(config: dict, root_dir: Path) -> int:
+    """Run the detection stage."""
     logging.info("=" * 60)
     logging.info("STAGE 3: DETECTION")
     logging.info("=" * 60)
-    
+
     det_config = config.get("detection", {})
-    
+    data_dir = root_dir / det_config.get("data_dir", "embedding/output/embeddings_by_line")
+    output_path = root_dir / det_config.get("output_path", "detection/output/parallels.csv")
+
+    if not data_dir.exists():
+        logging.error(f"Data directory not found: {data_dir}")
+        logging.error("Did embedding stage complete?")
+        return 1
+
+    # Ensure output directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     # Build command for detection CLI
-    cmd = ["python", "-m", "parallels.cli"]
-    
-    # Add arguments from config
-    if "segments_csv" in det_config:
-        cmd.extend(["--segments", str(det_config["segments_csv"])])
-    if "embeddings_path" in det_config:
-        cmd.extend(["--embeddings", str(det_config["embeddings_path"])])
-    if "output_path" in det_config:
-        cmd.extend(["--output", str(det_config["output_path"])])
-    
-    # Matching options
-    matching = det_config.get("matching", {})
-    if "strategy" in matching:
-        cmd.extend(["--strategy", matching["strategy"]])
-    if "threshold" in matching:
-        cmd.extend(["--threshold", str(matching["threshold"])])
-    if "k" in matching:
-        cmd.extend(["--k", str(matching["k"])])
-    
-    # Output format
-    output = det_config.get("output", {})
-    if "format" in output:
-        cmd.extend(["--format", output["format"]])
-    
-    return run_command(cmd, cwd=Path("detection"))
+    python_exe = get_python_executable(root_dir)
+    cmd = [
+        python_exe, "-m", "src.cli",
+        "--data-dir", str(data_dir),
+        "--output", str(output_path),
+        "--threshold", str(det_config.get("threshold", 0.85)),
+        "--batch-size", str(det_config.get("batch_size", 5)),
+        "--strategy", det_config.get("strategy", "threshold"),
+        "--format", det_config.get("format", "csv"),
+    ]
+
+    return run_command(cmd, cwd=root_dir / "detection")
+
+
+def copy_final_output(config: dict, root_dir: Path) -> int:
+    """Copy final results to root output directory."""
+    logging.info("=" * 60)
+    logging.info("COPYING FINAL OUTPUT")
+    logging.info("=" * 60)
+
+    det_config = config.get("detection", {})
+    source = root_dir / det_config.get("output_path", "detection/output/parallels.csv")
+    dest_dir = root_dir / "output"
+    dest = dest_dir / source.name
+
+    if not source.exists():
+        logging.error(f"Source file not found: {source}")
+        return 1
+
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, dest)
+    logging.info(f"Copied: {source} -> {dest}")
+
+    return 0
 
 
 def main() -> int:
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Run the full parallel text detection pipeline",
+        description="Run the parallel text detection pipeline",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Run all stages
   python run_pipeline.py --config pipeline_config.yaml
-  
-  # Run specific stages
   python run_pipeline.py --config pipeline_config.yaml --stage segmentation
+  python run_pipeline.py --config pipeline_config.yaml --stage embedding
   python run_pipeline.py --config pipeline_config.yaml --stage detection
-  
-  # Skip stages
-  python run_pipeline.py --config pipeline_config.yaml --skip segmentation
         """,
     )
-    
+
     parser.add_argument(
         "--config",
         type=Path,
-        required=True,
-        help="Path to pipeline configuration YAML file",
+        default=Path("pipeline_config.yaml"),
+        help="Path to pipeline configuration (default: pipeline_config.yaml)",
     )
     parser.add_argument(
         "--stage",
-        choices=["segmentation", "indexing", "detection"],
+        choices=["segmentation", "embedding", "detection"],
         help="Run only this stage",
     )
     parser.add_argument(
         "--skip",
         action="append",
-        choices=["segmentation", "indexing", "detection"],
-        help="Skip this stage (can be used multiple times)",
+        choices=["segmentation", "embedding", "detection"],
+        help="Skip this stage (can be repeated)",
     )
     parser.add_argument(
-        "--verbose",
-        "-v",
+        "--verbose", "-v",
         action="store_true",
         help="Enable verbose logging",
     )
-    
+
     args = parser.parse_args()
     setup_logging(args.verbose)
-    
+
+    # Determine root directory
+    root_dir = Path(__file__).parent.absolute()
+
     # Load configuration
-    if not args.config.exists():
-        logging.error(f"Configuration file not found: {args.config}")
+    config_path = root_dir / args.config if not args.config.is_absolute() else args.config
+    if not config_path.exists():
+        logging.error(f"Configuration file not found: {config_path}")
         return 1
-    
-    with open(args.config, "r") as f:
+
+    with open(config_path, "r") as f:
         config = yaml.safe_load(f)
-    
-    logging.info(f"Loaded configuration from: {args.config}")
-    
+
+    logging.info(f"Loaded configuration from: {config_path}")
+
     # Determine which stages to run
     skip_stages = set(args.skip or [])
-    
     if args.stage:
         stages = [args.stage]
     else:
-        stages = ["segmentation", "indexing", "detection"]
-    
+        stages = ["segmentation", "embedding", "detection"]
     stages = [s for s in stages if s not in skip_stages]
-    
+
     logging.info(f"Running stages: {', '.join(stages)}")
     logging.info("")
-    
-    # Run stages in order
-    exit_code = 0
-    
-    if "segmentation" in stages:
-        exit_code = run_segmentation(config)
+
+    # Run stages
+    for stage in stages:
+        if stage == "segmentation":
+            exit_code = run_segmentation(config, root_dir)
+        elif stage == "embedding":
+            exit_code = run_embedding(config, root_dir)
+        elif stage == "detection":
+            exit_code = run_detection(config, root_dir)
+        else:
+            continue
+
         if exit_code != 0:
-            logging.error("Segmentation stage failed")
+            logging.error(f"{stage.upper()} stage failed")
             return exit_code
         logging.info("")
-    
-    if "indexing" in stages:
-        exit_code = run_indexing(config)
-        if exit_code != 0:
-            logging.error("Indexing stage failed")
-            return exit_code
-        logging.info("")
-    
+
+    # Copy final output to root output/ directory
     if "detection" in stages:
-        exit_code = run_detection(config)
+        exit_code = copy_final_output(config, root_dir)
         if exit_code != 0:
-            logging.error("Detection stage failed")
             return exit_code
-        logging.info("")
-    
+
     logging.info("=" * 60)
     logging.info("PIPELINE COMPLETE")
     logging.info("=" * 60)
-    
+    logging.info(f"Results: {root_dir / 'output'}")
+
     return 0
 
 
