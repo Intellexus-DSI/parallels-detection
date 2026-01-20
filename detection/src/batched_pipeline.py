@@ -178,12 +178,12 @@ class BatchedPipeline:
                     segment_a_id=query_local_idx,
                     segment_b_id=index_global_idx,
                     similarity=similarity,
-                    file_path_a=query_file_id,
-                    file_path_b=index_row["source_file_id"],
+                    file_path_a=query_row.get("File_Path", ""),
+                    file_path_b=index_row.get("File_Path", ""),
                     title_a=query_row.get("Title", ""),
                     title_b=index_row.get("Title", ""),
-                    ewts_a=query_row.get("Segmented_Text_EWTS", ""),
-                    ewts_b=index_row.get("Segmented_Text_EWTS", ""),
+                    parallel_a=query_row.get("Segmented_Text_EWTS", ""),
+                    parallel_b=index_row.get("Segmented_Text_EWTS", ""),
                 )
 
         # Free query data
@@ -278,12 +278,12 @@ class BatchedPipeline:
                         segment_a_id=query_local_idx,
                         segment_b_id=target_local_idx,
                         similarity=similarity,
-                        file_path_a=query_file_id,
-                        file_path_b=target_row["source_file_id"],
+                        file_path_a=query_row.get("File_Path", ""),
+                        file_path_b=target_row.get("File_Path", ""),
                         title_a=query_row.get("Title", ""),
                         title_b=target_row.get("Title", ""),
-                        ewts_a=query_row.get("Segmented_Text_EWTS", ""),
-                        ewts_b=target_row.get("Segmented_Text_EWTS", ""),
+                        parallel_a=query_row.get("Segmented_Text_EWTS", ""),
+                        parallel_b=target_row.get("Segmented_Text_EWTS", ""),
                     )
 
             del temp_index

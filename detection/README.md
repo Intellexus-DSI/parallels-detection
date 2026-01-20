@@ -15,7 +15,7 @@ Embeddings from stage 2 in `embedding/output/embeddings_by_line/`:
 - `similarity`: Cosine similarity score (0.0-1.0)
 - `file_path_a`, `file_path_b`: Source identifiers
 - `title_a`, `title_b`: Document titles
-- `ewts_a`, `ewts_b`: Segment text
+- `parallel_a`, `parallel_b`: The matched parallel text segments (Wylie transliteration)
 
 ## Usage
 

@@ -25,9 +25,9 @@ embedding:
 
 # Stage 3: Detection
 detection:
-  data_dir: "embedding/output/embeddings_by_line"
+  data_dir: "detection/data/embeddings_by_line"
   output_path: "detection/output/parallels.csv"
-  threshold: 0.85
+  threshold: 0.90
   batch_size: 5
   strategy: "threshold"
   format: "csv"

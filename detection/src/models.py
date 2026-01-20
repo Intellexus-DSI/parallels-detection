@@ -33,8 +33,8 @@ class ParallelMatch:
     title_b: Optional[str] = None
     text_a: Optional[str] = None
     text_b: Optional[str] = None
-    ewts_a: Optional[str] = None
-    ewts_b: Optional[str] = None
+    parallel_a: Optional[str] = None
+    parallel_b: Optional[str] = None
     file_path_a: Optional[str] = None
     file_path_b: Optional[str] = None
 
@@ -50,6 +50,6 @@ class ParallelMatch:
             "file_path_b": self.file_path_b,
         }
         if include_text:
-            result["ewts_a"] = self.ewts_a
-            result["ewts_b"] = self.ewts_b
+            result["parallel_a"] = self.parallel_a
+            result["parallel_b"] = self.parallel_b
         return result
