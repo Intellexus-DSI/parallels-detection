@@ -18,16 +18,46 @@ Excel files in `output/overlapping/Full_Files/` with columns:
 
 ## Usage
 
-```bash
-# Via pipeline
-python run_pipeline.py --config pipeline_config.yaml --stage segmentation
+### Via Pipeline (from project root)
 
-# Standalone
-cd segmentation
-python tibet_segmentation.py
+The `run_pipeline.py` and `pipeline_config.yaml` files are located in the **project root directory** (not in this folder).
+
+```bash
+cd /path/to/parallels-detection
+python run_pipeline.py --config pipeline_config.yaml --stage segmentation
 ```
 
-## Configuration (in pipeline_config.yaml)
+### Standalone (from this directory)
+
+```bash
+cd segmentation
+python -m segmenter.cli segment --input ../data/input.jsonl --output output
+```
+
+#### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `--input` | Path to input JSONL file (required) |
+| `--output` | Output directory for segmented files |
+| `--engine` | `regex` (fast) or `botok` (accurate) |
+| `--min-syllables` | Minimum syllables per segment (default: 4) |
+| `--overlapping` | Use overlapping segmentation mode |
+| `--max-atoms` | Max atoms per span in overlapping mode (default: 8) |
+| `-v, --verbose` | Enable verbose logging |
+
+#### Example with options
+
+```bash
+python -m segmenter.cli segment \
+    --input ../data/input.jsonl \
+    --output output \
+    --engine regex \
+    --overlapping \
+    --max-atoms 8
+```
+
+## Configuration (in ../pipeline_config.yaml)
 
 ```yaml
 segmentation:

@@ -15,16 +15,49 @@ In `embedding/output/embeddings_by_line/`:
 
 ## Usage
 
-```bash
-# Via pipeline
-python run_pipeline.py --config pipeline_config.yaml --stage embedding
+### Via Pipeline (from project root)
 
-# Standalone
-cd embedding
-python generate_embeddings.py config.yaml
+The `run_pipeline.py` and `pipeline_config.yaml` files are located in the **project root directory** (not in this folder).
+
+```bash
+cd /path/to/parallels-detection
+python run_pipeline.py --config pipeline_config.yaml --stage embedding
 ```
 
-## Configuration (in pipeline_config.yaml)
+### Standalone (from this directory)
+
+```bash
+cd embedding
+python -m embedding.cli --input-dir ../segmentation/output/overlapping/Full_Files --output-dir output
+```
+
+#### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `--input-dir, -i` | Directory containing segmented Excel files (required) |
+| `--output-dir, -o` | Output directory for embeddings |
+| `--model, -m` | HuggingFace model name |
+| `--batch-size, -b` | Batch size for embedding generation (default: 32) |
+| `--device` | `auto`, `cuda`, or `cpu` |
+| `--mode` | `per_line`, `per_file`, or `combined` |
+| `--no-normalize` | Do not normalize embeddings |
+| `--skip-existing` | Skip if output files already exist |
+| `-q, --quiet` | Suppress progress bars |
+
+#### Example with options
+
+```bash
+python -m embedding.cli \
+    --input-dir ../segmentation/output/overlapping/Full_Files \
+    --output-dir output \
+    --model "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" \
+    --batch-size 64 \
+    --device auto \
+    --mode per_line
+```
+
+## Configuration (in ../pipeline_config.yaml)
 
 ```yaml
 embedding:
