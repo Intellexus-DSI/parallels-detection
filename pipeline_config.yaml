@@ -3,7 +3,7 @@
 
 # Stage 1: Segmentation
 segmentation:
-  input_file: "data/input.jsonl"
+  input_file: "data/05_clean_data/00_tibetan/Tibetan_1.jsonl"
   output_dir: "segmentation/output"
   engine: "regex"                 # "regex" (fast) or "botok" (accurate)
   min_syllables: 4
@@ -25,7 +25,7 @@ embedding:
 
 # Stage 3: Detection
 detection:
-  data_dir: "detection/data/embeddings_by_line"
+  data_dir: "embedding/output/embeddings_by_line"
   output_path: "detection/output/parallels.csv"
   threshold: 0.90
   batch_size: 5

@@ -26,3 +26,4 @@ data/*.json
 __pycache__/
 *.pyc
 *.egg-info/
+data/05_clean_data/
