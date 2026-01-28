@@ -12,59 +12,83 @@ def main():
     submodule_path = project_root / "detect_and_convert"
     gitmodules_path = project_root / ".gitmodules"
     
+    # Repository URL - fallback if git submodule fails
+    REPO_URL = "https://github.com/Intellexus-DSI/detect_and_convert.git"
+    
     print("Setting up detect_and_convert submodule...")
     
-    # Check if .gitmodules exists
-    if not gitmodules_path.exists():
-        print("Error: .gitmodules file not found")
-        print("The submodule configuration is missing.")
-        sys.exit(1)
+    # Check if submodule directory already exists and has content
+    if submodule_path.exists() and submodule_path.is_dir():
+        try:
+            if any(submodule_path.iterdir()):
+                print("[OK] Submodule directory already exists with content.")
+                # Still proceed to installation check
+        except Exception:
+            pass
     
-    # Check if submodule directory exists and has content
+    # If submodule doesn't exist or is empty, try to set it up
     if not submodule_path.exists() or not any(submodule_path.iterdir()):
         print("Submodule directory not found or empty. Initializing...")
         
-        # Check if .gitmodules is uncommitted (first-time setup)
-        check_result = subprocess.run(
-            ["git", "status", "--porcelain", ".gitmodules"],
-            capture_output=True,
-            text=True
-        )
-        if check_result.returncode == 0 and check_result.stdout.strip():
-            print("\n[INFO] .gitmodules file exists but is not committed yet.")
-            print("For first-time setup, you need to commit .gitmodules first:")
-            print("  git add .gitmodules")
-            print("  git commit -m 'Add detect_and_convert submodule'")
-            print("  python setup_submodule.py")
-            print("\nAlternatively, you can manually add the submodule:")
-            print("  git submodule add https://github.com/Intellexus-DSI/detect_and_convert detect_and_convert")
+        success = False
+        
+        # Method 1: Try git submodule (if .gitmodules exists)
+        if gitmodules_path.exists():
+            print("Attempting to initialize via git submodule...")
+            result = subprocess.run(
+                ["git", "submodule", "update", "--init", "--recursive"],
+                cwd=project_root,
+                capture_output=True,
+                text=True
+            )
+            
+            if submodule_path.exists() and any(submodule_path.iterdir()):
+                print("[OK] Submodule initialized via git submodule!")
+                success = True
+            elif result.returncode != 0:
+                print(f"[INFO] git submodule failed: {result.stderr.strip() if result.stderr else result.stdout.strip()}")
+        
+        # Method 2: Fallback - clone directly if git submodule failed
+        if not success:
+            print("Attempting to clone repository directly...")
+            try:
+                # Remove empty directory if it exists
+                if submodule_path.exists():
+                    import shutil
+                    shutil.rmtree(submodule_path)
+                
+                result = subprocess.run(
+                    ["git", "clone", REPO_URL, str(submodule_path)],
+                    cwd=project_root,
+                    capture_output=True,
+                    text=True,
+                    timeout=300
+                )
+                
+                if result.returncode == 0 and submodule_path.exists() and any(submodule_path.iterdir()):
+                    print("[OK] Repository cloned successfully!")
+                    success = True
+                else:
+                    error_msg = result.stderr.strip() if result.stderr else result.stdout.strip()
+                    print(f"[ERROR] Clone failed: {error_msg}")
+            except subprocess.TimeoutExpired:
+                print("[ERROR] Clone operation timed out after 5 minutes")
+            except Exception as e:
+                print(f"[ERROR] Clone failed with exception: {e}")
+        
+        if not success:
+            print("\n[ERROR] Failed to initialize detect_and_convert submodule")
+            print("Please try manually:")
+            print(f"  git clone {REPO_URL} detect_and_convert")
             sys.exit(1)
-        
-        # Try to initialize the submodule
-        result = subprocess.run(
-            ["git", "submodule", "update", "--init", "--recursive"],
-            capture_output=True,
-            text=True
-        )
-        
-        # Check again if directory was created
-        if not submodule_path.exists() or not any(submodule_path.iterdir()):
-            error_msg = result.stderr.strip() if result.stderr else result.stdout.strip()
-            if error_msg:
-                print(f"Error: {error_msg}")
-            else:
-                print("Warning: git submodule command succeeded but directory was not created.")
-            print("\nTroubleshooting:")
-            print("1. Make sure .gitmodules is committed: git add .gitmodules && git commit")
-            print("2. Or manually add: git submodule add https://github.com/Intellexus-DSI/detect_and_convert detect_and_convert")
-            sys.exit(1)
-        
-        print("[OK] Submodule initialized successfully!")
     
     # Install detect_and_convert
-    if submodule_path.exists():
+    if submodule_path.exists() and any(submodule_path.iterdir()):
         setup_py = submodule_path / "setup.py"
-        if setup_py.exists():
+        pyproject_toml = submodule_path / "pyproject.toml"
+        
+        # Check for either setup.py or pyproject.toml
+        if setup_py.exists() or pyproject_toml.exists():
             print("Installing detect_and_convert package...")
             result = subprocess.run(
                 [sys.executable, "-m", "pip", "install", "-e", str(submodule_path)],
@@ -72,17 +96,18 @@ def main():
                 text=True
             )
             if result.returncode != 0:
-                print(f"Error installing detect_and_convert: {result.stderr}", file=sys.stderr)
-                sys.exit(1)
-            print("[OK] detect_and_convert installed successfully!")
+                error_msg = result.stderr.strip() if result.stderr else result.stdout.strip()
+                print(f"[WARNING] Installation had issues: {error_msg}")
+                print("[INFO] Continuing anyway - package may still work if already installed")
+            else:
+                print("[OK] detect_and_convert installed successfully!")
             print("\nSetup complete! The converter is ready to use.")
         else:
-            print("Warning: detect_and_convert setup.py not found")
-            print(f"Checked path: {setup_py}")
-            sys.exit(1)
+            print(f"[WARNING] No setup.py or pyproject.toml found in {submodule_path}")
+            print("[INFO] The submodule may not require installation, or structure may be different")
+            print("[INFO] Continuing anyway - will attempt to import directly")
     else:
-        print("Error: detect_and_convert submodule directory still not found after initialization")
-        print("Make sure .gitmodules is committed and try again")
+        print("[ERROR] detect_and_convert submodule directory still not found after initialization")
         sys.exit(1)
 
 

@@ -28,14 +28,18 @@ if _submodule_path.exists() and _submodule_path.is_dir():
 
 # If not ready, try to run setup script automatically
 if not _submodule_ready:
-    print("detect_and_convert submodule not found. Running setup script...")
+    print("\n" + "="*60)
+    print("detect_and_convert submodule not found.")
+    print("Attempting automatic setup...")
+    print("="*60)
     if _setup_script.exists():
         try:
             result = subprocess.run(
                 [sys.executable, str(_setup_script)],
-                capture_output=True,
+                cwd=_project_root,
+                capture_output=False,  # Show output in real-time
                 text=True,
-                timeout=300
+                timeout=600  # 10 minute timeout for network operations
             )
             if result.returncode == 0:
                 # Try again after setup
@@ -45,16 +49,24 @@ if not _submodule_ready:
                             if str(_submodule_path) not in sys.path:
                                 sys.path.insert(0, str(_submodule_path))
                             _submodule_ready = True
-                    except Exception:
-                        pass
+                            print(f"[OK] Submodule path added: {_submodule_path}")
+                    except Exception as e:
+                        print(f"[WARNING] Error checking submodule after setup: {e}")
+            else:
+                print(f"[WARNING] Setup script exited with code {result.returncode}")
+        except subprocess.TimeoutExpired:
+            print("[ERROR] Setup script timed out after 10 minutes")
         except Exception as e:
-            print(f"Error running setup script: {e}")
+            print(f"[ERROR] Error running setup script: {e}")
 
 if not _submodule_ready:
     raise ImportError(
-        "detect_and_convert submodule not found.\n"
-        "Run: python setup_submodule.py\n"
-        "Or manually: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
+        "detect_and_convert submodule not found and automatic setup failed.\n"
+        "Please try manually:\n"
+        "  python setup_submodule.py\n"
+        "Or:\n"
+        "  git clone https://github.com/Intellexus-DSI/detect_and_convert detect_and_convert\n"
+        "  cd detect_and_convert && pip install -e ."
     )
 
 try:

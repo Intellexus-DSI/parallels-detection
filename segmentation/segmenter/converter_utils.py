@@ -11,17 +11,29 @@ def run_setup_script():
     setup_script = project_root / "setup_submodule.py"
     
     if not setup_script.exists():
+        print(f"[ERROR] Setup script not found at: {setup_script}")
         return False
     
     try:
+        print(f"[INFO] Running setup script: {setup_script}")
         result = subprocess.run(
             [sys.executable, str(setup_script)],
-            capture_output=True,
+            cwd=project_root,
+            capture_output=False,  # Show output in real-time
             text=True,
-            timeout=300  # 5 minute timeout
+            timeout=600  # 10 minute timeout for network operations
         )
-        return result.returncode == 0
-    except Exception:
+        if result.returncode == 0:
+            print("[OK] Setup script completed successfully")
+            return True
+        else:
+            print(f"[WARNING] Setup script exited with code {result.returncode}")
+            return False
+    except subprocess.TimeoutExpired:
+        print("[ERROR] Setup script timed out after 10 minutes")
+        return False
+    except Exception as e:
+        print(f"[ERROR] Setup script failed with exception: {e}")
         return False
 
 
@@ -56,7 +68,11 @@ def setup_converter_path():
             pass
     
     # Submodule not found or empty - try to set it up automatically
-    print("detect_and_convert submodule not found. Running setup script...")
+    print("\n" + "="*60)
+    print("detect_and_convert submodule not found.")
+    print("Attempting automatic setup...")
+    print("="*60)
+    
     if run_setup_script():
         # Try again after setup
         if submodule_path.exists() and submodule_path.is_dir():
@@ -65,10 +81,17 @@ def setup_converter_path():
                     submodule_str = str(submodule_path)
                     if submodule_str not in sys.path:
                         sys.path.insert(0, submodule_str)
+                    print(f"[OK] Submodule path added: {submodule_str}")
                     return True
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"[WARNING] Error checking submodule after setup: {e}")
     
+    print("[ERROR] Automatic setup failed or submodule still not found")
+    print("\nPlease try manually:")
+    print("  python setup_submodule.py")
+    print("Or:")
+    print("  git clone https://github.com/Intellexus-DSI/detect_and_convert detect_and_convert")
+    print("  cd detect_and_convert && pip install -e .")
     return False
 
 

@@ -23,21 +23,13 @@ data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → output/paral
 git clone <repo-url>
 cd parallels-detection
 
-# Run setup script (automatically initializes submodule and installs dependencies)
-python setup_submodule.py
-
 # Install stage dependencies
 cd segmentation && pip install -e . && cd ..
 cd embedding && pip install -e . && cd ..
 cd detection && pip install -e . && cd ..
 ```
 
-**Alternative:** Clone with submodules manually:
-```bash
-git clone --recursive <repo-url>
-cd parallels-detection
-cd detect_and_convert && pip install -e . && cd ..
-```
+**Note:** The `detect_and_convert` submodule (required for EWTS conversion) will be automatically installed when you run the pipeline. No manual setup needed!
 
 ### Running the Pipeline
 
@@ -50,6 +42,13 @@ python run_pipeline.py --config pipeline_config.yaml --stage segmentation
 python run_pipeline.py --config pipeline_config.yaml --stage embedding
 python run_pipeline.py --config pipeline_config.yaml --stage detection
 ```
+
+**Automatic Dependency Setup:** When you run the pipeline, if the `detect_and_convert` submodule is missing, it will automatically:
+1. Clone the repository from GitHub
+2. Install it as an editable package
+3. Continue with the pipeline execution
+
+You'll see progress messages during the automatic setup. If automatic setup fails, you can manually run `python setup_submodule.py`.
 
 ## Directory Structure
 
@@ -98,7 +97,13 @@ pip install -e .
 
 The segmentation stage **requires** `detect_and_convert` for Tibetan Unicode → EWTS conversion.
 
-**The setup script handles this automatically:**
+**Automatic Installation:** The pipeline automatically installs `detect_and_convert` when needed. When you run the pipeline for the first time, it will:
+- Detect if the submodule is missing
+- Clone the repository from GitHub (if git submodule fails, it falls back to direct clone)
+- Install it as an editable package with `pip install -e .`
+- Continue with pipeline execution
+
+**Manual Setup (Optional):** If you prefer to set it up manually before running the pipeline:
 ```bash
 python setup_submodule.py
 ```
