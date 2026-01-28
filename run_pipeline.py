@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import List
 
 import yaml
 
@@ -38,7 +39,7 @@ def setup_logging(verbose: bool = False) -> None:
     )
 
 
-def run_command(cmd: list[str], cwd: Path = None) -> int:
+def run_command(cmd: List[str], cwd: Path = None) -> int:
     """Run a shell command and return exit code."""
     logging.info(f"Running: {' '.join(cmd)}")
     if cwd:
