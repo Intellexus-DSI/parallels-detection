@@ -1,0 +1,17 @@
+# Core dependencies for parallels-detection pipeline
+# Install stage-specific dependencies from their respective directories
+
+# REQUIRED: EWTS conversion support via Git submodule
+# After cloning, initialize submodule:
+#   git submodule update --init --recursive
+# Then install:
+#   cd detect_and_convert && pip install -e .
+#
+# OR if detect_and_convert is in a sibling directory:
+#   pip install -e ../detect_and_convert
+#
+# OR if published as a package:
+#   pip install detect-and-convert
+
+# For development/testing
+pytest>=7.0.0

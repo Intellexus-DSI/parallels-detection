@@ -28,3 +28,6 @@ __pycache__/
 *.pyc
 *.egg-info/
 data/05_clean_data/
+
+# Submodule (tracked separately)
+# detect_and_convert/ is a submodule, don't ignore it

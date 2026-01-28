@@ -3,7 +3,34 @@ import re
 import os
 import pandas as pd
 from tqdm import tqdm
-from conversion import Converter, ConversionError  # provided by detect_and_convert
+
+# REQUIRED dependency: detect_and_convert for EWTS conversion
+# Add submodule to path and import
+import sys
+from pathlib import Path
+
+# Add detect_and_convert submodule to path
+_project_root = Path(__file__).parent.parent
+_submodule_path = _project_root / "detect_and_convert"
+
+if _submodule_path.exists() and _submodule_path.is_dir():
+    if str(_submodule_path) not in sys.path:
+        sys.path.insert(0, str(_submodule_path))
+else:
+    raise ImportError(
+        "detect_and_convert submodule not found.\n"
+        "Run: python setup_submodule.py\n"
+        "Or manually: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
+    )
+
+try:
+    from conversion import Converter, ConversionError
+except ImportError as e:
+    raise ImportError(
+        f"Failed to import Converter from detect_and_convert: {e}\n"
+        "Run: python setup_submodule.py\n"
+        "Or manually: cd detect_and_convert && pip install -e ."
+    )
 
 # ============================================================================
 # CONFIGURATION
@@ -350,7 +377,12 @@ def process_file(input_path, output_dir):
         desc_text += " (Exclusive Mode)"
 
     file_groups = {} # To hold aggregated data for full files
-    tib_converter = Converter()
+    
+    # Initialize converter - REQUIRED
+    try:
+        tib_converter = Converter()
+    except Exception as e:
+        raise RuntimeError(f"Failed to initialize Converter: {e}")
     
     print(f"Reading from: {input_path}")
     
@@ -405,14 +437,10 @@ def process_file(input_path, output_dir):
                             num_atoms = None
                             span_type = None
                         
-                        ewts_text = None
-                        try:
-                            # Segments are already Tibetan Unicode; bypass detection for speed
-                            ewts_text = tib_converter.convert(
-                                sent, "EWTS", text_scheme="Unicode", val_text_scheme=True
-                            )
-                        except Exception as e:
-                            ewts_text = f"CONVERT_ERR: {e}"
+                        # Segments are already Tibetan Unicode; bypass detection for speed
+                        ewts_text = tib_converter.convert(
+                            sent, "EWTS", text_scheme="Unicode", val_text_scheme=True
+                        )
                         ewts_text = f" {ewts_text}"  # prepend single space to every EWTS cell
                         
                         row = {

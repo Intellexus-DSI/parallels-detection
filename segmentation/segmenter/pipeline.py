@@ -66,13 +66,30 @@ class SegmentationPipeline:
                 min_syllables=config.segmentation.min_syllables
             )
 
-        # Initialize converter if available
-        self.converter = None
+        # Initialize converter - REQUIRED dependency
+        # Try to import from submodule or sibling directory
+        from .converter_utils import setup_converter_path, get_converter
+        
+        # Setup path and verify converter is available
+        if not setup_converter_path():
+            raise ImportError(
+                "detect_and_convert library not found.\n"
+                "Run: python setup_submodule.py\n"
+                "Or manually: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
+            )
+        
+        Converter = get_converter()
+        if Converter is None:
+            raise ImportError(
+                "Failed to import Converter from detect_and_convert.\n"
+                "Run: python setup_submodule.py\n"
+                "Or manually: cd detect_and_convert && pip install -e ."
+            )
+        
         try:
-            from conversion import Converter
             self.converter = Converter()
-        except ImportError:
-            print("Warning: Converter library not available. EWTS conversion disabled.")
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize Converter: {e}")
 
     def _convert_to_ewts(self, text: str) -> str:
         """Convert Tibetan Unicode to EWTS.
@@ -81,18 +98,18 @@ class SegmentationPipeline:
             text: Tibetan Unicode text
 
         Returns:
-            EWTS transliteration or error message
+            EWTS transliteration
+
+        Raises:
+            RuntimeError: If conversion fails
         """
         if self.converter is None:
-            return "[CONVERTER_UNAVAILABLE]"
+            raise RuntimeError("Converter not initialized. This should not happen.")
 
-        try:
-            ewts_text = self.converter.convert(
-                text, "EWTS", text_scheme="Unicode", val_text_scheme=True
-            )
-            return f" {ewts_text}"  # Prepend space as per original
-        except Exception as e:
-            return f"CONVERT_ERR: {e}"
+        ewts_text = self.converter.convert(
+            text, "EWTS", text_scheme="Unicode", val_text_scheme=True
+        )
+        return f" {ewts_text}"  # Prepend space as per original
 
     def _setup_output_dirs(self) -> tuple[Path, Path]:
         """Create output directories based on configuration.

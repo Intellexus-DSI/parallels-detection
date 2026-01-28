@@ -1,0 +1,3 @@
+[submodule "detect_and_convert"]
+	path = detect_and_convert
+	url = https://github.com/Intellexus-DSI/detect_and_convert

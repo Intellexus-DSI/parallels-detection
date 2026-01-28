@@ -69,6 +69,16 @@ segmentation:
 
 ## Dependencies
 
+### Required
 ```bash
 pip install pandas openpyxl tqdm botok
+```
+
+### Required: EWTS Conversion
+The segmentation stage **requires** `detect_and_convert` for Tibetan Unicode → EWTS transliteration.
+
+```bash
+# Initialize submodule (from project root)
+git submodule update --init --recursive
+cd detect_and_convert && pip install -e . && cd ..
 ```
