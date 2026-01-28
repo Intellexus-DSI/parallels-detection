@@ -67,23 +67,22 @@ class SegmentationPipeline:
             )
 
         # Initialize converter - REQUIRED dependency
-        # Try to import from submodule or sibling directory
+        # Auto-setup will run if submodule is not found
         from .converter_utils import setup_converter_path, get_converter
         
-        # Setup path and verify converter is available
+        # Setup path (this will auto-run setup script if needed)
         if not setup_converter_path():
             raise ImportError(
-                "detect_and_convert library not found.\n"
-                "Run: python setup_submodule.py\n"
-                "Or manually: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
+                "detect_and_convert library not found and auto-setup failed.\n"
+                "Please run manually: python setup_submodule.py\n"
+                "Or: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
             )
         
         Converter = get_converter()
         if Converter is None:
             raise ImportError(
                 "Failed to import Converter from detect_and_convert.\n"
-                "Run: python setup_submodule.py\n"
-                "Or manually: cd detect_and_convert && pip install -e ."
+                "The submodule may need to be installed. Run: cd detect_and_convert && pip install -e ."
             )
         
         try:

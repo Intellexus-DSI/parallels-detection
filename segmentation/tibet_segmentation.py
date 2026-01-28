@@ -7,16 +7,50 @@ from tqdm import tqdm
 # REQUIRED dependency: detect_and_convert for EWTS conversion
 # Add submodule to path and import
 import sys
+import subprocess
 from pathlib import Path
 
 # Add detect_and_convert submodule to path
 _project_root = Path(__file__).parent.parent
 _submodule_path = _project_root / "detect_and_convert"
+_setup_script = _project_root / "setup_submodule.py"
 
+# Check if submodule exists and has content
+_submodule_ready = False
 if _submodule_path.exists() and _submodule_path.is_dir():
-    if str(_submodule_path) not in sys.path:
-        sys.path.insert(0, str(_submodule_path))
-else:
+    try:
+        if any(_submodule_path.iterdir()):
+            if str(_submodule_path) not in sys.path:
+                sys.path.insert(0, str(_submodule_path))
+            _submodule_ready = True
+    except Exception:
+        pass
+
+# If not ready, try to run setup script automatically
+if not _submodule_ready:
+    print("detect_and_convert submodule not found. Running setup script...")
+    if _setup_script.exists():
+        try:
+            result = subprocess.run(
+                [sys.executable, str(_setup_script)],
+                capture_output=True,
+                text=True,
+                timeout=300
+            )
+            if result.returncode == 0:
+                # Try again after setup
+                if _submodule_path.exists() and _submodule_path.is_dir():
+                    try:
+                        if any(_submodule_path.iterdir()):
+                            if str(_submodule_path) not in sys.path:
+                                sys.path.insert(0, str(_submodule_path))
+                            _submodule_ready = True
+                    except Exception:
+                        pass
+        except Exception as e:
+            print(f"Error running setup script: {e}")
+
+if not _submodule_ready:
     raise ImportError(
         "detect_and_convert submodule not found.\n"
         "Run: python setup_submodule.py\n"
