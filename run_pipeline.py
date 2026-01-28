@@ -236,10 +236,16 @@ Examples:
     for stage in stages:
         if stage == "segmentation":
             exit_code = run_segmentation(config, root_dir)
+            if exit_code == 0:
+                logging.info(f"Segmentation output available in: {root_dir / 'segmentation/output'}")
         elif stage == "embedding":
             exit_code = run_embedding(config, root_dir)
+            if exit_code == 0:
+                logging.info(f"Embedding output available in: {root_dir / 'embedding/output'}")
         elif stage == "detection":
             exit_code = run_detection(config, root_dir)
+            if exit_code == 0:
+                logging.info(f"Detection output available in: {root_dir / 'detection/output'}")
         else:
             continue
 
