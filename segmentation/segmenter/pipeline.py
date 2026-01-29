@@ -66,16 +66,12 @@ class SegmentationPipeline:
                 min_syllables=config.segmentation.min_syllables
             )
 
-        # Initialize converter - REQUIRED dependency
-        # Auto-setup will run if submodule is not found
+        # Initialize converter - REQUIRED dependency (submodule must be set up beforehand; see README)
         from .converter_utils import setup_converter_path, get_converter
         
-        # Setup path (this will auto-run setup script if needed)
         if not setup_converter_path():
             raise ImportError(
-                "detect_and_convert library not found and auto-setup failed.\n"
-                "Please run manually: python setup_submodule.py\n"
-                "Or: git submodule update --init --recursive && cd detect_and_convert && pip install -e ."
+                "detect_and_convert submodule not found. See README Setup (step 2)."
             )
         
         Converter = get_converter()

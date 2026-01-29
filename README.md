@@ -14,24 +14,44 @@ data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → output/paral
 | 2. Embedding | Excel files | NPY embeddings + metadata |
 | 3. Detection | NPY embeddings | CSV with parallel matches |
 
-## Quick Start
+## Setup
 
-### First Time Setup
+Do these steps **once** before running the pipeline. The pipeline does **not** download or initialize the submodule automatically.
+
+### 1. Clone and install stage dependencies
 
 ```bash
-# Clone the repository
 git clone <repo-url>
 cd parallels-detection
 
-# Install stage dependencies
+# Install each stage
 cd segmentation && pip install -e . && cd ..
 cd embedding && pip install -e . && cd ..
 cd detection && pip install -e . && cd ..
 ```
 
-**Note:** The `detect_and_convert` submodule (required for EWTS conversion) will be automatically installed when you run the pipeline. No manual setup needed!
+### 2. Set up the detect_and_convert submodule (required for segmentation)
 
-### Running the Pipeline
+The segmentation stage needs the **detect_and_convert** repo for Tibetan Unicode → EWTS conversion. It is a **private** GitHub repo, so run these commands **in your terminal** (Git will prompt for credentials).
+
+**Option A – submodule already registered (e.g. you have `.gitmodules`):**
+
+```bash
+git submodule update --init --recursive
+cd detect_and_convert && pip install -e . && cd ..
+```
+
+**Option B – submodule not populated (e.g. clone without `--recursive`), or Option A failed:**  
+Clone the repo yourself so Git can prompt for your username and [Personal Access Token](https://github.com/settings/tokens) (not your password):
+
+```bash
+git clone https://github.com/Intellexus-DSI/detect_and_convert.git detect_and_convert
+cd detect_and_convert && pip install -e . && cd ..
+```
+
+The pipeline does **not** fetch or install the submodule for you. If it is missing, segmentation will fail and point you to the README.
+
+## Running the Pipeline
 
 ```bash
 # Run full pipeline
@@ -42,13 +62,6 @@ python run_pipeline.py --config pipeline_config.yaml --stage segmentation
 python run_pipeline.py --config pipeline_config.yaml --stage embedding
 python run_pipeline.py --config pipeline_config.yaml --stage detection
 ```
-
-**Automatic Dependency Setup:** When you run the pipeline, if the `detect_and_convert` submodule is missing, it will automatically:
-1. Clone the repository from GitHub
-2. Install it as an editable package
-3. Continue with the pipeline execution
-
-You'll see progress messages during the automatic setup. If automatic setup fails, you can manually run `python setup_submodule.py`.
 
 ## Directory Structure
 
@@ -93,19 +106,6 @@ cd ../detection
 pip install -e .
 ```
 
-### Required: EWTS Conversion Support
+### Required: EWTS conversion (detect_and_convert submodule)
 
-The segmentation stage **requires** `detect_and_convert` for Tibetan Unicode → EWTS conversion.
-
-**Automatic Installation:** The pipeline automatically installs `detect_and_convert` when needed. When you run the pipeline for the first time, it will:
-- Detect if the submodule is missing
-- Clone the repository from GitHub (if git submodule fails, it falls back to direct clone)
-- Install it as an editable package with `pip install -e .`
-- Continue with pipeline execution
-
-**Manual Setup (Optional):** If you prefer to set it up manually before running the pipeline:
-```bash
-python setup_submodule.py
-```
-
-This will initialize the submodule and install it if needed.
+The segmentation stage **requires** the `detect_and_convert` submodule for Tibetan Unicode → EWTS conversion. See **Setup** (step 2) above for how to clone/init the submodule and install it. The pipeline does not fetch or install it for you.
