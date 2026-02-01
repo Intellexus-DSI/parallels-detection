@@ -239,10 +239,10 @@ class SegmentationPipeline:
                     )
 
                     # Log warning for missing metadata fields
-                    if not file_path:
-                        print(f"[WARN] Line {line_num}: Missing 'file_path' in metadata")
-                    if not title:
-                        print(f"[WARN] Line {line_num}: Missing 'title' in metadata")
+                    # if not file_path:
+                    #     print(f"[WARN] Line {line_num}: Missing 'file_path' in metadata")
+                    # if not title:
+                    #     print(f"[WARN] Line {line_num}: Missing 'title' in metadata")
 
                     result = self.process_line(text_content, metadata)
 
