@@ -11,17 +11,18 @@ playground.ipynb
 
 # Output files (keep directories with .gitkeep)
 output/*.csv
-output/*.json
-output/*.parquet
-segmentation/output/
-embedding/output/
+# output/*.json
+# output/*.parquet
+# segmentation/output/
+# embedding/output/
 detection/output/
 
 # Data files
 data/*.jsonl
 data/*.json
-*.npy
-*.xlsx
+# *.npy
+# *.xlsx
+**/Single_Lines/*
 
 # Python
 __pycache__/
