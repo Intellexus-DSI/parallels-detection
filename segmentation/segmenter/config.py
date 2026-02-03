@@ -32,8 +32,8 @@ class OutputConfig(BaseModel):
     """Configuration for output options."""
 
     output_dir: Path = Path("data/segmented_output")
-    save_single_lines: bool = True
-    save_full_files: bool = True
+    save_single_lines: bool = True  # Create individual Excel files per line
+    save_full_files: bool = True     # Create one Excel file with all segments combined
 
 
 class Config(BaseModel):

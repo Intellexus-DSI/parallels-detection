@@ -11,5 +11,5 @@ segmentation:
 
 output:
   output_dir: "output"
-  save_single_lines: true
-  save_full_files: true
+  save_single_lines: true      # Create individual Excel files per line
+  save_full_files: true         # Create one combined Excel file with all segments (All_Segments.xlsx)

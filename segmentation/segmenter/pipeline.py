@@ -45,6 +45,34 @@ def sanitize_for_excel(text: str) -> str:
     return ILLEGAL_EXCEL_CHARS.sub('', text)
 
 
+def clean_non_tibetan_characters(text: str) -> str:
+    """Remove all non-Tibetan characters from text.
+
+    Keeps only characters in the Tibetan Unicode range (U+0F00-U+0FFF).
+    Removes Latin characters, numbers, punctuation, and other scripts.
+    Preserves only spaces between Tibetan text for word separation.
+
+    Args:
+        text: Input text
+
+    Returns:
+        Text with only Tibetan characters and minimal whitespace
+    """
+    if not text:
+        return text
+    
+    # Tibetan Unicode range: U+0F00 to U+0FFF
+    # Remove everything that's not Tibetan or space
+    # This will remove: Latin letters, numbers (0-9), quotes, punctuation, etc.
+    non_tibetan_pattern = re.compile(r'[^\u0F00-\u0FFF\s]')
+    cleaned_text = non_tibetan_pattern.sub('', text)
+    
+    # Normalize multiple spaces to single space and strip
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
+    
+    return cleaned_text
+
+
 class SegmentationPipeline:
     """Pipeline for segmenting Tibetan text files."""
 
@@ -226,6 +254,13 @@ class SegmentationPipeline:
                     if not text_content:
                         continue
 
+                    # Clean non-Tibetan characters before processing
+                    text_content = clean_non_tibetan_characters(text_content)
+                    
+                    # Skip if text becomes empty after cleaning
+                    if not text_content.strip():
+                        continue
+
                     metadata_dict = record.get("metadata", {}) or {}
                     raw_filename = metadata_dict.get("file_name", "Unknown_Source")
                     file_path = metadata_dict.get("file_path", "")
@@ -249,7 +284,9 @@ class SegmentationPipeline:
                     if result.segments:
                         # Convert segments to dictionaries
                         single_line_rows = []
-                        clean_name = sanitize_filename(raw_filename)
+                        
+                        # Always combine all segments into one file
+                        clean_name = "All_Segments"
 
                         for segment in result.segments:
                             row = {

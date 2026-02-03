@@ -122,7 +122,7 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--no-full-files",
         action="store_true",
-        help="Skip saving aggregated full files",
+        help="Skip saving combined file with all segments",
     )
 
     # Other options
