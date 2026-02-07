@@ -24,8 +24,8 @@ class Segment:
 class ParallelMatch:
     """Represents a parallel match between two segments."""
 
-    segment_a_id: int
-    segment_b_id: int
+    segment_a_id: str  # Format: {line_number}_{segment_order}
+    segment_b_id: str  # Format: {line_number}_{segment_order}
     similarity: float
 
     # Optional enriched fields (populated on output)

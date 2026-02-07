@@ -295,6 +295,11 @@ class EmbeddingPipeline:
             mask = self.segments_df['Source_Line_Number'] == line_num
             line_segments = self.segments_df[mask].copy()
             line_embeddings = self.embeddings[mask]
+
+            # Add segment_id column: {line_number}_{1-indexed segment order}
+            line_segments['segment_id'] = line_segments['Sentence_Order'].apply(
+                lambda order: f"{int(line_num)}_{int(order) + 1}"
+            )
             
             # Create filename with zero-padded line number
             line_num_str = f"{int(line_num):06d}"

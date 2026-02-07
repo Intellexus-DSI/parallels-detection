@@ -178,8 +178,8 @@ class BatchedPipeline:
                 query_row = query_segments.iloc[query_local_idx]
 
                 yield ParallelMatch(
-                    segment_a_id=query_local_idx,
-                    segment_b_id=index_global_idx,
+                    segment_a_id=query_row.get("segment_id", str(query_local_idx)),
+                    segment_b_id=index_row.get("segment_id", str(index_global_idx)),
                     similarity=similarity,
                     file_path_a=query_row.get("File_Path", ""),
                     file_path_b=index_row.get("File_Path", ""),
@@ -279,8 +279,8 @@ class BatchedPipeline:
                     target_row = target_segments.iloc[target_local_idx]
 
                     yield ParallelMatch(
-                        segment_a_id=query_local_idx,
-                        segment_b_id=target_local_idx,
+                        segment_a_id=query_row.get("segment_id", str(query_local_idx)),
+                        segment_b_id=target_row.get("segment_id", str(target_local_idx)),
                         similarity=similarity,
                         file_path_a=query_row.get("File_Path", ""),
                         file_path_b=target_row.get("File_Path", ""),
