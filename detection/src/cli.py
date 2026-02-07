@@ -90,6 +90,12 @@ Examples:
         action="store_true",
         help="Skip embedding normalization",
     )
+    parser.add_argument(
+        "--device",
+        choices=["auto", "cuda", "cpu"],
+        default="auto",
+        help="Device for FAISS index (default: auto)",
+    )
 
     # Other options
     parser.add_argument(
@@ -101,6 +107,12 @@ Examples:
         "--no-text",
         action="store_true",
         help="Exclude segment text from output",
+    )
+    parser.add_argument(
+        "--max-lines-per-file",
+        type=int,
+        default=0,
+        help="Max lines per output file (0 = unlimited, single file)",
     )
 
     return parser.parse_args()
@@ -122,8 +134,10 @@ def main() -> int:
     config.matching.threshold = args.threshold
     config.matching.k = args.k
     config.processing.normalize_embeddings = not args.no_normalize
+    config.processing.device = args.device
     config.output.format = args.format
     config.output.include_text = not args.no_text
+    config.output.max_lines_per_file = args.max_lines_per_file
 
     try:
         pipeline = BatchedPipeline(config)

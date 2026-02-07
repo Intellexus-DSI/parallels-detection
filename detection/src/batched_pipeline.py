@@ -55,6 +55,7 @@ class BatchedPipeline:
         logger.info(f"Data directory: {self.config.data_dir}")
         logger.info(f"Found {self.corpus.num_files} corpus files")
         logger.info(f"Batch size: {self.config.batch_size}")
+        logger.info(f"FAISS device: {self.config.processing.device}")
 
         file_ids = self.corpus.file_ids
         batch_list = list(chunks(file_ids, self.config.batch_size))
@@ -67,6 +68,7 @@ class BatchedPipeline:
             self.config.output_path,
             format=self.config.output.format,
             include_text=self.config.output.include_text,
+            max_lines_per_file=self.config.output.max_lines_per_file,
         ) as writer:
 
             for batch_idx, index_batch in enumerate(tqdm(batch_list, desc="Batches")):
@@ -81,6 +83,7 @@ class BatchedPipeline:
                 index = FAISSIndex(
                     dimension=self.corpus.embedding_dim,
                     normalize=self.config.processing.normalize_embeddings,
+                    device=self.config.processing.device,
                 )
                 index.build(index_embeddings)
 
@@ -245,6 +248,7 @@ class BatchedPipeline:
             temp_index = FAISSIndex(
                 dimension=self.corpus.embedding_dim,
                 normalize=self.config.processing.normalize_embeddings,
+                device=self.config.processing.device,
             )
             temp_index.build(target_embeddings)
 

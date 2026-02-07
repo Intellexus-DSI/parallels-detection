@@ -142,28 +142,93 @@ def run_detection(config: dict, root_dir: Path) -> int:
         "--format", det_config.get("format", "csv"),
     ]
 
+    if det_config.get("device"):
+        cmd.extend(["--device", det_config["device"]])
+
+    if det_config.get("max_lines_per_file", 0) > 0:
+        cmd.extend(["--max-lines-per-file", str(det_config["max_lines_per_file"])])
+
     return run_command(cmd, cwd=root_dir / "detection")
 
 
 def copy_final_output(config: dict, root_dir: Path) -> int:
-    """Copy final results to root output directory."""
+    """Copy or combine final results to root output directory."""
     logging.info("=" * 60)
     logging.info("COPYING FINAL OUTPUT")
     logging.info("=" * 60)
 
     det_config = config.get("detection", {})
-    source = root_dir / det_config.get("output_path", "detection/output/parallels.csv")
+    output_path = Path(det_config.get("output_path", "detection/output/parallels.csv"))
+    source_dir = root_dir / output_path.parent
     dest_dir = root_dir / "output"
-    dest = dest_dir / source.name
+    dest_dir.mkdir(parents=True, exist_ok=True)
 
-    if not source.exists():
-        logging.error(f"Source file not found: {source}")
+    # Check if chunked output (max_lines_per_file > 0)
+    max_lines = det_config.get("max_lines_per_file", 0)
+    if max_lines > 0:
+        return combine_chunk_files(source_dir, output_path.stem, output_path.suffix, dest_dir)
+    else:
+        # Single file mode
+        source = root_dir / output_path
+        if not source.exists():
+            logging.error(f"Source file not found: {source}")
+            return 1
+        dest = dest_dir / source.name
+        shutil.copy2(source, dest)
+        logging.info(f"Copied: {source} -> {dest}")
+        return 0
+
+
+def combine_chunk_files(source_dir: Path, stem: str, suffix: str, dest_dir: Path) -> int:
+    """Combine chunk files into a single output file."""
+    import glob
+    import pandas as pd
+
+    # Find all chunk files (e.g., parallels_000.csv, parallels_001.csv, ...)
+    pattern = str(source_dir / f"{stem}_[0-9][0-9][0-9]{suffix}")
+    chunk_files = sorted(glob.glob(pattern))
+
+    if not chunk_files:
+        logging.error(f"No chunk files found matching pattern: {pattern}")
         return 1
 
-    dest_dir.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source, dest)
-    logging.info(f"Copied: {source} -> {dest}")
+    logging.info(f"Found {len(chunk_files)} chunk files to combine")
 
+    dest_file = dest_dir / f"{stem}{suffix}"
+
+    if suffix == ".csv":
+        # Stream combine CSV files
+        first = True
+        with open(dest_file, "w", encoding="utf-8") as out:
+            for chunk_file in chunk_files:
+                logging.info(f"  Adding: {Path(chunk_file).name}")
+                with open(chunk_file, "r", encoding="utf-8") as inp:
+                    if first:
+                        # Include header from first file
+                        out.write(inp.read())
+                        first = False
+                    else:
+                        # Skip header line for subsequent files
+                        next(inp)  # Skip header
+                        out.write(inp.read())
+    elif suffix == ".parquet":
+        # Combine parquet files
+        dfs = [pd.read_parquet(f) for f in chunk_files]
+        combined = pd.concat(dfs, ignore_index=True)
+        combined.to_parquet(dest_file, index=False)
+    elif suffix == ".json":
+        import json
+        all_data = []
+        for chunk_file in chunk_files:
+            with open(chunk_file, "r", encoding="utf-8") as f:
+                all_data.extend(json.load(f))
+        with open(dest_file, "w", encoding="utf-8") as f:
+            json.dump(all_data, f, ensure_ascii=False, indent=2)
+    else:
+        logging.error(f"Unsupported format: {suffix}")
+        return 1
+
+    logging.info(f"Combined output written to: {dest_file}")
     return 0
 
 

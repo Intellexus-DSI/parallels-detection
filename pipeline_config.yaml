@@ -31,3 +31,5 @@ detection:
   batch_size: 1000
   strategy: "threshold"
   format: "csv"
+  device: "auto"                    # "auto", "cuda", or "cpu"
+  max_lines_per_file: 200000        # 0 = unlimited, single file

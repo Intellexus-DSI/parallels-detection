@@ -21,6 +21,7 @@ class ProcessingConfig(BaseModel):
 
     batch_size: int = Field(default=1000, ge=1)
     normalize_embeddings: bool = True
+    device: Literal["auto", "cuda", "cpu"] = "auto"
 
 
 class OutputConfig(BaseModel):
@@ -28,6 +29,7 @@ class OutputConfig(BaseModel):
 
     format: Literal["csv", "parquet", "json"] = "csv"
     include_text: bool = True
+    max_lines_per_file: int = Field(default=0, ge=0)  # 0 = unlimited
 
 
 class BatchedConfig(BaseModel):

@@ -1,31 +1,55 @@
 """FAISS index wrapper for efficient similarity search."""
 
-from typing import Tuple
+import logging
+from typing import Literal, Tuple
 
 import faiss
 import numpy as np
+
+logger = logging.getLogger(__name__)
+
+
+def _resolve_device(device: Literal["auto", "cuda", "cpu"]) -> str:
+    """Resolve 'auto' device to 'cuda' or 'cpu'."""
+    if device == "auto":
+        if faiss.get_num_gpus() > 0:
+            return "cuda"
+        return "cpu"
+    return device
 
 
 class FAISSIndex:
     """
     FAISS index wrapper for cosine similarity search.
-    
+
     Uses IndexFlatIP (inner product) with L2 normalization
-    to compute cosine similarity efficiently.
+    to compute cosine similarity efficiently. Supports both
+    CPU and GPU backends.
     """
 
-    def __init__(self, dimension: int = 768, normalize: bool = True):
+    def __init__(
+        self,
+        dimension: int = 768,
+        normalize: bool = True,
+        device: Literal["auto", "cuda", "cpu"] = "cpu",
+    ):
         """
         Initialize the FAISS index.
 
         Args:
             dimension: Embedding dimension (default 768).
             normalize: Whether to L2-normalize vectors for cosine similarity.
+            device: Device to use ("auto", "cuda", or "cpu").
         """
         self.dimension = dimension
         self.normalize = normalize
+        self.device = _resolve_device(device)
         self.index: faiss.IndexFlatIP = None
+        self._gpu_resource = None
         self._is_built = False
+
+        if self.device == "cuda":
+            logger.info("FAISS will use GPU acceleration")
 
     def build(self, embeddings: np.ndarray) -> None:
         """
@@ -48,8 +72,16 @@ class FAISSIndex:
         if self.normalize:
             embeddings = self._normalize(embeddings)
 
-        # Create and populate the index
-        self.index = faiss.IndexFlatIP(self.dimension)
+        # Create the base CPU index
+        cpu_index = faiss.IndexFlatIP(self.dimension)
+
+        # Move to GPU if requested
+        if self.device == "cuda":
+            self._gpu_resource = faiss.StandardGpuResources()
+            self.index = faiss.index_cpu_to_gpu(self._gpu_resource, 0, cpu_index)
+        else:
+            self.index = cpu_index
+
         self.index.add(embeddings)
         self._is_built = True
 
