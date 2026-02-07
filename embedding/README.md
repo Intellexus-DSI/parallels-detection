@@ -4,7 +4,7 @@ Generates vector embeddings from segmented text for semantic similarity search.
 
 ## Input
 
-Excel files from segmentation stage in `segmentation/output/overlapping/Full_Files/`
+CSV files from segmentation stage in `segmentation/output/overlapping/Full_Files/`
 
 ## Output
 

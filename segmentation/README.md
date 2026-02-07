@@ -11,7 +11,7 @@ JSONL file with Tibetan text:
 
 ## Output
 
-Excel files in `output/overlapping/Full_Files/` with columns:
+CSV files in `output/overlapping/Full_Files/` with columns:
 - `Segmented_Text`: Tibetan Unicode segment
 - `Segmented_Text_EWTS`: EWTS transliteration
 - `File_Path`, `Title`, `Source_Line_Number`, `Start_Index`, `End_Index`
@@ -71,7 +71,7 @@ segmentation:
 
 ### Required
 ```bash
-pip install pandas openpyxl tqdm botok
+pip install pandas tqdm botok
 ```
 
 ### Required: EWTS Conversion

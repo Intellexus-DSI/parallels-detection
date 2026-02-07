@@ -91,10 +91,7 @@ class CorpusLoader:
         file_info = self._files[file_id]
 
         # Load segments
-        if file_info.segments_path.suffix.lower() == '.xlsx':
-            segments = pd.read_excel(file_info.segments_path)
-        else:
-            segments = pd.read_csv(file_info.segments_path)
+        segments = pd.read_csv(file_info.segments_path)
 
         # Load embeddings
         embeddings = np.load(file_info.embeddings_path)

@@ -94,7 +94,7 @@ class OutputConfig(BaseModel):
         default="embeddings_metadata.json",
         description="Filename for embedding metadata"
     )
-    segments_format: Literal["xlsx", "csv"] = Field(
+    segments_format: Literal["csv"] = Field(
         default="csv",
         description="Format for segments file"
     )

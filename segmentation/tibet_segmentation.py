@@ -473,7 +473,7 @@ def process_file(input_path, output_dir):
                             file_groups[clean_name] = []
                         file_groups[clean_name].append(row)
                     
-                    # SAVE INDIVIDUAL LINE EXCEL IMMEDIATELY
+                    # SAVE INDIVIDUAL LINE CSV IMMEDIATELY
                     single_df = pd.DataFrame(single_line_rows)
                     single_filename = f"Line_{line_num}_{clean_name[:30]}.csv" # Truncate name to avoid OS errors
                     single_save_path = os.path.join(single_output_dir, single_filename)

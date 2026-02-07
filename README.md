@@ -10,8 +10,8 @@ data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → output/paral
 
 | Stage | Input | Output |
 |-------|-------|--------|
-| 1. Segmentation | JSONL files | Excel files with segments |
-| 2. Embedding | Excel files | NPY embeddings + metadata |
+| 1. Segmentation | JSONL files | CSV files with segments |
+| 2. Embedding | CSV files | NPY embeddings + metadata |
 | 3. Detection | NPY embeddings | CSV with parallel matches |
 
 ## Setup

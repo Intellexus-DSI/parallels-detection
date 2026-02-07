@@ -27,22 +27,22 @@ def sanitize_filename(name: str) -> str:
     return re.sub(r'[<>:"/\\|?*]', "_", name).strip()
 
 
-# Regex pattern for illegal Excel characters (control chars except tab, newline, carriage return)
-ILLEGAL_EXCEL_CHARS = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
+# Regex pattern for illegal control characters (except tab, newline, carriage return)
+ILLEGAL_CHARS = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
 
 
-def sanitize_for_excel(text: str) -> str:
-    """Remove characters that are illegal in Excel worksheets.
+def sanitize_text(text: str) -> str:
+    """Remove control characters that may interfere with CSV/Excel.
 
     Args:
         text: Input text
 
     Returns:
-        Sanitized text safe for Excel
+        Sanitized text
     """
     if not text:
         return text
-    return ILLEGAL_EXCEL_CHARS.sub('', text)
+    return ILLEGAL_CHARS.sub('', text)
 
 
 def clean_non_tibetan_characters(text: str) -> str:
@@ -313,13 +313,13 @@ class SegmentationPipeline:
                                 file_groups[clean_name] = []
                             file_groups[clean_name].append(row)
 
-                        # Save individual line Excel
+                        # Save individual line CSV
                         if self.config.output.save_single_lines:
                             single_df = pd.DataFrame(single_line_rows)
-                            # Sanitize text columns for Excel
+                            # Sanitize text columns
                             for col in single_df.select_dtypes(include=['object']).columns:
                                 single_df[col] = single_df[col].apply(
-                                    lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
+                                    lambda x: sanitize_text(x) if isinstance(x, str) else x
                                 )
                             single_filename = (
                                 f"Line_{line_num}_{clean_name[:30]}.csv"
@@ -340,10 +340,10 @@ class SegmentationPipeline:
                 if not rows:
                     continue
                 df = pd.DataFrame(rows)
-                # Sanitize text columns for Excel
+                # Sanitize text columns
                 for col in df.select_dtypes(include=['object']).columns:
                     df[col] = df[col].apply(
-                        lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
+                        lambda x: sanitize_text(x) if isinstance(x, str) else x
                     )
                 save_path = full_dir / f"{filename}.csv"
                 try:

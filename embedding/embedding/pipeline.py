@@ -100,7 +100,7 @@ class EmbeddingPipeline:
         # Concatenate all segments
         self.segments_df = pd.concat(all_segments, ignore_index=True)
         
-        print(f"Loaded {len(self.segments_df)} total segments from {len(excel_files)} files")
+        print(f"Loaded {len(self.segments_df)} total segments from {len(csv_files)} files")
         
         # Apply max_segments limit if specified
         if self.config.processing.max_segments:
@@ -181,10 +181,7 @@ class EmbeddingPipeline:
         segments_path = output_dir / self.config.output.segments_file
         print(f"Saving combined segments to: {segments_path}")
         
-        if self.config.output.segments_format == "xlsx":
-            self.segments_df.to_excel(segments_path, index=False)
-        else:
-            self.segments_df.to_csv(segments_path, index=False)
+        self.segments_df.to_csv(segments_path, index=False)
         
         # Save metadata
         metadata = EmbeddingMetadata(
@@ -232,10 +229,7 @@ class EmbeddingPipeline:
             segments_filename = f"{source_file}_segments.{self.config.output.segments_format}"
             segments_path = output_dir / segments_filename
             
-            if self.config.output.segments_format == "xlsx":
-                file_segments.to_excel(segments_path, index=False)
-            else:
-                file_segments.to_csv(segments_path, index=False)
+            file_segments.to_csv(segments_path, index=False)
             
             saved_files.append({
                 'source_file': source_file,
@@ -313,10 +307,7 @@ class EmbeddingPipeline:
             
             # Save segments
             segments_path = output_dir / segments_filename
-            if self.config.output.segments_format == "xlsx":
-                line_segments.to_excel(segments_path, index=False)
-            else:
-                line_segments.to_csv(segments_path, index=False)
+            line_segments.to_csv(segments_path, index=False)
             
             saved_files.append({
                 'source_line_number': int(line_num),
@@ -383,10 +374,7 @@ class EmbeddingPipeline:
                 print(f"\nOutputs already exist. Loading existing embeddings...")
                 self.embeddings = np.load(embeddings_path)
                 
-                if self.config.output.segments_format == "xlsx":
-                    self.segments_df = pd.read_excel(segments_path)
-                else:
-                    self.segments_df = pd.read_csv(segments_path)
+                self.segments_df = pd.read_csv(segments_path)
                 
                 print(f"Loaded: {self.embeddings.shape[0]} embeddings")
                 return self.embeddings, self.segments_df
