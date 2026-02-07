@@ -55,9 +55,9 @@ def get_default_config() -> IndexingConfig:
         output=OutputConfig(
             output_dir=Path("../detection/data"),
             embeddings_file="embeddings.npy",
-            segments_file="full_segmentation.xlsx",
+            segments_file="full_segmentation.csv",
             metadata_file="embeddings_metadata.json",
-            segments_format="xlsx"
+            segments_format="csv"
         ),
         processing=ProcessingConfig(
             skip_existing=False,

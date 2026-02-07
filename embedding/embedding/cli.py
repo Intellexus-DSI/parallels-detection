@@ -46,7 +46,7 @@ Examples:
     parser.add_argument(
         '--input-dir', '-i',
         type=str,
-        help='Directory containing segmented Excel files (overrides config)'
+        help='Directory containing segmented CSV files (overrides config)'
     )
     
     parser.add_argument(

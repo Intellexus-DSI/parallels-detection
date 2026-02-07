@@ -11,7 +11,7 @@ class InputConfig(BaseModel):
     """Input configuration for loading segmented files."""
     
     segments_dir: Path = Field(
-        description="Directory containing segmented Excel files"
+        description="Directory containing segmented CSV files"
     )
     text_column: str = Field(
         default="Segmented_Text_EWTS",
@@ -79,7 +79,7 @@ class OutputConfig(BaseModel):
         description="Filename for embeddings numpy array (combined mode only)"
     )
     segments_file: str = Field(
-        default="full_segmentation.xlsx",
+        default="full_segmentation.csv",
         description="Filename for consolidated segments (combined mode only)"
     )
     per_file_subdir: str = Field(
@@ -95,7 +95,7 @@ class OutputConfig(BaseModel):
         description="Filename for embedding metadata"
     )
     segments_format: Literal["xlsx", "csv"] = Field(
-        default="xlsx",
+        default="csv",
         description="Format for segments file"
     )
     

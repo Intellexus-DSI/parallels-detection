@@ -475,9 +475,9 @@ def process_file(input_path, output_dir):
                     
                     # SAVE INDIVIDUAL LINE EXCEL IMMEDIATELY
                     single_df = pd.DataFrame(single_line_rows)
-                    single_filename = f"Line_{line_num}_{clean_name[:30]}.xlsx" # Truncate name to avoid OS errors
+                    single_filename = f"Line_{line_num}_{clean_name[:30]}.csv" # Truncate name to avoid OS errors
                     single_save_path = os.path.join(single_output_dir, single_filename)
-                    single_df.to_excel(single_save_path, index=False)
+                    single_df.to_csv(single_save_path, index=False)
 
             except json.JSONDecodeError:
                 continue
@@ -485,12 +485,12 @@ def process_file(input_path, output_dir):
     # SAVE AGGREGATED FILES
     print(f"\nSaving {len(file_groups)} Full Files to {full_output_dir}...")
     
-    for filename, rows in tqdm(file_groups.items(), desc="Saving Full Xlsx"):
+    for filename, rows in tqdm(file_groups.items(), desc="Saving Full CSV"):
         if not rows: continue
         df = pd.DataFrame(rows)
-        save_path = os.path.join(full_output_dir, f"{filename}.xlsx")
+        save_path = os.path.join(full_output_dir, f"{filename}.csv")
         try:
-            df.to_excel(save_path, index=False)
+            df.to_csv(save_path, index=False)
         except Exception as e:
             print(f"Error saving {filename}: {e}")
 

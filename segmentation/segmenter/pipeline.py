@@ -322,10 +322,10 @@ class SegmentationPipeline:
                                     lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
                                 )
                             single_filename = (
-                                f"Line_{line_num}_{clean_name[:30]}.xlsx"
+                                f"Line_{line_num}_{clean_name[:30]}.csv"
                             )
                             single_save_path = single_dir / single_filename
-                            single_df.to_excel(single_save_path, index=False)
+                            single_df.to_csv(single_save_path, index=False)
 
                     lines_processed += 1
 
@@ -336,7 +336,7 @@ class SegmentationPipeline:
         if self.config.output.save_full_files:
             print(f"\nSaving {len(file_groups)} Full Files to {full_dir}...")
 
-            for filename, rows in tqdm(file_groups.items(), desc="Saving Full Xlsx"):
+            for filename, rows in tqdm(file_groups.items(), desc="Saving Full CSV"):
                 if not rows:
                     continue
                 df = pd.DataFrame(rows)
@@ -345,9 +345,9 @@ class SegmentationPipeline:
                     df[col] = df[col].apply(
                         lambda x: sanitize_for_excel(x) if isinstance(x, str) else x
                     )
-                save_path = full_dir / f"{filename}.xlsx"
+                save_path = full_dir / f"{filename}.csv"
                 try:
-                    df.to_excel(save_path, index=False)
+                    df.to_csv(save_path, index=False)
                 except Exception as e:
                     print(f"Error saving {filename}: {e}")
 

@@ -26,7 +26,7 @@ class CorpusLoader:
 
     Expects a directory with:
     - embeddings_metadata.json (index of all files)
-    - For each file: {file_id}_segments.xlsx and {file_id}_embeddings.npy
+    - For each file: {file_id}_segments.csv and {file_id}_embeddings.npy
     """
 
     def __init__(self, data_dir: Path):
@@ -94,7 +94,7 @@ class CorpusLoader:
         if file_info.segments_path.suffix.lower() == '.xlsx':
             segments = pd.read_excel(file_info.segments_path)
         else:
-            segments = pd.read_csv(file_info.segments_path, sep="\t")
+            segments = pd.read_csv(file_info.segments_path)
 
         # Load embeddings
         embeddings = np.load(file_info.embeddings_path)

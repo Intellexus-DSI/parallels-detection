@@ -6,7 +6,7 @@ Finds parallel text segments across the corpus using semantic similarity.
 
 Embeddings from stage 2 in `embedding/output/embeddings_by_line/`:
 - `embeddings_metadata.json`
-- `line_NNNNNN_embeddings.npy` / `line_NNNNNN_segments.xlsx` pairs
+- `line_NNNNNN_embeddings.npy` / `line_NNNNNN_segments.csv` pairs
 
 ## Output
 

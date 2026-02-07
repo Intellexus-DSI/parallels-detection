@@ -10,7 +10,7 @@ Excel files from segmentation stage in `segmentation/output/overlapping/Full_Fil
 
 In `embedding/output/embeddings_by_line/`:
 - `line_NNNNNN_embeddings.npy`: Vector embeddings (N x 768)
-- `line_NNNNNN_segments.xlsx`: Segment metadata
+- `line_NNNNNN_segments.csv`: Segment metadata
 - `embeddings_metadata.json`: File listing
 
 ## Usage
@@ -35,7 +35,7 @@ python -m embedding.cli --input-dir ../segmentation/output/overlapping/Full_File
 
 | Option | Description |
 |--------|-------------|
-| `--input-dir, -i` | Directory containing segmented Excel files (required) |
+| `--input-dir, -i` | Directory containing segmented CSV files (required) |
 | `--output-dir, -o` | Output directory for embeddings |
 | `--model, -m` | HuggingFace model name |
 | `--batch-size, -b` | Batch size for embedding generation (default: 32) |

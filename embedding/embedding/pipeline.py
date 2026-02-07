@@ -68,37 +68,34 @@ class EmbeddingPipeline:
         segments_dir = self.config.input.segments_dir
         print(f"\nLoading segments from: {segments_dir}")
         
-        # Find all Excel files
-        excel_files = list(segments_dir.glob("*.xlsx"))
+        # Find all CSV files
+        csv_files = list(segments_dir.glob("*.csv"))
         
-        # Filter out temporary Excel files (starting with ~$)
-        excel_files = [f for f in excel_files if not f.name.startswith('~$')]
+        if not csv_files:
+            raise ValueError(f"No CSV files found in {segments_dir}")
         
-        if not excel_files:
-            raise ValueError(f"No Excel files found in {segments_dir}")
-        
-        print(f"Found {len(excel_files)} Excel files")
+        print(f"Found {len(csv_files)} CSV files")
         
         # Load all files and track source
         all_segments = []
         self.file_segments = {}  # Store segments grouped by source file
         
-        for excel_file in tqdm(excel_files, desc="Loading Excel files"):
+        for csv_file in tqdm(csv_files, desc="Loading CSV files"):
             try:
-                df = pd.read_excel(excel_file)
+                df = pd.read_csv(csv_file)
                 
                 # Add source file column if not present
                 if 'Source_File' not in df.columns:
-                    df['Source_File'] = excel_file.stem
+                    df['Source_File'] = csv_file.stem
                 
                 all_segments.append(df)
                 
                 # Store for per-file processing
                 if self.config.output.mode == "per_file":
-                    self.file_segments[excel_file.stem] = df.copy()
+                    self.file_segments[csv_file.stem] = df.copy()
                     
             except Exception as e:
-                print(f"Warning: Failed to load {excel_file.name}: {e}")
+                print(f"Warning: Failed to load {csv_file.name}: {e}")
         
         # Concatenate all segments
         self.segments_df = pd.concat(all_segments, ignore_index=True)
