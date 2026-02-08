@@ -3,7 +3,7 @@
 
 # Stage 1: Segmentation
 segmentation:
-  input_file: "/data/guyb/tibetan_data/Tibetan_1.jsonl"
+  input_file: "derge-kangyur.jsonl"
   output_dir: "segmentation/output"
   engine: "regex"                 # "regex" (fast) or "botok" (accurate)
   min_syllables: 4
@@ -17,7 +17,7 @@ segmentation:
 embedding:
   input_dir: "segmentation/output/overlapping/Full_Files"
   output_dir: "embedding/output"
-  model: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  model: "Intellexus/Bi-Tib-mbert-v1"
   batch_size: 32
   device: "auto"
   mode: "per_line"

@@ -177,14 +177,20 @@ class BatchedPipeline:
                 index_row = index_segments.iloc[index_global_idx]
                 query_row = query_segments.iloc[query_local_idx]
 
+                # Skip matches from the same file_id
+                if query_row.get("File_ID", "") == index_row.get("File_ID", ""):
+                    continue
+
                 yield ParallelMatch(
                     segment_a_id=query_row.get("segment_id", str(query_local_idx)),
                     segment_b_id=index_row.get("segment_id", str(index_global_idx)),
                     similarity=similarity,
-                    file_path_a=query_row.get("File_Path", ""),
-                    file_path_b=index_row.get("File_Path", ""),
-                    title_a=query_row.get("Title", ""),
-                    title_b=index_row.get("Title", ""),
+                    file_id_a=query_row.get("File_ID", ""),
+                    file_id_b=index_row.get("File_ID", ""),
+                    file_id_tibetan_a=query_row.get("File_ID_Tibetan", ""),
+                    file_id_tibetan_b=index_row.get("File_ID_Tibetan", ""),
+                    text_tibetan_a=query_row.get("Segmented_Text", ""),
+                    text_tibetan_b=index_row.get("Segmented_Text", ""),
                     parallel_a=query_row.get("Segmented_Text_EWTS", ""),
                     parallel_b=index_row.get("Segmented_Text_EWTS", ""),
                 )
@@ -278,14 +284,20 @@ class BatchedPipeline:
                     query_row = index_segments.iloc[query_start + query_local_idx]
                     target_row = target_segments.iloc[target_local_idx]
 
+                    # Skip matches from the same file_id
+                    if query_row.get("File_ID", "") == target_row.get("File_ID", ""):
+                        continue
+
                     yield ParallelMatch(
                         segment_a_id=query_row.get("segment_id", str(query_local_idx)),
                         segment_b_id=target_row.get("segment_id", str(target_local_idx)),
                         similarity=similarity,
-                        file_path_a=query_row.get("File_Path", ""),
-                        file_path_b=target_row.get("File_Path", ""),
-                        title_a=query_row.get("Title", ""),
-                        title_b=target_row.get("Title", ""),
+                        file_id_a=query_row.get("File_ID", ""),
+                        file_id_b=target_row.get("File_ID", ""),
+                        file_id_tibetan_a=query_row.get("File_ID_Tibetan", ""),
+                        file_id_tibetan_b=target_row.get("File_ID_Tibetan", ""),
+                        text_tibetan_a=query_row.get("Segmented_Text", ""),
+                        text_tibetan_b=target_row.get("Segmented_Text", ""),
                         parallel_a=query_row.get("Segmented_Text_EWTS", ""),
                         parallel_b=target_row.get("Segmented_Text_EWTS", ""),
                     )
