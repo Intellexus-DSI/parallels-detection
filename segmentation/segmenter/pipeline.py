@@ -12,6 +12,7 @@ from .config import Config
 from .engines import BotokSegmenter, RegexSegmenter
 from .models import Segment, DocumentMetadata, SegmentationResult
 from .utils import make_overlapping_spans
+from .utils.text_normalizer import normalize_tibetan_text
 
 
 def sanitize_filename(name: str) -> str:
@@ -284,6 +285,10 @@ class SegmentationPipeline:
 
                     # Clean non-Tibetan characters before processing
                     text_content = clean_non_tibetan_characters(text_content)
+                    
+                    # Remove spaces from Tibetan text if configured
+                    if self.config.segmentation.remove_spaces:
+                        text_content = normalize_tibetan_text(text_content, remove_spaces=True)
                     
                     # Skip if text becomes empty after cleaning
                     if not text_content.strip():

@@ -112,6 +112,11 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
         type=int,
         help="Maximum atoms per span in overlapping mode (default: 8)",
     )
+    parser.add_argument(
+        "--remove-spaces",
+        action="store_true",
+        help="Remove all spaces from Tibetan text during cleaning",
+    )
 
     # Output options
     parser.add_argument(
@@ -196,6 +201,8 @@ def build_config(args: argparse.Namespace) -> Config:
         config.segmentation.use_overlapping = False
     if hasattr(args, "max_atoms") and args.max_atoms:
         config.segmentation.overlap_max_atoms = args.max_atoms
+    if hasattr(args, "remove_spaces") and args.remove_spaces:
+        config.segmentation.remove_spaces = True
 
     # Output config overrides
     if hasattr(args, "no_single_lines") and args.no_single_lines:

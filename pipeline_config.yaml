@@ -12,6 +12,7 @@ segmentation:
   overlap_min_chars: 8
   overlap_max_chars: 350
   max_spans_per_line: 300
+  remove_spaces: true             # Remove all spaces from Tibetan text
 
 # Stage 2: Embedding
 embedding:
@@ -33,3 +34,19 @@ detection:
   format: "csv"
   device: "auto"                    # "auto", "cuda", or "cpu"
   max_lines_per_file: 200000        # 0 = unlimited, single file
+
+# Stage 4: Enriching
+enriching:
+  input:
+    path: "detection/output/parallels.csv"
+    format: "csv"
+  output:
+    path: "enriching/output/parallels_enriched.csv"
+    format: "csv"
+    max_lines_per_file: 0           # 0 = unlimited, single file
+  enrichers:
+    - name: "fuzzy_matcher"
+      enabled: true
+      params:
+        threshold: 90               # Fuzzy match threshold (0-100)
+        use_ratio: false             # Use simple ratio instead of token_sort_ratio

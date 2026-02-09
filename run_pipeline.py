@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 """Pipeline orchestrator for parallel text detection.
 
-Runs all three stages in sequence:
+Runs all four stages in sequence:
 1. Segmentation: Break texts into segments
 2. Embedding: Generate vector embeddings
 3. Detection: Find parallel matches
+4. Enriching: Add additional fields to parallels
 
 Data flow:
-  data/*.jsonl -> segmentation/output/ -> embedding/output/ -> detection/output/ -> output/
+  data/*.jsonl -> segmentation/output/ -> embedding/output/ -> detection/output/ -> enriching/output/ -> output/
 """
 
 import argparse
@@ -76,6 +77,9 @@ def run_segmentation(config: dict, root_dir: Path) -> int:
         cmd.append("--overlapping")
         if seg_config.get("overlap_max_atoms"):
             cmd.extend(["--max-atoms", str(seg_config["overlap_max_atoms"])])
+    
+    if seg_config.get("remove_spaces", False):
+        cmd.append("--remove-spaces")
 
     return run_command(cmd, cwd=root_dir / "segmentation")
 
@@ -149,6 +153,55 @@ def run_detection(config: dict, root_dir: Path) -> int:
         cmd.extend(["--max-lines-per-file", str(det_config["max_lines_per_file"])])
 
     return run_command(cmd, cwd=root_dir / "detection")
+
+
+def run_enriching(config: dict, root_dir: Path) -> int:
+    """Run the enriching stage."""
+    logging.info("=" * 60)
+    logging.info("STAGE 4: ENRICHING")
+    logging.info("=" * 60)
+
+    enr_config = config.get("enriching", {})
+    input_path = root_dir / enr_config.get("input", {}).get("path", "detection/output/parallels.csv")
+    output_path = root_dir / enr_config.get("output", {}).get("path", "enriching/output/parallels_enriched.csv")
+
+    if not input_path.exists():
+        logging.error(f"Input file not found: {input_path}")
+        logging.error("Did detection stage complete?")
+        return 1
+
+    # Ensure output directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Build command for enriching CLI
+    python_exe = get_python_executable(root_dir)
+    cmd = [
+        python_exe, "-m", "src.cli",
+        "--input", str(input_path),
+        "--output", str(output_path),
+        "--input-format", enr_config.get("input", {}).get("format", "csv"),
+        "--output-format", enr_config.get("output", {}).get("format", "csv"),
+    ]
+
+    # Add enrichers
+    enrichers = enr_config.get("enrichers", [])
+    if enrichers:
+        for enricher in enrichers:
+            if enricher.get("enabled", True):
+                cmd.extend(["--enricher", enricher["name"]])
+                
+                # Add enricher-specific parameters
+                if enricher["name"] == "fuzzy_matcher":
+                    threshold = enricher.get("params", {}).get("threshold", 90)
+                    cmd.extend(["--fuzzy-threshold", str(threshold)])
+    else:
+        # Default: use fuzzy_matcher
+        cmd.extend(["--enricher", "fuzzy_matcher"])
+
+    if enr_config.get("output", {}).get("max_lines_per_file", 0) > 0:
+        cmd.extend(["--max-lines-per-file", str(enr_config["output"]["max_lines_per_file"])])
+
+    return run_command(cmd, cwd=root_dir / "enriching")
 
 
 def copy_final_output(config: dict, root_dir: Path) -> int:
@@ -243,6 +296,7 @@ Examples:
   python run_pipeline.py --config pipeline_config.yaml --stage segmentation
   python run_pipeline.py --config pipeline_config.yaml --stage embedding
   python run_pipeline.py --config pipeline_config.yaml --stage detection
+  python run_pipeline.py --config pipeline_config.yaml --stage enriching
         """,
     )
 
@@ -254,13 +308,13 @@ Examples:
     )
     parser.add_argument(
         "--stage",
-        choices=["segmentation", "embedding", "detection"],
+        choices=["segmentation", "embedding", "detection", "enriching"],
         help="Run only this stage",
     )
     parser.add_argument(
         "--skip",
         action="append",
-        choices=["segmentation", "embedding", "detection"],
+        choices=["segmentation", "embedding", "detection", "enriching"],
         help="Skip this stage (can be repeated)",
     )
     parser.add_argument(
@@ -291,7 +345,7 @@ Examples:
     if args.stage:
         stages = [args.stage]
     else:
-        stages = ["segmentation", "embedding", "detection"]
+        stages = ["segmentation", "embedding", "detection", "enriching"]
     stages = [s for s in stages if s not in skip_stages]
 
     logging.info(f"Running stages: {', '.join(stages)}")
@@ -311,6 +365,10 @@ Examples:
             exit_code = run_detection(config, root_dir)
             if exit_code == 0:
                 logging.info(f"Detection output available in: {root_dir / 'detection/output'}")
+        elif stage == "enriching":
+            exit_code = run_enriching(config, root_dir)
+            if exit_code == 0:
+                logging.info(f"Enriching output available in: {root_dir / 'enriching/output'}")
         else:
             continue
 
@@ -320,7 +378,18 @@ Examples:
         logging.info("")
 
     # Copy final output to root output/ directory
-    if "detection" in stages:
+    if "enriching" in stages:
+        # Copy enriched output
+        enr_config = config.get("enriching", {})
+        output_path = Path(enr_config.get("output", {}).get("path", "enriching/output/parallels_enriched.csv"))
+        source = root_dir / output_path
+        dest_dir = root_dir / "output"
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        if source.exists():
+            dest = dest_dir / source.name
+            shutil.copy2(source, dest)
+            logging.info(f"Copied: {source} -> {dest}")
+    elif "detection" in stages:
         exit_code = copy_final_output(config, root_dir)
         if exit_code != 0:
             return exit_code

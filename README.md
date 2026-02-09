@@ -1,11 +1,11 @@
 # Parallel Text Detection Pipeline
 
-A 3-stage pipeline for finding semantically similar text segments across Tibetan/Sanskrit corpora.
+A 4-stage pipeline for finding semantically similar text segments across Tibetan/Sanskrit corpora.
 
 ## Pipeline Overview
 
 ```
-data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → output/parallels.csv
+data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → [Enriching] → output/parallels_enriched.csv
 ```
 
 | Stage | Input | Output |
@@ -13,6 +13,7 @@ data/*.jsonl → [Segmentation] → [Embedding] → [Detection] → output/paral
 | 1. Segmentation | JSONL files | CSV files with segments |
 | 2. Embedding | CSV files | NPY embeddings + metadata |
 | 3. Detection | NPY embeddings | CSV with parallel matches |
+| 4. Enriching | CSV from Detection | Enriched CSV with additional fields |
 
 ## Setup
 
@@ -28,6 +29,7 @@ cd parallels-detection
 cd segmentation && pip install -e . && cd ..
 cd embedding && pip install -e . && cd ..
 cd detection && pip install -e . && cd ..
+cd enriching && pip install -e . && cd ..
 ```
 
 ### 2. Set up the detect_and_convert submodule (required for segmentation)
@@ -61,6 +63,7 @@ python run_pipeline.py --config pipeline_config.yaml
 python run_pipeline.py --config pipeline_config.yaml --stage segmentation
 python run_pipeline.py --config pipeline_config.yaml --stage embedding
 python run_pipeline.py --config pipeline_config.yaml --stage detection
+python run_pipeline.py --config pipeline_config.yaml --stage enriching
 ```
 
 ## Directory Structure
@@ -68,10 +71,11 @@ python run_pipeline.py --config pipeline_config.yaml --stage detection
 ```
 parallels-detection/
 ├── data/                    # Input: raw JSONL files
-├── output/                  # Output: final parallels.csv
+├── output/                  # Output: final parallels_enriched.csv
 ├── segmentation/            # Stage 1
 ├── embedding/               # Stage 2
 ├── detection/               # Stage 3
+├── enriching/               # Stage 4
 ├── run_pipeline.py          # Main orchestrator
 └── pipeline_config.yaml     # Configuration
 ```
@@ -103,6 +107,10 @@ pip install -e .
 
 # Detection stage
 cd ../detection
+pip install -e .
+
+# Enriching stage
+cd ../enriching
 pip install -e .
 ```
 
