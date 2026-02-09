@@ -23,6 +23,9 @@ transformers>=4.30.0
 faiss-cpu>=1.7.0
 # faiss-gpu>=1.7.0  # Uncomment for GPU support (and comment out faiss-cpu)
 
+# Sequence matching dependencies
+biopython>=1.80
+
 # Development/testing
 pytest>=7.0.0
 
