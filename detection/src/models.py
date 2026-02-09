@@ -9,8 +9,8 @@ class Segment:
     """Represents a text segment with its metadata."""
 
     id: int  # Row index in the CSV
-    text_id: str  # File_Path - unique text identifier
-    title: str
+    text_id: str  # File_ID - Wylie transliteration
+    text_id_tibetan: str  # File_ID_Tibetan - Original Tibetan Unicode
     text: str  # Segmented_Text (Tibetan/Sanskrit)
     text_ewts: str  # Segmented_Text_EWTS (transliteration)
     length: int
@@ -29,14 +29,16 @@ class ParallelMatch:
     similarity: float
 
     # Optional enriched fields (populated on output)
-    title_a: Optional[str] = None
-    title_b: Optional[str] = None
+    file_id_a: Optional[str] = None  # Wylie version
+    file_id_b: Optional[str] = None  # Wylie version
+    file_id_tibetan_a: Optional[str] = None  # Original Tibetan
+    file_id_tibetan_b: Optional[str] = None  # Original Tibetan
     text_a: Optional[str] = None
     text_b: Optional[str] = None
-    parallel_a: Optional[str] = None
-    parallel_b: Optional[str] = None
-    file_path_a: Optional[str] = None
-    file_path_b: Optional[str] = None
+    text_tibetan_a: Optional[str] = None  # Tibetan Unicode text
+    text_tibetan_b: Optional[str] = None  # Tibetan Unicode text
+    parallel_a: Optional[str] = None  # EWTS transliteration
+    parallel_b: Optional[str] = None  # EWTS transliteration
 
     def to_dict(self, include_text: bool = True) -> dict:
         """Convert to dictionary for output."""
@@ -44,12 +46,14 @@ class ParallelMatch:
             "segment_a_id": self.segment_a_id,
             "segment_b_id": self.segment_b_id,
             "similarity": self.similarity,
-            "title_a": self.title_a,
-            "title_b": self.title_b,
-            "file_path_a": self.file_path_a,
-            "file_path_b": self.file_path_b,
+            "file_id_a": self.file_id_a,
+            "file_id_b": self.file_id_b,
+            "file_id_tibetan_a": self.file_id_tibetan_a,
+            "file_id_tibetan_b": self.file_id_tibetan_b,
         }
         if include_text:
+            result["text_tibetan_a"] = self.text_tibetan_a
+            result["text_tibetan_b"] = self.text_tibetan_b
             result["parallel_a"] = self.parallel_a
             result["parallel_b"] = self.parallel_b
         return result

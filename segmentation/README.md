@@ -6,7 +6,7 @@ Segments Tibetan text into phrases/sentences for embedding.
 
 JSONL file with Tibetan text:
 ```json
-{"text": "བོད་ཀྱི་ལོ་རྒྱུས...", "metadata": {"file_name": "doc.txt", "title": "History"}}
+{"text": "བོད་ཀྱི་ལོ་རྒྱུས...", "file_id": "001_འདུལ་བ།_ཀ"}
 ```
 
 ## Output
@@ -14,7 +14,9 @@ JSONL file with Tibetan text:
 CSV files in `output/overlapping/Full_Files/` with columns:
 - `Segmented_Text`: Tibetan Unicode segment
 - `Segmented_Text_EWTS`: EWTS transliteration
-- `File_Path`, `Title`, `Source_Line_Number`, `Start_Index`, `End_Index`
+- `File_ID`: Wylie transliteration of file identifier
+- `File_ID_Tibetan`: Original Tibetan Unicode file identifier
+- `Source_Line_Number`, `Start_Index`, `End_Index`
 
 ## Usage
 

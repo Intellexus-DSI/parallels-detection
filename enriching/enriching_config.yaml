@@ -1,0 +1,18 @@
+# Configuration for the enriching stage
+# This file can be used for standalone runs
+
+input:
+  path: "../detection/output/parallels.csv"
+  format: "csv"
+
+output:
+  path: "output/parallels_enriched.csv"
+  format: "csv"
+  max_lines_per_file: 0  # 0 = unlimited, single file
+
+enrichers:
+  - name: "fuzzy_matcher"
+    enabled: true
+    params:
+      threshold: 90      # Similarity threshold (0-100)
+      use_ratio: false   # Use simple ratio instead of token_sort_ratio

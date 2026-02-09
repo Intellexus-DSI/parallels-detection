@@ -13,9 +13,10 @@ Embeddings from stage 2 in `embedding/output/embeddings_by_line/`:
 `output/parallels.csv` with columns:
 - `segment_a_id`, `segment_b_id`: Segment indices
 - `similarity`: Cosine similarity score (0.0-1.0)
-- `file_path_a`, `file_path_b`: Source identifiers
-- `title_a`, `title_b`: Document titles
-- `parallel_a`, `parallel_b`: The matched parallel text segments (Wylie transliteration)
+- `file_id_a`, `file_id_b`: Source file identifiers (Wylie transliteration)
+- `file_id_tibetan_a`, `file_id_tibetan_b`: Source file identifiers (Original Tibetan Unicode)
+- `text_tibetan_a`, `text_tibetan_b`: The matched text segments (Tibetan Unicode)
+- `parallel_a`, `parallel_b`: The matched text segments (Wylie/EWTS transliteration)
 
 ## Usage
 

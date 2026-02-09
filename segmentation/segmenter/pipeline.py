@@ -12,6 +12,7 @@ from .config import Config
 from .engines import BotokSegmenter, RegexSegmenter
 from .models import Segment, DocumentMetadata, SegmentationResult
 from .utils import make_overlapping_spans
+from .utils.text_normalizer import normalize_tibetan_text
 
 
 def sanitize_filename(name: str) -> str:
@@ -134,6 +135,34 @@ class SegmentationPipeline:
         )
         return f" {ewts_text}"  # Prepend space as per original
 
+    def _convert_file_id_to_wylie(self, file_id: str) -> str:
+        """Convert Tibetan parts of file_id to Wylie transliteration.
+
+        Args:
+            file_id: File identifier that may contain Tibetan Unicode characters
+
+        Returns:
+            File identifier with Tibetan parts converted to Wylie
+        """
+        if self.converter is None:
+            raise RuntimeError("Converter not initialized. This should not happen.")
+
+        # Extract only Tibetan characters from the file_id
+        tibetan_pattern = re.compile(r'[\u0F00-\u0FFF]+')
+        
+        def replace_tibetan(match):
+            tibetan_text = match.group(0)
+            try:
+                # Convert to Wylie (EWTS)
+                wylie = self.converter.convert(
+                    tibetan_text, "EWTS", text_scheme="Unicode", val_text_scheme=True
+                )
+                return wylie.strip()
+            except Exception:
+                return tibetan_text  # Return original if conversion fails
+        
+        return tibetan_pattern.sub(replace_tibetan, file_id)
+
     def _setup_output_dirs(self) -> tuple[Path, Path]:
         """Create output directories based on configuration.
 
@@ -198,8 +227,8 @@ class SegmentationPipeline:
                 text=sent,
                 text_ewts=ewts_text,
                 length=len(sent),
-                file_path=metadata.file_path,
-                title=metadata.title,
+                file_id=metadata.file_id,  # Wylie version
+                file_id_tibetan=metadata.file_id_tibetan,  # Original Tibetan
                 source_line_number=metadata.line_number,
                 sentence_order=idx,
                 start_index=start,
@@ -257,27 +286,25 @@ class SegmentationPipeline:
                     # Clean non-Tibetan characters before processing
                     text_content = clean_non_tibetan_characters(text_content)
                     
+                    # Remove spaces from Tibetan text if configured
+                    if self.config.segmentation.remove_spaces:
+                        text_content = normalize_tibetan_text(text_content, remove_spaces=True)
+                    
                     # Skip if text becomes empty after cleaning
                     if not text_content.strip():
                         continue
 
-                    metadata_dict = record.get("metadata", {}) or {}
-                    raw_filename = metadata_dict.get("file_name", "Unknown_Source")
-                    file_path = metadata_dict.get("file_path", "")
-                    title = metadata_dict.get("title", "")
+                    # Get file_id from the record (primary field)
+                    file_id_tibetan = record.get("file_id", "Unknown_Source")
+                    
+                    # Convert Tibetan parts in file_id to Wylie
+                    file_id = self._convert_file_id_to_wylie(file_id_tibetan)
 
                     metadata = DocumentMetadata(
-                        file_name=raw_filename,
-                        file_path=file_path,
-                        title=title,
+                        file_id=file_id,  # Wylie version
+                        file_id_tibetan=file_id_tibetan,  # Original Tibetan
                         line_number=line_num,
                     )
-
-                    # Log warning for missing metadata fields
-                    # if not file_path:
-                    #     print(f"[WARN] Line {line_num}: Missing 'file_path' in metadata")
-                    # if not title:
-                    #     print(f"[WARN] Line {line_num}: Missing 'title' in metadata")
 
                     result = self.process_line(text_content, metadata)
 
@@ -293,8 +320,8 @@ class SegmentationPipeline:
                                 "Segmented_Text": segment.text,
                                 "Segmented_Text_EWTS": segment.text_ewts,
                                 "Length": segment.length,
-                                "File_Path": segment.file_path,
-                                "Title": segment.title,
+                                "File_ID": segment.file_id,  # Wylie version
+                                "File_ID_Tibetan": segment.file_id_tibetan,  # Original Tibetan
                                 "Source_Line_Number": segment.source_line_number,
                                 "Sentence_Order": segment.sentence_order,
                                 "Start_Index": segment.start_index,
