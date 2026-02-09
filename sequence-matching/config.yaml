@@ -1,0 +1,13 @@
+algorithm:
+  match_score: 1.0
+  mismatch_score: -1.5
+  open_gap_score: -1.0
+  extend_gap_score: -1.0
+  min_score: 15.0
+  max_iterations: 100
+
+input:
+  dir: "input"
+
+output:
+  path: "output/results.csv"
