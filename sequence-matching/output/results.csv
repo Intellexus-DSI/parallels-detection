@@ -1,5 +1,20 @@
 file_a,file_b,score,text_a,text_b
-doc_a.txt,doc_b.txt,31.0, Liberal Democratic Party (LDP), Liberal Democratic Party (LDP)
-doc_a.txt,doc_b.txt,30.0, Prime Minister Sanae Takaichi, Prime Minister Sanae Takaichi
-doc_a.txt,doc_b.txt,25.5, a single party has won a two-thirds , a single party has secured a two-thirds 
-doc_a.txt,doc_b.txt,15.0, the first time, the first time
+test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony
+test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
+test1.txt,test2.txt,26.0,And don't even get me started on,And don't even get me started on
+test1.txt,test2.txt,23.0,", only to discover that they",", only to discover that they"
+test1.txt,test2.txt,23.0,", only to discover that they",", only to discover that they"
+test1.txt,test2.txt,23.0,be held responsible for any,be held responsible for any
+test1.txt,test2.txt,22.0,? The world may never know.,? The world may never know.
+test1.txt,test2.txt,22.0,"now, Hypothetical Reader","now, Hypothetical Reader"
+test1.txt,test2.txt,22.0,Official Flaming Chicken,Official Flaming Chicken
+test1.txt,test2.txt,21.0,Public Service Anouncment,Public Service Announcement
+test1.txt,test2.txt,21.0,Public Service Anouncment,Public Service Announcement
+test1.txt,test2.txt,21.0,don't even get me started,don't even get me started
+test1.txt,test2.txt,21.0,ng to this Longest Text Ever,nght of this Longest Text Ever
+test1.txt,test2.txt,20.0,"you, Hypothetical Reader",you Hypothetical Reader
+test1.txt,test2.txt,20.0,Remember that rant I did,Remember that rant I did
+test1.txt,test2.txt,20.0,this Longest Text Ever.,this Longest Text Ever.

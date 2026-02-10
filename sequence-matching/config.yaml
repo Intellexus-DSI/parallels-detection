@@ -3,11 +3,19 @@ algorithm:
   mismatch_score: -1.5
   open_gap_score: -1.0
   extend_gap_score: -1.0
-  min_score: 15.0
+  min_score: 20.0
   max_iterations: 100
 
+seeding:
+  k: 15
+  max_gap: 50
+  extend: 100
+
+preprocessing:
+  strip_chars: "\\_"
+
 input:
-  dir: "input"
+  dir: "test_data/test_data4"
 
 output:
   path: "output/results.csv"
