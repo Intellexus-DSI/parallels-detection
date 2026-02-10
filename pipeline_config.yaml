@@ -18,13 +18,13 @@ segmentation:
 embedding:
   input_dir: "segmentation/output/overlapping/Full_Files"
   output_dir: "embedding/output"
-  model: "Intellexus/Bi-Tib-mbert-v1"
+  model: "Intellexus/Bi-Tib-mbert-v2"
   batch_size: 32
   device: "auto"
   mode: "per_line"
   text_column: "Segmented_Text"
 
-# Stage 3: Detection
+# Stage 3: Detectionי
 detection:
   data_dir: "embedding/output/embeddings_by_line"
   output_path: "detection/output/parallels.csv"

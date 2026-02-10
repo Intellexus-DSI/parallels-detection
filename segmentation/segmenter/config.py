@@ -27,6 +27,10 @@ class SegmentationConfig(BaseModel):
     overlap_max_chars: int = Field(default=350, ge=1)
     max_spans_per_line: int = Field(default=300, ge=1)
     remove_spaces: bool = Field(default=False, description="Remove all spaces from Tibetan text")
+    embedding_model: str = Field(
+        default="Intellexus/Bi-Tib-mbert-v1",
+        description="Model name for tokenizer (to calculate Wylie token lengths)"
+    )
 
 
 class OutputConfig(BaseModel):
