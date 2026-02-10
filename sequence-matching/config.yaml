@@ -7,10 +7,10 @@ algorithm:
   max_iterations: 100
 
 seeding:
-  k: 40
-  max_gap: 20
-  extend: 20
-  max_kmer_hits: 10
+  k: 80
+  max_gap: 50
+  extend: 100
+  max_kmer_hits: 5
 
 preprocessing:
   strip_chars: "\\_"

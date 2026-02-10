@@ -390,9 +390,11 @@ def smith_waterman_waterfall(text_a, text_b, match_score=1.0, mismatch_score=-1.
         iter_dense_b = "".join(c for c in work_b if c != MASK_CHAR)
 
         alignments = aligner.align(iter_dense_a, iter_dense_b)
-        if not alignments:
+        iterator = iter(alignments)
+        try:
+            best = next(iterator)
+        except StopIteration:
             break
-        best = alignments[0]
         if best.score < min_score:
             break
 
