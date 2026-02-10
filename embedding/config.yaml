@@ -6,7 +6,7 @@ input:
   text_column: "Segmented_Text_EWTS"
 
 embedding:
-  model_name: "Intellexus/Bi-Tib-mbert-v1"
+  model_name: "Intellexus/Bi-Tib-mbert-v2"
   batch_size: 32
   device: "auto"
   normalize: true

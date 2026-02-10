@@ -27,7 +27,7 @@ def test_config_validation():
         processing=ProcessingConfig()
     )
     
-    assert config.embedding.model_name == "Intellexus/Bi-Tib-mbert-v1"
+    assert config.embedding.model_name == "Intellexus/Bi-Tib-mbert-v2"
     assert config.embedding.batch_size == 32
     assert config.embedding.normalize == True
 
@@ -36,7 +36,7 @@ def test_embedding_config_defaults():
     """Test embedding configuration defaults."""
     config = EmbeddingConfig()
     
-    assert config.model_name == "Intellexus/Bi-Tib-mbert-v1"
+    assert config.model_name == "Intellexus/Bi-Tib-mbert-v2"
     assert config.batch_size == 32
     assert config.max_length == 512
     assert config.normalize == True
@@ -62,7 +62,7 @@ def test_yaml_config_loading():
     if config_path.exists():
         config = IndexingConfig.from_yaml(config_path)
         assert isinstance(config, IndexingConfig)
-        assert config.embedding.model_name == "Intellexus/Bi-Tib-mbert-v1"
+        assert config.embedding.model_name == "Intellexus/Bi-Tib-mbert-v2"
 
 
 # Integration tests (commented out - require actual data and model)

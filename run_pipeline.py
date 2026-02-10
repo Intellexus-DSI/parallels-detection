@@ -78,6 +78,8 @@ def run_segmentation(config: dict, root_dir: Path) -> int:
         cmd.append("--overlapping")
         if seg_config.get("overlap_max_atoms"):
             cmd.extend(["--max-atoms", str(seg_config["overlap_max_atoms"])])
+    else:
+        cmd.append("--exclusive")
     
     if seg_config.get("remove_spaces", False):
         cmd.append("--remove-spaces")
@@ -110,7 +112,7 @@ def run_embedding(config: dict, root_dir: Path) -> int:
         python_exe, "-m", "embedding.cli",
         "--input-dir", str(input_dir),
         "--output-dir", str(output_dir),
-        "--model", emb_config.get("model", "Intellexus/Bi-Tib-mbert-v1"),
+        "--model", emb_config.get("model", "Intellexus/Bi-Tib-mbert-v2"),
         "--batch-size", str(emb_config.get("batch_size", 32)),
         "--mode", emb_config.get("mode", "per_line"),
     ]

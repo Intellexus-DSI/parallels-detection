@@ -37,7 +37,7 @@ class EmbeddingConfig(BaseModel):
     """Configuration for embedding model and generation."""
     
     model_name: str = Field(
-        default="Intellexus/Bi-Tib-mbert-v1",
+        default="Intellexus/Bi-Tib-mbert-v2",
         description="HuggingFace model name for embeddings"
     )
     batch_size: int = Field(
