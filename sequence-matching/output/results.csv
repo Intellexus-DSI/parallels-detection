@@ -1,20 +1,18 @@
-file_a,file_b,score,text_a,text_b
-test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony
-test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony
-test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
-test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
-test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony
-test1.txt,test2.txt,26.0,And don't even get me started on,And don't even get me started on
-test1.txt,test2.txt,23.0,", only to discover that they",", only to discover that they"
-test1.txt,test2.txt,23.0,", only to discover that they",", only to discover that they"
-test1.txt,test2.txt,23.0,be held responsible for any,be held responsible for any
-test1.txt,test2.txt,22.0,? The world may never know.,? The world may never know.
-test1.txt,test2.txt,22.0,"now, Hypothetical Reader","now, Hypothetical Reader"
-test1.txt,test2.txt,22.0,Official Flaming Chicken,Official Flaming Chicken
-test1.txt,test2.txt,21.0,Public Service Anouncment,Public Service Announcement
-test1.txt,test2.txt,21.0,Public Service Anouncment,Public Service Announcement
-test1.txt,test2.txt,21.0,don't even get me started,don't even get me started
-test1.txt,test2.txt,21.0,ng to this Longest Text Ever,nght of this Longest Text Ever
-test1.txt,test2.txt,20.0,"you, Hypothetical Reader",you Hypothetical Reader
-test1.txt,test2.txt,20.0,Remember that rant I did,Remember that rant I did
-test1.txt,test2.txt,20.0,this Longest Text Ever.,this Longest Text Ever.
+file_a,file_b,score,text_a,text_b,start_a,end_a,start_b,end_b
+test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony,45755,45793,243818,243856
+test1.txt,test2.txt,34.0,Official Flaming Chickens Lunar Colony,Official Flaming Chickens Lunar Colony,45755,45793,244046,244084
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony,45755,45793,255108,255146
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony,45755,45793,286955,286993
+test1.txt,test2.txt,33.0,Official Flaming Chickens Lunar Colony,Official Flaming-Chickens Lunar Colony,45755,45793,303339,303377
+test1.txt,test2.txt,26.0,And don't even get me started on,And don't even get me started on,13205,13237,262584,262616
+test1.txt,test2.txt,23.0,", only to discover that they",", only to discover that they",34443,34471,204957,204985
+test1.txt,test2.txt,23.0,be held responsible for any,be held responsible for any,44090,44117,183274,183301
+test1.txt,test2.txt,22.0,? The world may never know.,? The world may never know.,13175,13202,163555,163582
+test1.txt,test2.txt,22.0,"now, Hypothetical Reader","now, Hypothetical Reader",20779,20803,250170,250194
+test1.txt,test2.txt,22.0,Official Flaming Chicken,Official Flaming Chicken,45755,45779,244569,244593
+test1.txt,test2.txt,21.0,Public Service Anouncment,Public Service Announcement,2981,3006,234692,234719
+test1.txt,test2.txt,21.0,don't even get me started,don't even get me started,8808,8833,262588,262613
+test1.txt,test2.txt,21.0,ng to this Longest Text Ever,nght of this Longest Text Ever,28800,28828,304319,304349
+test1.txt,test2.txt,20.0,"you, Hypothetical Reader",you Hypothetical Reader,6242,6266,249486,249509
+test1.txt,test2.txt,20.0,Remember that rant I did,Remember that rant I did,8762,8786,259017,259041
+test1.txt,test2.txt,20.0,this Longest Text Ever.,this Longest Text Ever.,28806,28829,267273,267296
