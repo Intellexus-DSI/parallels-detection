@@ -165,13 +165,18 @@ def merge_seeds_into_regions(seeds, k, max_gap=100, extend=200):
 
         regions.append((start_a, end_a, start_b, end_b))
 
-    # Merge overlapping regions
+    # Merge overlapping regions (only if on similar diagonals)
     regions.sort()
     merged = [regions[0]]
     for r in regions[1:]:
         prev = merged[-1]
-        # Overlap if both A and B ranges overlap
-        if r[0] <= prev[1] and r[2] <= prev[3]:
+        a_overlaps = r[0] <= prev[1]
+        b_overlaps = r[2] <= prev[3]
+        diag_prev = (prev[0] + prev[1]) // 2 - (prev[2] + prev[3]) // 2
+        diag_curr = (r[0] + r[1]) // 2 - (r[2] + r[3]) // 2
+        similar_diag = abs(diag_curr - diag_prev) <= max_gap
+
+        if a_overlaps and b_overlaps and similar_diag:
             merged[-1] = (
                 min(prev[0], r[0]),
                 max(prev[1], r[1]),
