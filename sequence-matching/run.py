@@ -330,7 +330,18 @@ def seed_and_extend(text_a, text_b,
             match_seg_a = text_a[orig_start_a:orig_end_a]
             match_seg_b = text_b[orig_start_b:orig_end_b]
 
-            all_matches.append((score, match_seg_a, match_seg_b))
+            all_matches.append((score, match_seg_a, match_seg_b,
+                                orig_start_a, orig_end_a, orig_start_b, orig_end_b))
+
+    # Deduplicate matches (same position found by overlapping regions)
+    seen = set()
+    unique_matches = []
+    for item in all_matches:
+        key = (item[3], item[4], item[5], item[6])  # start_a, end_a, start_b, end_b
+        if key not in seen:
+            seen.add(key)
+            unique_matches.append(item)
+    all_matches = unique_matches
 
     print(f"Found {len(all_matches)} total matches across {len(regions)} regions")
     # Sort by score descending
@@ -392,7 +403,8 @@ def smith_waterman_waterfall(text_a, text_b, match_score=1.0, mismatch_score=-1.
 
         match_seg_a = text_a[orig_start_a:orig_end_a]
         match_seg_b = text_b[orig_start_b:orig_end_b]
-        matches.append((best.score, match_seg_a, match_seg_b))
+        matches.append((best.score, match_seg_a, match_seg_b,
+                        orig_start_a, orig_end_a, orig_start_b, orig_end_b))
 
         idx = 0
         for j, c in enumerate(work_a):
@@ -491,17 +503,24 @@ def main():
                 strip_chars=strip_chars,
             )
 
-        for score, text_a, text_b in matches:
+        for score, text_a, text_b, start_a, end_a, start_b, end_b in matches:
             all_matches.append({
                 "file_a": file_a,
                 "file_b": file_b,
                 "score": score,
                 "text_a": text_a,
                 "text_b": text_b,
+                "start_a": start_a,
+                "end_a": end_a,
+                "start_b": start_b,
+                "end_b": end_b,
             })
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    df = pd.DataFrame(all_matches, columns=["file_a", "file_b", "score", "text_a", "text_b"])
+    df = pd.DataFrame(all_matches, columns=["file_a", "file_b", "score",
+                                             "text_a", "text_b",
+                                             "start_a", "end_a",
+                                             "start_b", "end_b"])
     df.to_csv(output_path, index=False)
     print(f"\nWrote {len(df)} results to {output_path}")
 
