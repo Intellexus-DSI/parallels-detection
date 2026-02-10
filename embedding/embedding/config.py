@@ -45,7 +45,7 @@ def get_default_config() -> IndexingConfig:
             id_column="Segment_ID"
         ),
         embedding=EmbeddingConfig(
-            model_name="Intellexus/Bi-Tib-mbert-v1",
+            model_name="Intellexus/Bi-Tib-mbert-v2",
             batch_size=32,
             max_length=512,
             normalize=True,

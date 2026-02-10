@@ -43,16 +43,16 @@ def convert_text_to_jsonl(text_folder, output_file):
 
 if __name__ == "__main__":
     # Base directory (parent of parallels-detection)
-    base_dir = Path(__file__).parent.parent
+    base_dir = Path(__file__).parent.parent.parent  # Go up to C:\Users\goody
     
     # Convert derge-kangyur
     kangyur_text = base_dir / "derge-kangyur" / "text"
-    kangyur_output = Path(__file__).parent / "derge-kangyur.jsonl"
+    kangyur_output = Path(__file__).parent.parent / "derge-kangyur.jsonl"
     convert_text_to_jsonl(kangyur_text, kangyur_output)
     
     # Convert derge-tengyur
     tengyur_text = base_dir / "derge-tengyur" / "text"
-    tengyur_output = Path(__file__).parent / "derge-tengyur.jsonl"
+    tengyur_output = Path(__file__).parent.parent / "derge-tengyur.jsonl"
     convert_text_to_jsonl(tengyur_text, tengyur_output)
     
     print("\nConversion complete!")

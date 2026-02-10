@@ -28,7 +28,7 @@ class SegmentationConfig(BaseModel):
     max_spans_per_line: int = Field(default=300, ge=1)
     remove_spaces: bool = Field(default=False, description="Remove all spaces from Tibetan text")
     embedding_model: str = Field(
-        default="Intellexus/Bi-Tib-mbert-v1",
+        default="Intellexus/Bi-Tib-mbert-v2",
         description="Model name for tokenizer (to calculate Wylie token lengths)"
     )
 

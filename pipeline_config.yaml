@@ -7,7 +7,7 @@ segmentation:
   output_dir: "segmentation/output"
   engine: "regex"                 # "regex" (fast) or "botok" (accurate)
   min_syllables: 4
-  use_overlapping: true
+  use_overlapping: false
   overlap_max_atoms: 8
   overlap_min_chars: 8
   overlap_max_chars: 350

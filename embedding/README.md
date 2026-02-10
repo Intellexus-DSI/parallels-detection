@@ -63,7 +63,7 @@ python -m embedding.cli \
 embedding:
   input_dir: "segmentation/output/overlapping/Full_Files"
   output_dir: "embedding/output"
-  model: "Intellexus/Bi-Tib-mbert-v1"
+  model: "Intellexus/Bi-Tib-mbert-v2"
   batch_size: 32
   device: "auto"              # "cuda", "cpu", or "auto"
   mode: "per_line"            # "per_line", "per_file", or "combined"
@@ -80,5 +80,5 @@ pip install sentence-transformers torch pandas numpy
 First-time setup requires HuggingFace authentication:
 ```bash
 huggingface-cli login
-# Then accept model terms at: https://huggingface.co/Intellexus/Bi-Tib-mbert-v1
+# Then accept model terms at: https://huggingface.co/Intellexus/Bi-Tib-mbert-v2
 ```

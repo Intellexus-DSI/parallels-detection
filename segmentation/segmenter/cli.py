@@ -120,7 +120,7 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--embedding-model",
         type=str,
-        help="Model name for tokenizer (token length calculation, default: Intellexus/Bi-Tib-mbert-v1)",
+        help="Model name for tokenizer (token length calculation, default: Intellexus/Bi-Tib-mbert-v2)",
     )
 
     # Output options
