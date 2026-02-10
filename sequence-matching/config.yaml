@@ -7,15 +7,16 @@ algorithm:
   max_iterations: 100
 
 seeding:
-  k: 15
-  max_gap: 50
-  extend: 100
+  k: 40
+  max_gap: 20
+  extend: 20
+  max_kmer_hits: 10
 
 preprocessing:
   strip_chars: "\\_"
 
 input:
-  dir: "test_data/test_data4"
+  dir: "input"
 
 output:
   path: "output/results.csv"

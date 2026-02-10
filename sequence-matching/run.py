@@ -78,21 +78,22 @@ def build_kmer_index(text, k):
     return index
 
 
-def find_seeds(dense_a, dense_b, k=15):
+def find_seeds(dense_a, dense_b, k=15, max_kmer_hits=None):
     """
     Find all (pos_a, pos_b) pairs where dense_a[pos_a:pos_a+k] == dense_b[pos_b:pos_b+k].
-
-    Returns:
-        list of (pos_a, pos_b) tuples, sorted by pos_a.
+    If max_kmer_hits is set, skip k-mers that appear more than that many times
+    in either text (these are repetitive noise).
     """
-    # Index the shorter text, scan the longer one
     if len(dense_a) <= len(dense_b):
         index = build_kmer_index(dense_a, k)
         seeds = []
         for j in range(len(dense_b) - k + 1):
             kmer = dense_b[j:j + k]
             if kmer in index:
-                for i in index[kmer]:
+                hits = index[kmer]
+                if max_kmer_hits and len(hits) > max_kmer_hits:
+                    continue
+                for i in hits:
                     seeds.append((i, j))
     else:
         index = build_kmer_index(dense_b, k)
@@ -100,7 +101,10 @@ def find_seeds(dense_a, dense_b, k=15):
         for i in range(len(dense_a) - k + 1):
             kmer = dense_a[i:i + k]
             if kmer in index:
-                for j in index[kmer]:
+                hits = index[kmer]
+                if max_kmer_hits and len(hits) > max_kmer_hits:
+                    continue
+                for j in hits:
                     seeds.append((i, j))
 
     seeds.sort()
@@ -259,6 +263,7 @@ def seed_and_extend(text_a, text_b,
                     open_gap_score=-1.0, extend_gap_score=-1.0,
                     min_score=15.0, max_iterations=100,
                     seed_k=15, seed_max_gap=100, seed_extend=200,
+                    seed_max_kmer_hits=None,
                     strip_chars=""):
     """
     Full pipeline: preprocess -> seed -> merge -> align regions -> map back.
@@ -272,7 +277,7 @@ def seed_and_extend(text_a, text_b,
 
     # --- Seed ---
     print("Finding seeds...")
-    seeds = find_seeds(dense_a, dense_b, k=seed_k)
+    seeds = find_seeds(dense_a, dense_b, k=seed_k, max_kmer_hits=seed_max_kmer_hits)
     print(f"Found {len(seeds)} seed hits")
 
     # Count unique positions touched in each text
@@ -448,6 +453,7 @@ def main():
     seed_k = seed_cfg.get("k", 15)
     seed_max_gap = seed_cfg.get("max_gap", 100)
     seed_extend = seed_cfg.get("extend", 200)
+    seed_max_kmer_hits = seed_cfg.get("max_kmer_hits", None)
 
     preproc_cfg = config.get("preprocessing", {})
     strip_chars = preproc_cfg.get("strip_chars", "")
