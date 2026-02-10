@@ -11,6 +11,7 @@ class Segment:
     text: str
     text_ewts: str  # EWTS transliteration
     length: int
+    wylie_token_length: int  # Token count for EWTS text (for model max_length=512)
     file_id: str  # Wylie transliteration
     file_id_tibetan: str  # Original Tibetan Unicode
     source_line_number: int

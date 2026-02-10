@@ -114,6 +114,52 @@ class SegmentationPipeline:
             self.converter = Converter()
         except Exception as e:
             raise RuntimeError(f"Failed to initialize Converter: {e}")
+        
+        # Initialize tokenizer for calculating Wylie token lengths
+        self.tokenizer = None
+        self._init_tokenizer()
+
+    def _init_tokenizer(self):
+        """Initialize the tokenizer from the embedding model.
+        
+        This loads the tokenizer to calculate accurate token counts for the
+        Wylie (EWTS) text, which is important for the 512 token limit.
+        """
+        try:
+            from transformers import AutoTokenizer
+            
+            model_name = self.config.segmentation.embedding_model
+            
+            print(f"Loading tokenizer for token length calculation: {model_name}")
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+            print("Tokenizer loaded successfully")
+        except ImportError:
+            print("Warning: transformers library not found. Token length will be set to 0.")
+            print("Install with: pip install transformers")
+            self.tokenizer = None
+        except Exception as e:
+            print(f"Warning: Failed to load tokenizer: {e}")
+            print("Token length will be set to 0.")
+            self.tokenizer = None
+
+    def _calculate_token_length(self, text: str) -> int:
+        """Calculate the token length of text using the model tokenizer.
+        
+        Args:
+            text: Text to tokenize (typically EWTS/Wylie text)
+            
+        Returns:
+            Number of tokens, or 0 if tokenizer unavailable
+        """
+        if self.tokenizer is None:
+            return 0
+        
+        try:
+            tokens = self.tokenizer.encode(text, add_special_tokens=True)
+            return len(tokens)
+        except Exception as e:
+            print(f"Warning: Failed to tokenize text: {e}")
+            return 0
 
     def _convert_to_ewts(self, text: str) -> str:
         """Convert Tibetan Unicode to EWTS.
@@ -222,11 +268,13 @@ class SegmentationPipeline:
                 span_type = None
 
             ewts_text = self._convert_to_ewts(sent)
+            wylie_token_len = self._calculate_token_length(ewts_text)
 
             segment = Segment(
                 text=sent,
                 text_ewts=ewts_text,
                 length=len(sent),
+                wylie_token_length=wylie_token_len,
                 file_id=metadata.file_id,  # Wylie version
                 file_id_tibetan=metadata.file_id_tibetan,  # Original Tibetan
                 source_line_number=metadata.line_number,
@@ -320,6 +368,7 @@ class SegmentationPipeline:
                                 "Segmented_Text": segment.text,
                                 "Segmented_Text_EWTS": segment.text_ewts,
                                 "Length": segment.length,
+                                "Wylie_Token_Length": segment.wylie_token_length,
                                 "File_ID": segment.file_id,  # Wylie version
                                 "File_ID_Tibetan": segment.file_id_tibetan,  # Original Tibetan
                                 "Source_Line_Number": segment.source_line_number,

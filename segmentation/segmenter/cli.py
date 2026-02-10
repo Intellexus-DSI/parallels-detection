@@ -117,6 +117,11 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
         action="store_true",
         help="Remove all spaces from Tibetan text during cleaning",
     )
+    parser.add_argument(
+        "--embedding-model",
+        type=str,
+        help="Model name for tokenizer (token length calculation, default: Intellexus/Bi-Tib-mbert-v1)",
+    )
 
     # Output options
     parser.add_argument(
@@ -203,6 +208,8 @@ def build_config(args: argparse.Namespace) -> Config:
         config.segmentation.overlap_max_atoms = args.max_atoms
     if hasattr(args, "remove_spaces") and args.remove_spaces:
         config.segmentation.remove_spaces = True
+    if hasattr(args, "embedding_model") and args.embedding_model:
+        config.segmentation.embedding_model = args.embedding_model
 
     # Output config overrides
     if hasattr(args, "no_single_lines") and args.no_single_lines:

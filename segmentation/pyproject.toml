@@ -17,6 +17,7 @@ dependencies = [
     "openpyxl>=3.0.0",
     "azure-storage-file-share>=12.0.0",
     "botok>=0.8.0",
+    "transformers>=4.0.0",  # For Wylie token length calculation
 ]
 
 [project.optional-dependencies]

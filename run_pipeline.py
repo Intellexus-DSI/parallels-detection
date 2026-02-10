@@ -56,6 +56,7 @@ def run_segmentation(config: dict, root_dir: Path) -> int:
     logging.info("=" * 60)
 
     seg_config = config.get("segmentation", {})
+    emb_config = config.get("embedding", {})
     input_file = root_dir / seg_config.get("input_file", "data/input.jsonl")
     output_dir = root_dir / seg_config.get("output_dir", "segmentation/output")
 
@@ -80,6 +81,10 @@ def run_segmentation(config: dict, root_dir: Path) -> int:
     
     if seg_config.get("remove_spaces", False):
         cmd.append("--remove-spaces")
+    
+    # Use model from embedding section for token length calculation
+    if emb_config.get("model"):
+        cmd.extend(["--embedding-model", emb_config["model"]])
 
     return run_command(cmd, cwd=root_dir / "segmentation")
 
