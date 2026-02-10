@@ -6,8 +6,16 @@ algorithm:
   min_score: 15.0
   max_iterations: 100
 
+seeding:
+  k: 10
+  max_gap: 100
+  extend: 200
+
+preprocessing:
+  strip_chars: "\\_"
+
 input:
-  dir: "input"
+  dir: "test_data/test_data4"
 
 output:
   path: "output/results.csv"

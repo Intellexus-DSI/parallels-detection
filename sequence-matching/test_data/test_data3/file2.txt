@@ -1,0 +1,1 @@
+The Smith-Waterman method performs local seq alignment; that is, for determining similar regions between two strings of nucleic acid sequences or protein sequences. However, instead of looking at the whole sequence, the Smith-Waterman algorithm compares segments of all possible lengths and optimizes the similarity measure

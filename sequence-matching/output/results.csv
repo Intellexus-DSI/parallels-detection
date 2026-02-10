@@ -1,5 +1,8 @@
 file_a,file_b,score,text_a,text_b
-doc_a.txt,doc_b.txt,31.0, Liberal Democratic Party (LDP), Liberal Democratic Party (LDP)
-doc_a.txt,doc_b.txt,30.0, Prime Minister Sanae Takaichi, Prime Minister Sanae Takaichi
-doc_a.txt,doc_b.txt,25.5, a single party has won a two-thirds , a single party has secured a two-thirds 
-doc_a.txt,doc_b.txt,15.0, the first time, the first time
+japan_bbc.txt,japan_cnn.txt,27.0,Liberal Democratic Party (LDP),Liberal Democratic Party (LDP)
+japan_bbc.txt,japan_cnn.txt,26.0,Prime Minister Sanae Takaichi,Prime Minister Sanae Takaichi
+japan_bbc.txt,japan_cnn.txt,23.0,"than four months ago.
+
+Japan's first female",than four months ago – becoming Japan’s first female
+japan_bbc.txt,japan_cnn.txt,22.0,US President Donald Trump,US President Donald Trump
+japan_bbc.txt,japan_cnn.txt,17.5,a single party has won a two-thirds,a single party has secured a two-thirds
