@@ -7,9 +7,9 @@ algorithm:
   max_iterations: 100
 
 seeding:
-  k: 80
+  k: 50
   max_gap: 50
-  extend: 100
+  extend: 50
   max_kmer_hits: 5
 
 preprocessing:
