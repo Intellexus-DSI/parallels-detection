@@ -18,9 +18,11 @@ preprocessing:
 input:
   # dir: "test_data/test_data8_rebecca"
   # dir: "test_data/test_data5_rebecca"
-  dir: "test_data/test_data7_sonam"
+  # dir: "test_data/test_data7_sonam"
+  dir: "test_data/test_data10_sonam"
 
 output:
   # path: "output/test_data8_rebecca.csv"
   # path: "output/test_data5_rebecca.csv"
-  path: "output/test_data7_sonam.csv"
+  # path: "output/test_data7_sonam.csv"
+  path: "output/test_data10_sonam.csv"
