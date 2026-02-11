@@ -11,8 +11,15 @@ output:
   max_lines_per_file: 0  # 0 = unlimited, single file
 
 enrichers:
-  - name: "fuzzy_matcher"
+  - name: "wylie_levenshtein"
+    enabled: true
+    params: {}
+  - name: "mapping_type"
     enabled: true
     params:
-      threshold: 90      # Similarity threshold (0-100)
-      use_ratio: false   # Use simple ratio instead of token_sort_ratio
+      overlap_textual: 0.40      # Unigram overlap >= this → textual
+      overlap_semantic: 0.25    # Unigram overlap <= this → semantic (with other signals)
+      norm_lev_textual: 0.25    # Normalized Levenshtein <= this → textual
+      norm_lev_semantic: 0.40   # Normalized Levenshtein >= this → semantic
+      bigram_textual: 0.25      # Bigram overlap >= this → textual
+      bigram_semantic: 0.15     # Bigram overlap <= this → semantic

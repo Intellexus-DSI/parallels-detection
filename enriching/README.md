@@ -11,8 +11,8 @@ CSV/Parquet/JSON files from stage 3 in `detection/output/`:
 
 Enriched CSV/Parquet/JSON files in `output/` with additional fields:
 - All original fields from detection stage
-- `is_fuzzy_match`: 0 if texts are fuzzy match, 1 if not
-- `fuzzy_score`: Fuzzy similarity score (0-100)
+- `wylie_syllable_distance`: Syllable-level Levenshtein distance between parallel_a and parallel_b (EWTS/Wylie)
+- `mapping_type`: `textual` (many common words/phrases), `semantic` (similar meaning, fewer shared words), or `uncertain` (borderline)
 - Additional fields from other enrichers (as configured)
 
 ## Usage
@@ -42,8 +42,7 @@ python -m src.cli --input ../detection/output/parallels.csv --output output/para
 | `--output` | (required) | Output file path |
 | `--input-format` | `csv` | Input file format: `csv`, `parquet`, or `json` |
 | `--output-format` | `csv` | Output file format: `csv`, `parquet`, or `json` |
-| `--enricher` | `fuzzy_matcher` | Enricher to apply (can be repeated) |
-| `--fuzzy-threshold` | `90` | Fuzzy matching threshold (0-100) |
+| `--enricher` | `wylie_levenshtein`, `mapping_type` | Enricher to apply (can be repeated) |
 | `--max-lines-per-file` | `0` | Max lines per output file (0 = unlimited) |
 | `-v, --verbose` | | Enable verbose logging |
 
@@ -53,8 +52,7 @@ python -m src.cli --input ../detection/output/parallels.csv --output output/para
 python -m src.cli \
     --input ../detection/output/parallels.csv \
     --output output/parallels_enriched.csv \
-    --enricher fuzzy_matcher \
-    --fuzzy-threshold 85 \
+    --enricher wylie_levenshtein \
     --verbose
 ```
 
@@ -77,11 +75,13 @@ output:
   max_lines_per_file: 0
 
 enrichers:
-  - name: "fuzzy_matcher"
+  - name: "wylie_levenshtein"
+    enabled: true
+    params: {}
+  - name: "mapping_type"
     enabled: true
     params:
-      threshold: 90
-      use_ratio: false
+      overlap_threshold: 0.35
 ```
 
 ## Configuration (in ../pipeline_config.yaml)
@@ -96,25 +96,44 @@ enriching:
     format: "csv"
     max_lines_per_file: 0
   enrichers:
-    - name: "fuzzy_matcher"
+    - name: "wylie_levenshtein"
       enabled: true
-      params:
-        threshold: 90
+      params: {}
 ```
 
 ## Available Enrichers
 
-### fuzzy_matcher
+### wylie_levenshtein
 
-Checks if parallel texts are fuzzy matches using fuzzy string matching.
+Calculates syllable-level Levenshtein distance between parallel texts in Wylie/EWTS.
 
-**Parameters:**
-- `threshold` (int, default: 90): Similarity threshold (0-100). Texts with similarity >= threshold are considered fuzzy matches (value 0), otherwise not fuzzy matches (value 1).
-- `use_ratio` (bool, default: false): Use simple ratio instead of token_sort_ratio for comparison.
+Splits text by spaces and slashes to get syllables, then computes edit distance (insertions, deletions, substitutions) at the syllable level. Lower distance means more similar parallels.
 
 **Output fields:**
-- `is_fuzzy_match`: 0 if fuzzy match, 1 if not
-- `fuzzy_score`: Similarity score (0-100)
+- `wylie_syllable_distance`: Integer edit distance at syllable level
+
+### mapping_type
+
+Classifies parallels as **textual**, **semantic**, or **uncertain** using three signals:
+
+1. **Unigram content overlap** (particles stripped per Tibetan guideline)
+2. **Normalized Levenshtein distance** (distance / max_syllables)
+3. **Bigram (phrase) overlap** – shared two-syllable sequences
+
+- **Textual**: Strong evidence (high overlap, low distance, or high phrase overlap)
+- **Semantic**: Clear semantic (low overlap, high distance, low phrase overlap)
+- **Uncertain**: Borderline – worth manual review
+
+**Parameters:**
+- `overlap_textual` (0.40): Unigram overlap >= this → textual
+- `overlap_semantic` (0.25): Unigram overlap <= this (with others) → semantic
+- `norm_lev_textual` (0.25): Normalized Levenshtein <= this → textual
+- `norm_lev_semantic` (0.40): Normalized Levenshtein >= this → semantic
+- `bigram_textual` (0.25): Bigram overlap >= this → textual
+- `bigram_semantic` (0.15): Bigram overlap <= this → semantic
+
+**Output fields:**
+- `mapping_type`: `"textual"`, `"semantic"`, or `"uncertain"`
 
 ## Adding New Enrichers
 
@@ -142,7 +161,7 @@ class MyEnricher(BaseEnricher):
 
 ```python
 ENRICHER_REGISTRY = {
-    "fuzzy_matcher": FuzzyMatcherEnricher,
+    "wylie_levenshtein": WylieLevenshteinEnricher,
     "my_enricher": MyEnricher,  # Add this line
 }
 ```

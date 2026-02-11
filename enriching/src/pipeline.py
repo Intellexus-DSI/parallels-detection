@@ -9,7 +9,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from .config import EnrichingConfig
-from .enrichers import BaseEnricher, FuzzyMatcherEnricher
+from .enrichers import BaseEnricher, MappingTypeEnricher, WylieLevenshteinEnricher
 from .models import EnrichedParallel
 
 logger = logging.getLogger(__name__)
@@ -25,8 +25,8 @@ class EnrichingPipeline:
     
     # Registry of available enrichers
     ENRICHER_REGISTRY = {
-        "fuzzy_matcher": FuzzyMatcherEnricher,
-        # Add more enrichers here as they are implemented
+        "wylie_levenshtein": WylieLevenshteinEnricher,
+        "mapping_type": MappingTypeEnricher,
     }
     
     def __init__(self, config: EnrichingConfig):
