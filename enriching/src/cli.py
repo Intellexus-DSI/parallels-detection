@@ -35,7 +35,7 @@ Examples:
   python -m src.cli \\
       --input ../detection/output/parallels.csv \\
       --output output/parallels_enriched.csv \\
-      --enricher fuzzy_matcher
+      --enricher wylie_levenshtein
         """,
     )
 
@@ -74,14 +74,8 @@ Examples:
     parser.add_argument(
         "--enricher",
         action="append",
-        choices=["fuzzy_matcher"],
+        choices=["wylie_levenshtein", "mapping_type"],
         help="Enricher to apply (can be repeated)",
-    )
-    parser.add_argument(
-        "--fuzzy-threshold",
-        type=int,
-        default=90,
-        help="Fuzzy matching threshold (0-100, default: 90)",
     )
 
     # Other options
@@ -125,22 +119,17 @@ def config_from_args(args: argparse.Namespace) -> EnrichingConfig:
     enrichers = []
     if args.enricher:
         for enricher_name in args.enricher:
-            params = {}
-            if enricher_name == "fuzzy_matcher":
-                params["threshold"] = args.fuzzy_threshold
-            
             enrichers.append(EnricherConfig(
                 name=enricher_name,
                 enabled=True,
-                params=params,
+                params={},
             ))
     else:
-        # Default: enable fuzzy_matcher
-        enrichers.append(EnricherConfig(
-            name="fuzzy_matcher",
-            enabled=True,
-            params={"threshold": args.fuzzy_threshold},
-        ))
+        # Default: enable wylie_levenshtein and mapping_type
+        enrichers.extend([
+            EnricherConfig(name="wylie_levenshtein", enabled=True, params={}),
+            EnricherConfig(name="mapping_type", enabled=True, params={}),
+        ])
 
     return EnrichingConfig(
         input=input_config,

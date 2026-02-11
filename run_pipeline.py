@@ -196,14 +196,9 @@ def run_enriching(config: dict, root_dir: Path) -> int:
         for enricher in enrichers:
             if enricher.get("enabled", True):
                 cmd.extend(["--enricher", enricher["name"]])
-                
-                # Add enricher-specific parameters
-                if enricher["name"] == "fuzzy_matcher":
-                    threshold = enricher.get("params", {}).get("threshold", 90)
-                    cmd.extend(["--fuzzy-threshold", str(threshold)])
     else:
-        # Default: use fuzzy_matcher
-        cmd.extend(["--enricher", "fuzzy_matcher"])
+        # Default: use wylie_levenshtein and mapping_type
+        cmd.extend(["--enricher", "wylie_levenshtein", "--enricher", "mapping_type"])
 
     if enr_config.get("output", {}).get("max_lines_per_file", 0) > 0:
         cmd.extend(["--max-lines-per-file", str(enr_config["output"]["max_lines_per_file"])])

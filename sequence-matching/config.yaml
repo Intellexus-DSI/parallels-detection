@@ -1,24 +1,26 @@
 algorithm:
   match_score: 1.0
-  mismatch_score: -1.5
-  open_gap_score: -1.0
-  extend_gap_score: -1.0
-  min_score: 45.0
+  mismatch_score: -0.4
+  open_gap_score: -0.8
+  extend_gap_score: -0.8
+  min_score: 20.0
   max_iterations: 100
 
 seeding:
-  k: 25
+  k: 15
   max_gap: 100
-  extend: 250
-  max_kmer_hits: 3
+  extend: 750
+  max_kmer_hits: 1
 
 preprocessing:
   strip_chars: "\\_"
 
 input:
-  dir: "test_data/test_data5_rebecca"
-  # dir: "test_data/test_data7_sonam"
+  # dir: "test_data/test_data8_rebecca"
+  # dir: "test_data/test_data5_rebecca"
+  dir: "test_data/test_data7_sonam"
 
 output:
-  path: "output/test_data5_rebecca.csv"
-  # path: "output/test_data7_sonam.csv"
+  # path: "output/test_data8_rebecca.csv"
+  # path: "output/test_data5_rebecca.csv"
+  path: "output/test_data7_sonam.csv"
