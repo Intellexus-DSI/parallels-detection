@@ -3,22 +3,22 @@ algorithm:
   mismatch_score: -1.5
   open_gap_score: -1.0
   extend_gap_score: -1.0
-  min_score: 20.0
+  min_score: 45.0
   max_iterations: 100
 
 seeding:
-  k: 20
+  k: 25
   max_gap: 100
   extend: 250
-  max_kmer_hits: 10
+  max_kmer_hits: 3
 
 preprocessing:
   strip_chars: "\\_"
 
 input:
-  # dir: "test_data/test_data5_rebecca"
-  dir: "test_data/test_data7_sonam"
+  dir: "test_data/test_data5_rebecca"
+  # dir: "test_data/test_data7_sonam"
 
 output:
-  # path: "test_data/test_data5_rebecca"
-  path: "output/test_data7_sonam.csv"
+  path: "output/test_data5_rebecca.csv"
+  # path: "output/test_data7_sonam.csv"
