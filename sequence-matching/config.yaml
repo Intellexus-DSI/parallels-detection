@@ -3,14 +3,14 @@ algorithm:
   mismatch_score: -1.5
   open_gap_score: -1.0
   extend_gap_score: -1.0
-  min_score: 30.0
+  min_score: 20.0
   max_iterations: 100
 
 seeding:
-  k: 30
+  k: 20
   max_gap: 100
   extend: 250
-  max_kmer_hits: 5
+  max_kmer_hits: 10
 
 preprocessing:
   strip_chars: "\\_"
