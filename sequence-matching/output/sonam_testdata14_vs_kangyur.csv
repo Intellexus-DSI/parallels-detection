@@ -1,0 +1,869 @@
+file_a,file_b,score,text_a,text_b,start_a,end_a,start_b,end_b
+poc/rDo rje tshig rkang.txt,corpus/073_mdo_sde_ha.txt,49.2,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,nas byang chub kyi phyogs dang 'thun pa'i chos sum cu rtsa bdun,2362,2426,56447,56510
+poc/rDo rje tshig rkang.txt,corpus/044_dkon_brtsegs_cha.txt,48.0,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,2367,2426,43355,43414
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,47.400000000000006,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,"ar byang chub kyi phyogs dang mthun 
+[\[45a.7\]]pa'i chos sum bcu rtsa bdun",2363,2426,168989,169064
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,47.400000000000006,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs dang mthun pa'i chos sum bcu rtsa bdun,2363,2426,160998,161061
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,47.400000000000006,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs dang mthun pa'i chos sum bcu rtsa bdun,2363,2426,154007,154070
+poc/rDo rje tshig rkang.txt,corpus/010_'dul_ba_tha.txt,47.400000000000006,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs dang mthun pa'i chos sum bcu rtsa bdun,2363,2426,314225,314288
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,43.399999999999984,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,rten cing 'brel par 'byung ba zhi ba dang /_rten cing 'brel par 'byung ba rag las pa dang /_rten cing 'brel par 'byung ba,1467,1591,435270,435391
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,40.400000000000006,a/ 'khor ba'i chos las 'das shing / mya ngan las 'das pa'i lam ch,a 'khor ba'i bag chags las 'das shing mya ngan las 'das pa'i bag ch,6128,6193,1670275,1670342
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,39.0,hen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,"he na/_'di ltar chos thams cad rten cing 
+[\[175b.2\]]'brel bar 'byung ba",1533,1591,621248,621321
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,37.599999999999994,abs nas/ byang chub kyi phyogs dang mthun pa'i chos,"a byas nas byang chub kyi phyogs dang 
+[\[154b.7\]]'thun pa'i chos",2358,2409,596623,596689
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,37.39999999999995,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba lng,"as rten cing 'brel par 'byung ba la mnyam par 'jug go/_/shes pa ji lta bu zhig 'jug ce na/_rten cing 'brel par 'byung ba dang skye ba med 
+[\[192b.3\]]par mnyam pa ste/_stong pa nyid gang dang mnyam pa rten cing 'brel par 'byung ba yang",1464,1701,742120,742356
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,37.2,am/ chos thams cad rten cing 'brel bar 'byung ba l,as chos thams cad rten cing 'brel bar 'byung ba l,1543,1593,1301185,1301234
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,36.80000000000001,las 'das pa'i lam la/ phyi nang rten cing 'brel par 'byung ba'i lam gyis,las 'das pa'i phyir dang /_rten cing 'brel par 'byung ba zab mo bsam gyis,6406,6478,703962,704035
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,36.400000000000006,am/ chos thams cad rten cing 'brel bar 'byung ba lo,ar/_chos thams cad rten cing 'brel bar 'byung ba'o,1543,1594,1047794,1047844
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,36.2,am/ chos thams cad rten cing 'brel bar 'byung ba,a chos thams cad rten cing 'brel bar 'byung ba,1543,1591,1298640,1298686
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,36.2,a' yum chen mo shes rab kyi pha rol tu phyin ma la,a/_yum chen mo shes rab kyi pha rol tu phyin ma la,4218,4268,570380,570430
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,36.2,chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,chen po chos thams cad rten cing 'brel par 'byung ba,1532,1591,1308230,1308282
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,36.2,nas/ byang chub kyi phyogs dang mthun pa'i chos,nas/_byang chub kyi phyogs dang 'thun pa'i chos,2362,2409,638678,638725
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,36.0,chos thams cad rten cing 'brel bar 'byung ba,chos thams cad rten cing 'brel bar 'byung ba,1547,1591,1178253,1178297
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,36.0,chos thams cad rten cing 'brel bar 'byung ba,chos thams cad rten cing 'brel bar 'byung ba,1547,1591,1041210,1041254
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,35.4,nas/ byang chub kyi phyogs dang mthun pa'i chos,"n par byang chub kyi phyogs dang 
+[\[206a.6\]]mthun pa'i chos",2362,2409,809288,809349
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,35.0,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang mthun pa'i chos,2367,2409,124076,124118
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,35.0,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang mthun pa'i chos,2367,2409,116741,116783
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,34.400000000000006,chos thams cad rten cing 'brel bar 'byung ba lo,chos thams cad rten cing 'brel par 'byung ba'o,1547,1594,211764,211810
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,34.4,am/ chos thams cad rten cing 'brel bar 'byung ba,a/_chos thams cad rten cing 'brel par 'byung ba,1543,1591,672135,672182
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,34.4,am/ chos thams cad rten cing 'brel bar 'byung ba,a/_chos thams cad rten cing 'brel par 'byung ba,1543,1591,825606,825653
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,34.4,chos thams cad rten cing 'brel bar 'byung ba,chos thams cad ni rten cing 'brel bar 'byung ba,1547,1591,280250,280297
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,34.39999999999998,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad,a'i rten cing 'brel par 'byung ba la mkhas pa'o/_/de la byang chub sems dpa' chos thams cad,1464,1561,746727,746818
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,34.39999999999995,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,rten cing 'brel bar 'byung ba'i de bzhin nyid de la rten cing 'brel bar 'byung ba yang med/_rten cing 'brel bar 'byung ba las gud na yang de bzhin nyid med de rten cing 'brel bar 'byung ba,1467,1697,1410728,1410916
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,34.2,byang chub kyi phyogs dang mthun pa'i chos s,byang chub kyi phyogs dang 'thun pa'i chos s,2367,2411,150026,150070
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,34.199999999999946,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba lnga yis,a rten cing 'brel te 'byung ba bcu gnyis ma yin pa yang yod/_rkyen las skyes la rten cing 'brel te 'byung ba bcu gnyis yin pa yang yod/_/rkyen las skyes pa yang ma yin la rten cing 'brel bar 'byung ba bcu gnyis,1464,1706,794204,794414
+poc/rDo rje tshig rkang.txt,corpus/039_dkon_brtsegs_ka.txt,33.4,as/ byang chub kyi phyogs dang mthun pa'i chos,"a byang chub kyi phyogs dang 
+[\[162a.5\]]'thun pa'i chos",2363,2409,632788,632845
+poc/rDo rje tshig rkang.txt,corpus/072_mdo_sde_sa.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,184011,184053
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,145715,145757
+poc/rDo rje tshig rkang.txt,corpus/072_mdo_sde_sa.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,176820,176862
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,905367,905409
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,799879,799921
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,33.2,byang chub kyi phyogs dang mthun pa'i chos,byang chub kyi phyogs dang 'thun pa'i chos,2367,2409,682470,682512
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,32.99999999999999,byin gyis brlabs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,"byin gyi rlabs 
+[\[231a.3\]]bcu dang /_byang chub kyi phyogs kyi chos sum cu rtsa bdun",2345,2426,826332,826418
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,32.599999999999994,chos thams cad rten cing 'brel bar 'byung ba,chos thams cad ni rten cing 'brel par 'byung ba,1547,1591,474868,474915
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,32.59999999999998,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,ad rten cing 'brel te 'byung ba yin no zhes smra/_la la ni chos thams cad rten cing 'brel te 'byung ba,1464,1591,1165464,1165566
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,32.59999999999994,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,"rten cing 'brel par 'byung ba'o/_/rkyen gang dag gis skye ba de dag kyang rten cing 'brel par 'byung ba'o/_/rten cing 'brel par 'byung ba'i chos gsog de dag la mkhas pa'i rang 
+[\[91a.3\]]bzhin can su zhig bdag la rma 'byin snyam ste/_de ltar na byang chub sems dpa' rten cing 'brel bar 'byung ba",1467,1697,358296,358592
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,31.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun ltar lam,"as byang 
+[\[35b.3\]]chub kyi phyogs kyi chos sum cu rtsa bdun lha rnam",2363,2435,124296,124367
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,31.6,s thams cad rten cing 'brel bar 'byung ba l,s thams cad kyi rten cing 'brel bar 'byung ba l,1550,1593,1148400,1148447
+poc/rDo rje tshig rkang.txt,corpus/098_rnying_rgyud_kha.txt,31.4,phyi nang rten cing 'brel par 'byung ba',"phyi nang gi rten cing 'brel par 
+[\[201b.3\]]'byung ba '",6428,6468,742744,742801
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,31.19999999999997,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba lo r,"rten cing 'brel bar 'byung ba rlom sems su mi byed/_rten cing 'brel bar 'byung 
+[\[206b.4\]]bas rlom sems su mi byed/_rten cing 'brel bar 'byung ba la r",1467,1596,779602,779754
+poc/rDo rje tshig rkang.txt,corpus/095_rgyud_'bum_dza.txt,31.199999999999967,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,a'o/_/rten cing 'brel bar 'byung ba'i phyir gzhan gyi dbang nyid stong pa'o/_/rgyu dang rkyen las byung ba'i phyir rten cing 'brel bar 'byung ba,1464,1591,1123957,1124101
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,30.8,yum chen mo shes rab kyi pha rol tu phyin ma,yum chen mo dang /_shes rab kyi pha rol tu phyin ma,4221,4265,313848,313899
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,30.8,in/ de kho na nyid kyi rtags 'phags pa'i lam yan lag brgyad,i de bzhin nyid kyis 'phags pa'i lam yan lag brgyad,10151,10210,1270474,1270525
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,30.799999999999997,am/ chos thams cad rten cing 'brel bar 'byung ba,a/_chos thams cad rten cing 'brel te 'byung ba,1543,1591,266801,266847
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,30.799999999999965,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,"rten cing 'brel par 'byung ba yang shes shing rten cing 
+[\[70a\]]
+[\[70a.1\]]'brel par 'byung ba'i dmigs pa yang shes pa'i phyir ro/_/gang rten cing 'brel par 'byung ba",1467,1591,261476,261645
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,30.599999999999998,chos thams cad rten cing 'brel bar 'byung ba,chos thams cad rten cing 'brel te 'byung ba,1547,1591,37642,37685
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,30.59999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,nas byang chub kyi phyogs kyi chos sum cu rtsa bdun lha,2362,2430,119992,120047
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,30.59999999999999,abs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,as nas/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2358,2426,474833,474888
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,30.59999999999999,phyi nang rten cing 'brel par 'byung ba'i lam gyis sprul sku rang bzhin gyis,phyir rten cing 'brel par 'byung ba'i chos thams cad rang bzhin gyis,6428,6504,427904,427972
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,30.59999999999999,abs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,as nas/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2358,2426,214887,214942
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,30.59999999999999,a de bzhin gshegs pa'i sku lnga/ byang chub chen po'i,ar de bzhin gshegs pas 'od zer gyis bskul nas byang chub chen po'i,4846,4899,90806,90872
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,30.4,byang chub chen po/ /rten cing 'brel bar 'byung ba l,byang chub sems dpa' rten cing 'brel bar 'byung ba l,1647,1699,394182,394234
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,"chen po shes rab kyi pha rol tu phyin pa la 
+[\[235a.2\]]s",4225,4270,873674,873732
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,886201,886246
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,30.4,thams cad rten cing 'brel bar 'byung ba,thams cad ni rten cing 'brel bar 'byung ba,1552,1591,243734,243776
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,704270,704315
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,675912,675957
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po/_shes rab kyi pha rol tu phyin pa la s,4225,4270,1182637,1182683
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po/_shes rab kyi pha rol tu phyin pa la s,4225,4270,248162,248208
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,"chen po shes rab kyi pha rol tu phyin 
+[\[101a.3\]]pa la s",4225,4270,404427,404485
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,743403,743448
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,"chen po/_shes rab 
+[\[180a.7\]]kyi pha rol tu phyin pa la s",4225,4270,740881,740940
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,57489,57534
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,941200,941245
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,1126157,1126202
+poc/rDo rje tshig rkang.txt,corpus/098_rnying_rgyud_kha.txt,30.4,phyi nang rten cing 'brel par 'byung ba,phyi nang gi rten cing 'brel par 'byung ba,6428,6467,407354,407396
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,1128746,1128791
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol tu phyin pa la s,4225,4270,659251,659296
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,30.4,chen mo shes rab kyi pha rol tu phyin ma la s,chen po/_shes rab kyi pha rol tu phyin pa la s,4225,4270,740159,740205
+poc/rDo rje tshig rkang.txt,corpus/083_rgyud_'bum_ja.txt,30.399999999999995,n mo shes rab kyi pha rol tu phyin ma la sogs kyi ph,n mo shes rab kyi pha rol tu phyin ma dang /_thabs kyi ph,4228,4280,1146467,1146524
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,30.39999999999999,am/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tsh,a chos thams cad rten cing 'brel te byung ba las skyes sh,1543,1609,225967,226024
+poc/rDo rje tshig rkang.txt,corpus/035_phal_chen_ka.txt,30.2,thams cad rten cing 'brel bar 'byung ba,thams cad rten cing 'brel par 'byung ba,1552,1591,1343278,1343317
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,30.2,thams cad rten cing 'brel bar 'byung ba,"thams cad rten 
+[\[60b.3\]]cing 'brel par 'byung ba",1552,1591,232317,232368
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,30.2,las 'das shing / mya ngan las 'das pa'i la,las 'das shing mya ngan las 'das pa'i ra,6147,6189,752150,752190
+poc/rDo rje tshig rkang.txt,corpus/094_rgyud_'bum_tsha.txt,30.0,am la/ phyi nang rten cing 'brel par 'byung ba'i,am/_slar yang rten cing 'brel par 'byung ba'i,6421,6469,687935,687980
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,30.0,ang rten cing 'brel par 'byung ba'i l,"ang /_rten 
+[\[266b.7\]]cing 'brel par 'byung ba'i l",6434,6471,1035404,1035456
+poc/rDo rje tshig rkang.txt,corpus/069_mdo_sde_ra.txt,29.999999999999993,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs rnams kyi chos sum cu rtsa bdun,2367,2426,1214083,1214136
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,29.99999999999997,s cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,s pas rten cing 'brel bar 'byung bar rnam par gzhag pas rnam par bzhag go/_/rten cing 'brel bar 'byung ba,1556,1697,166789,166894
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,29.99999999999997,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba l,rten cing 'brel par 'byung ba mtha' dang dbus med par rnam par lta ste/_rab 'byor gang rten cing 'brel bar 'byung ba l,1467,1593,1023695,1023813
+poc/rDo rje tshig rkang.txt,corpus/091_rgyud_'bum_ba.txt,29.799999999999997,ang rten cing 'brel par 'byung ba'i lam gyi,ang rten cing 'brel par 'byung ba'i bdag nyi,6434,6477,270865,270909
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,29.79999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun ltar lam,"byang chub kyi phyogs 
+[\[206b.6\]]kyi chos sum cu rtsa bdun la rlom",2367,2435,780219,780287
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,29.6,yi nang rten cing 'brel par 'byung ba'i,yi nang nas rten cing 'brel par 'byung ba'i,6430,6469,1158743,1158786
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,29.6,phyi nang rten cing 'brel par 'byung ba'i,phyin pa'o/_/rten cing 'brel par 'byung ba'i,6428,6469,154857,154901
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,29.6,as pa'i lam la/ phyi nang rten cing 'brel par 'byung ba'i lam,as pa dang /_lam la mkhas pa dang /_rten cing 'brel par 'byung ba la m,6412,6473,654817,654887
+poc/rDo rje tshig rkang.txt,corpus/071_mdo_sde_sha.txt,29.599999999999998,am la/ phyi nang rten cing 'brel par 'byung ba'i lam,a ma yin pa dang /_rten cing 'brel par 'byung ba la m,6421,6473,1178650,1178703
+poc/rDo rje tshig rkang.txt,corpus/084_rgyud_'bum_nya.txt,29.599999999999994,de bzhin gshegs pa'i sku lnga/ byang chub chen po'i,de bzhin gshegs pa'i rigs kyi byang chub chen po'i,4848,4899,459110,459160
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,29.599999999999973,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,rten cing 'brel par 'byung ba ni gang /_chos ni gang /_sangs rgyas ni gang /_ji ltar rten cing 'brel par 'byung ba,1467,1591,444891,445005
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,29.4,chen mo shes rab kyi pha rol tu phyin ma la,chen po/_/shes rab kyi pha rol tu phyin pa la,4225,4268,48507,48552
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,29.4,ang rten cing 'brel par 'byung ba'i lam g,ang /_rten cing 'brel par 'byung ba'i rang,6434,6475,528492,528534
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,29.4,chen mo shes rab kyi pha rol tu phyin ma la,chen po shes rab kyi pha rol tu phyin pa la,4225,4268,194442,194485
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,29.4,chen mo shes rab kyi pha rol tu phyin ma la,chen po shes rab kyi pha rol tu phyin pa la,4225,4268,192443,192486
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,29.4,chen mo shes rab kyi pha rol tu phyin ma la,chen po shes rab kyi pha rol tu phyin pa la,4225,4268,1120140,1120183
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,29.39999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,nas byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,276330,276381
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,29.39999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,nas byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,1030256,1030307
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,29.39999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,nas/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,253388,253440
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,29.39999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,nas byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,949452,949503
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,29.399999999999967,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,"a'o/_/
+[\[23a.5\]]rten cing 'brel bar 'byung ba'i phyir gzhan gyi dbang nyid stong ba'o/_/rgyu dang rkyen las byung ba'i phyir rten cing 'brel par 'byung ba",1464,1591,84613,84769
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,29.2,shes rab kyi pha rol tu phyin ma la sogs,shes rab kyi pha rol tu phyin pa la sogs,4233,4273,609671,609711
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,29.2,chen po/ /rten cing 'brel bar 'byung ba l,chen po rten cing 'brel par 'byung ba l,1658,1699,268448,268487
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,29.2,chen po/ /rten cing 'brel bar 'byung ba l,"chen po 
+[\[224a.7\]]rten cing 'brel par 'byung ba l",1658,1699,856804,856856
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,29.2,shes rab kyi pha rol tu phyin ma la sogs,shes rab kyi pha rol tu phyin pa la sogs,4233,4273,671968,672008
+poc/rDo rje tshig rkang.txt,corpus/098_rnying_rgyud_kha.txt,29.2,a ba byang chub sems kyi dkyil 'khor mt,a ba/_/byang chub sems kyi dkyil 'khor t,9063,9102,618088,618128
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,29.2,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel par 'byung ba'i ya,6434,6472,408609,408649
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,29.2,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel par 'byung ba'i ya,6434,6472,712488,712528
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,29.2,chen po/ /rten cing 'brel bar 'byung ba l,"chen po rten cing 'brel 
+[\[275a.6\]]par 'byung ba l",1658,1699,1075545,1075597
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,29.199999999999996,ags 'phags pa'i lam yan lag brgyad ni/ rnam shes br,"ags/_'phags 
+[\[237b.4\]]pa'i lam yan lag brgyad pa shes r",10176,10227,917257,917315
+poc/rDo rje tshig rkang.txt,corpus/091_rgyud_'bum_ba.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel par 'byung ba'i,6434,6469,221537,221574
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel par 'byung ba'i,6434,6469,480802,480839
+poc/rDo rje tshig rkang.txt,corpus/072_mdo_sde_sa.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel par 'byung ba'i,6434,6469,665049,665086
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,29.0,ng thugs mi zad pa rgyan gyi 'khor lo,ng /_thugs mi zad pa rgyan gyi 'khor lo,214,251,1225800,1225839
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,29.0,ang rten cing 'brel par 'byung ba'i,"ang rten cing 'brel par 'byung 
+[\[272a.2\]]ba'i",6434,6469,1056090,1056138
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang rten cing 'brel par 'byung ba'i,6434,6469,150534,150569
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,29.0,la/ phyi nang rten cing 'brel par 'byung ba'i,la phyi rol gyi rten cing 'brel par 'byung ba'i,6424,6469,449924,449971
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel par 'byung ba'i,6434,6469,905224,905261
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang rten cing 'brel par 'byung ba'i,6434,6469,604421,604456
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,29.0,bde bar gshegs pa'i sku gsung thugs,bde bar gshegs pa'i sku gsung thugs,187,222,991349,991384
+poc/rDo rje tshig rkang.txt,corpus/009_'dul_ba_ta.txt,29.0,yi nang rten cing 'brel par 'byung ba'i lam,"yin pa dang /_
+[\[74a\]]
+[\[74a.1\]]rten cing 'brel par 'byung ba la m",6430,6473,276956,277026
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,29.0,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel par 'byung ba'i,6434,6469,670700,670737
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,28.999999999999993,yi nang rten cing 'brel par 'byung ba'i lam gyis sprul sku rang bzhin,yin te/_rten cing 'brel par 'byung ba gang yin pa ni rang bzhin,6430,6499,474923,474986
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,28.799999999999997,chen mo shes rab kyi pha rol tu phyin ma la s,"chen pos shes rab kyi pha rol tu phyin pa la 
+[\[42b.4\]]bs",4225,4270,148232,148291
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,28.799999999999997,i byang chub chen po/ /rten cing 'brel bar 'byung ba l,"i byang chub sems dpa'i rten cing 'brel par 
+[\[187b.3\]]'byung ba l",1645,1699,745627,745695
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,28.799999999999997,chen mo shes rab kyi pha rol tu phyin ma la s,chen pos shes rab kyi pha rol tu phyin pa la bs,4225,4270,1016222,1016269
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,28.799999999999997,chen mo shes rab kyi pha rol tu phyin ma la s,chen pos/_shes rab kyi pha rol tu phyin pa la bs,4225,4270,1205881,1205929
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,28.799999999999994,rnam par dag pa'i lam/ /ngo bo nyid kyi sku shin tu rnam par dag pa rang,rnam par dag pa dang /_skyes bu shin tu rnam par dag pa dang,11051,11123,961534,961594
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,28.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,ags/_byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2363,2430,341985,342040
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,28.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la,chen pos shes rab kyi pha rol tu phyin pa la,4225,4268,137567,137611
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,28.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la,chen pos shes rab kyi pha rol tu phyin pa la,4225,4268,128122,128166
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,28.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol du phyin pa la s,4225,4270,277909,277954
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,28.599999999999998,byang chub chen po/ /rten cing 'brel bar 'byung ba l,byang chub sems dpa' rten cing 'brel par 'byung ba l,1647,1699,1041496,1041548
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,28.599999999999998,d pa/ 'khor ba'i chos las 'das shing / mya ng,dpa' 'khor ba'i chos las 'das shing sang,6125,6170,273994,274034
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,28.599999999999998,byang chub chen po/ /rten cing 'brel bar 'byung ba l,byang chub sems dpa' rten cing 'brel par 'byung ba l,1647,1699,391350,391402
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,28.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol du phyin pa la s,4225,4270,874052,874097
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,28.599999999999998,ub chen po/ /rten cing 'brel bar 'byung ba,ur ba chen po/_/rten cing 'brel par 'byung ba,1655,1697,22106,22151
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,28.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la s,chen po shes rab kyi pha rol du phyin pa la s,4225,4270,876376,876421
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,28.599999999999998,byang chub chen po/ /rten cing 'brel bar 'byung ba l,byang chub sems dpa' rten cing 'brel par 'byung ba l,1647,1699,1043363,1043415
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,28.599999999999994,a de bzhin gshegs pa'i sku lnga/ byang chub chen po'i,"as de bzhin gshegs pa'i byang chub 
+[\[139b.5\]]chen po'i",4846,4899,543723,543780
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,28.59999999999999,s nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s pas/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2360,2426,1579642,1579696
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,28.59999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,n pas byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,267429,267482
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,28.59999999999999,s nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s pas byang chub kyi phyogs kyi chos sum cu rtsa bdun,2360,2426,1378135,1378188
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,28.59999999999999,s nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,"s 
+[\[208a.3\]]pas/_byang chub kyi phyogs kyi chos sum cu rtsa bdun",2360,2426,774669,774736
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,28.59999999999999,chen mo shes rab kyi pha rol tu phyin ma la sogs kyi pho brang du th,chen po/_/shes rab kyi pha rol tu phyin pa rtogs par khong du ch,4225,4293,2958,3022
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,463738,463778
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,28.4,ba'i rdzu 'phrul gyi rkang pa bzhi ni/ la,"ba'i rdzu 
+[\[213b.6\]]'phrul gyi rkang pa bzhi la",2463,2504,824620,824670
+poc/rDo rje tshig rkang.txt,corpus/048_mdo_sde_nga.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,454024,454064
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,1022463,1022503
+poc/rDo rje tshig rkang.txt,corpus/073_mdo_sde_ha.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang rten cing 'brel par 'byung ba la m,6434,6473,276064,276102
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,28.4,mo shes rab kyi pha rol tu phyin ma la so,ma shes rab kyi pha rol tu phyin ma la gso,4230,4271,1199401,1199443
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,538631,538671
+poc/rDo rje tshig rkang.txt,corpus/009_'dul_ba_ta.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,267683,267723
+poc/rDo rje tshig rkang.txt,corpus/010_'dul_ba_tha.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,725878,725918
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,28.4,yi nang rten cing 'brel par 'byung ba'i,yin no/_/rten cing 'brel par 'byung ba'i,6430,6469,1203905,1203945
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,1012814,1012854
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,432071,432111
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,28.4,ags 'phags pa'i lam yan lag brgyad ni,"ags/_'phags pa'i 
+[\[34b.7\]]lam yan lag brgyad pa ni",10176,10213,127707,127760
+poc/rDo rje tshig rkang.txt,corpus/005_'dul_ba_ca.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,686942,686982
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,28.4,ags 'phags pa'i lam yan lag brgyad ni,ags/_/'phags pa'i lam yan lag brgyad pa ni,10176,10213,56777,56819
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,28.4,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel par 'byung ba la m,6434,6473,23374,23414
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,28.39999999999999,rlabs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,r la brtson te/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2356,2426,453062,453125
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,28.39999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,as/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,364513,364564
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,28.39999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,as/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,1100754,1100805
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,28.399999999999977,bsam gtan sogs kyi ting nge 'dzin yum gyi mkha'/ a las yang dag par thim na khams gsum nam mkha' yum chen mo shes rab kyi pha rol tu phyin ma,bsam gtan gyi ting nge 'dzin la mnyam par bzhag pa'i sgo nas dbang skur bar byed do/_/shes rab kyi pha rol tu phyin pa,4124,4265,1048786,1048904
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,28.2,mo shes rab kyi pha rol tu phyin ma la s,"mo/_shes 
+[\[141a.4\]]rab kyi pha rol tu phyin pa la s",4230,4270,579740,579794
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,28.2,ba'i rdzu 'phrul gyi rkang pa bzhi ni,ba'o/_/rdzu 'phrul gyi rkang pa bzhi ni,2463,2500,863213,863252
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,28.199999999999992,ng sems bdag byin gyis brlabs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,ng /_shes rab dang /_thabs las skyes pa/_byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2332,2430,716959,717050
+poc/rDo rje tshig rkang.txt,corpus/071_mdo_sde_sha.txt,28.19999999999999,ng / mya ngan las 'das pa'i lam chos rnams rdzogs pas chos rnams,"ng mya ngan 
+[\[44b.3\]]las 'das pa'i chos rnams thob par byed pa'i chos rnams",6159,6223,167520,167598
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,28.19999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun ltar lam bg,byang chub kyi phyogs kyi chos sum cu rtsa bdun nas lam g,2367,2438,898749,898806
+poc/rDo rje tshig rkang.txt,corpus/048_mdo_sde_nga.txt,28.19999999999997,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,"rten cing 'brel par 'byung ba la mkhas pa gsungs pa de ni ci yang ma gsungs pa'o/_/gang 'di rten 
+[\[120a\]]
+[\[120a.1\]]cing 'brel par 'byung ba",1467,1591,455055,455200
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,28.0,ang rten cing 'brel par 'byung ba',ang /_rten cing 'brel par 'byung ba ',6434,6468,668836,668873
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,28.0,ang rten cing 'brel par 'byung ba',ang rten cing 'brel par 'byung ba',6434,6468,947068,947102
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,28.0,ags 'phags pa'i lam yan lag brgyad,"ags/_'phags 
+[\[250a.5\]]pa'i lam yan lag brgyad",10176,10210,962107,962155
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,28.0,a'i dran pa nye bar gzhag pa bzhi ni,a'i dran pa nye bar gzhag pa bzhi ni,5258,5294,1182078,1182114
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,28.0,ags 'phags pa'i lam yan lag brgyad,ags/_'phags pa'i lam yan lag brgyad,10176,10210,313826,313861
+poc/rDo rje tshig rkang.txt,corpus/039_dkon_brtsegs_ka.txt,28.0,ang rten cing 'brel par 'byung ba',ang rten cing 'brel par 'byung ba',6434,6468,621409,621443
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,28.0,ags 'phags pa'i lam yan lag brgyad,ags/_'phags pa'i lam yan lag brgyad,10176,10210,661886,661921
+poc/rDo rje tshig rkang.txt,corpus/061_mdo_sde_tsa.txt,28.0,a nyid kyi rtags 'phags pa'i lam yan lag brgyad,ang /_yid kyi spyod pa rnams 'phags pa'i lam yan lag brgyad,10163,10210,565757,565816
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,28.0,ang rten cing 'brel par 'byung ba',ang rten cing 'brel par 'byung ba',6434,6468,358232,358266
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,28.0,as pa'i lam la/ phyi nang rten cing 'brel par 'byung ba'i,"ad pa'i phyir de 
+[\[194a\]]
+[\[194a.1\]]ni rten cing 'brel par 'byung ba'i",6412,6469,757578,757653
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,28.0,phyi nang rten cing 'brel par 'byung ba'i la,"phyin pa la rten cing 'brel par 
+[\[255b.2\]]'byung ba la",6428,6472,1025906,1025963
+poc/rDo rje tshig rkang.txt,corpus/099_rnying_rgyud_ga.txt,28.0,'i rdzu 'phrul gyi rkang pa bzhi ni,'i rdzu 'phrul gyi rkang pa bzhi ni,2465,2500,637072,637107
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,28.0,phyi nang rten cing 'brel par 'byung ba'i la,phyin pa la rten cing 'brel par 'byung ba la,6428,6472,1024935,1024979
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,28.0,pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,pa byang chub sems dpa' rten cing 'brel par 'byung ba,1642,1697,261309,261362
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,28.0,ags 'phags pa'i lam yan lag brgyad,"ags/_
+[\[13b.4\]]'phags pa'i lam yan lag brgyad",10176,10210,45912,45959
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,27.999999999999993,a'i chos las 'das shing / mya ngan las 'das pa'i lam chos,a'i chos las 'das shing 'jig rten las 'das pa'i chos,6138,6195,269349,269401
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,27.99999999999999,ba'i dran pa nye bar gzhag pa bzhi ni/ yul 'gags pas rang yi dam g,"ba'i dran 
+[\[121b.5\]]pa nye bar gzhag pa bzhi la bzhugs pa/_sngon gyi sang",5257,5323,466184,466260
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,27.999999999999975,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,rten cing 'brel par 'byung ba rnam par dbye ba yin no/_/dge slong dag khyed la rten cing 'brel par 'byung ba,1467,1591,481498,481606
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,27.8,'khor ba'i chos las 'das shing / mya ngan las 'das pa'i,'khor ba'i skyon shes shing mya ngan las 'das pa'i,6131,6186,1251582,1251632
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,27.8,yi nang rten cing 'brel par 'byung ba'i,yin pa de ni rten cing 'brel par 'byung ba'i,6430,6469,450209,450253
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,27.799999999999997,chen mo shes rab kyi pha rol tu phyin ma la s,chen pos shes rab kyi pha rol du phyin pa la s,4225,4270,135837,135883
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,27.799999999999976,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba l,"as rten cing 'brel par 'byung bar yid la [{]myi [,]mi [}]byed do/_/de ci'i phyir zhe na/_de ni 'di ltar rten cing 
+[\[305a.5\]]'brel bar 'byung ba l",1464,1593,1204504,1204652
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,27.6,hams cad rten cing 'brel bar 'byung ba l,hams dang /_rten cing 'brel bar 'byung ba l,1553,1593,569882,569925
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,27.6,hams cad rten cing 'brel bar 'byung ba l,hams dang rten cing 'brel bar 'byung ba l,1553,1593,414686,414727
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,27.599999999999998,shes rab kyi pha rol tu phyin ma la sogs,"shes 
+[\[228a.7\]]rab kyi pha rol tu phyin pa las yongs",4233,4273,835943,835998
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,27.599999999999998,chen mo shes rab kyi pha rol tu phyin ma la,"chen po shes rab kyi pha rol 
+[\[90b.5\]]du phyin pa la",4225,4268,331937,331992
+poc/rDo rje tshig rkang.txt,corpus/093_rgyud_'bum_tsa.txt,27.599999999999998,shes rab kyi pha rol tu phyin ma la sogs,shes rab kyi pha rol tu phyin pa las yongs,4233,4273,234263,234305
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,27.599999999999998,chen po/ /rten cing 'brel bar 'byung ba l,chen po'i rten cing 'brel par 'byung ba l,1658,1699,1023508,1023549
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,27.599999999999998,nang rten cing 'brel par 'byung ba'i la,n yang rten cing 'brel bar 'byung ba'i ya,6433,6472,514436,514477
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.599999999999994,o/ /rten cing 'brel bar 'byung ba lnga yis lam yongs su,o/_/rten cing 'brel bar 'byung ba la yongs su,1664,1719,333198,333243
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,788500,788550
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun lda,2367,2430,414855,414906
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,29335,29385
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,787045,787095
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,774780,774830
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,334698,334748
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lta,byang chub kyi phyogs kyi chos sum cu rtsa bdun la,2367,2430,1095171,1095221
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,27.59999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,na byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,871346,871396
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,27.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,byang chub kyi phyogs kyi chos sum cu rtsa bdun la t,2367,2429,1259592,1259644
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,27.599999999999984,s shing / mya ngan las 'das pa'i lam chos rnams rdzogs pas chos rnams kyi na,s shin tu mya ngan las 'das pa'i rnam par thar pa ma gtogs par sems can rnams kyi rna,6154,6230,456378,456463
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,27.599999999999966,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub chen po'i lam/ chos thams cad rten cing 'brel bar 'byung ba,"a rten cing 'brel par 'byung ba dang po dang rnam par dbye ba bstan gyis/_de legs par rab tu nyon la yid la zung shig dang bshad do/_/rten cing 
+[\[123b.4\]]'brel par 'byung ba",1464,1591,475565,475741
+poc/rDo rje tshig rkang.txt,corpus/013_'dul_ba_pa.txt,27.400000000000002,bang mthar phyin/ de kho na nyid kyi rtags 'phags pa'i lam yan lag brgyad,ba'i mthar phyin par 'gyur ba ni 'phags pa'i lam yan lag brgyad,10137,10210,145180,145243
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,27.4,ang rten cing 'brel par 'byung ba'i la,ang rten cing 'brel par 'byung ba la,6434,6472,994711,994747
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,27.4,yi nang rten cing 'brel par 'byung ba,"yid dang /_rten 
+[\[243b.4\]]cing 'brel par 'byung ba",6430,6467,946512,946565
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,27.4,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel bar 'byung ba'i ya,6434,6472,890187,890227
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,27.4,ags 'phags pa'i lam yan lag brgyad ni,ang /_'phags pa'i lam yan lag brgyad ni,10176,10213,970023,970062
+poc/rDo rje tshig rkang.txt,corpus/072_mdo_sde_sa.txt,27.4,yi nang rten cing 'brel par 'byung ba,yis dang /_rten cing 'brel par 'byung ba,6430,6467,660280,660320
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,27.4,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel par 'byung ba la,6434,6472,326722,326760
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,27.4,ba'i dran pa nye bar gzhag pa bzhi ni/ yu,"ba'o/_/dran pa nye bar gzhag pa 
+[\[465b.5\]]bzhi ni lu",5257,5298,1868567,1868622
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.4,ang rten cing 'brel par 'byung ba'i la,"ang /_
+[\[100a.4\]]rten cing 'brel par 'byung ba la",6434,6472,375023,375074
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,27.4,mo shes rab kyi pha rol tu phyin ma la s,mo/_/shes rab kyi pha rol tu phyin pa la bs,4230,4270,784280,784323
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.4,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel bar 'byung ba'i ya,6434,6472,1406876,1406916
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,27.4,'phags pa'i lam yan lag brgyad ni/ rnam,'phags pa'i lam yan lag brgyad pa rnam,10180,10219,1436955,1436993
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,27.4,ams cad rten cing 'brel bar 'byung ba l,ams la rten cing 'brel bar 'byung ba l,1554,1593,874704,874742
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,27.4,n mo shes rab kyi pha rol tu phyin ma la s,no/_/shes rab kyi pha rol tu phyin pa la s,4228,4270,734925,734967
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,27.4,ang rten cing 'brel par 'byung ba'i la,"ang /_rten 
+[\[172b.4\]]cing 'brel par 'byung ba la",6434,6472,654478,654529
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,27.4,gs 'phags pa'i lam yan lag brgyad ni,gs/_'phags pa'i lam yan lag brgyad pa ni,10177,10213,1150622,1150662
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,27.399999999999995,i rtags 'phags pa'i lam yan lag brgyad ni/ rnam shes br,i rtogs pa'i 'phags pa'i lam yan lag brgyad pa yin no zhes br,10172,10227,891419,891480
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,27.39999999999999,s/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s byang chub kyi phyogs kyi chos sum cu rtsa bdun,2364,2426,453887,453936
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,27.39999999999999,s/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2364,2426,154754,154804
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,27.39999999999999,al ldan byang chub sems dpa' la gsang ba sgrogs pa mth,a/_/blo ldan byang chub sems dpa' dang /_/sangs rgyas dam tsh,9485,9539,154489,154550
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,27.39999999999999,s/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s byang chub kyi phyogs kyi chos sum cu rtsa bdun,2364,2426,760923,760972
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,27.399999999999988,rten cing 'brel par 'byung ba'i lam gyis sprul sku rang bzhin,rten cing 'brel par 'byung ba bcu gnyis ni sangs rgyas kyi rang bzhin,6438,6499,684517,684586
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,27.2,ang rten cing 'brel par 'byung ba'i,"ang /
+[\[147a.5\]]rten cing 'brel bar 'byung ba'i",6434,6469,521810,521859
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,27.2,ba'i dran pa nye bar gzhag pa bzhi ni,ba'o/_/dran pa nye bar gzhag pa bzhi ni,5257,5294,862201,862240
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,27.2,ang rten cing 'brel par 'byung ba'i,a ni rten cing 'brel par 'byung ba'i,6434,6469,55093,55129
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,27.2,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel bar 'byung ba'i,6434,6469,924103,924140
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,27.2,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin ma la,4230,4268,58162,58200
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,27.2,ang rten cing 'brel par 'byung ba'i,ang rten cing 'brel bar 'byung ba'i,6434,6469,738823,738858
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,27.2,ang rten cing 'brel par 'byung ba'i,"ang /_rten cing 
+[\[351b\]]
+[\[351b.1\]]'brel bar 'byung ba'i",6434,6469,1528584,1528645
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,27.2,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin ma la,4230,4268,1122511,1122549
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.2,a'i rdzu 'phrul gyi rkang pa bzhi ni,a'o/_/rdzu 'phrul gyi rkang pa bzhi ni,2464,2500,834899,834937
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,27.2,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin ma la,4230,4268,1177566,1177604
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,27.2,o shes rab kyi pha rol tu phyin ma la s,o shes rab kyi pha rol tu phyin pa las,4231,4270,1156128,1156166
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,27.2,nang rten cing 'brel par 'byung ba,n yang rten cing 'brel par 'byung ba,6433,6467,674474,674510
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,27.2,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin ma la,4230,4268,941373,941411
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,27.2,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin ma la,4230,4268,676689,676727
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,27.2,ang rten cing 'brel par 'byung ba',ang /_rten cing 'brel par 'byung bar ',6434,6468,931869,931907
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,27.2,a'i rdzu 'phrul gyi rkang pa bzhi ni,a'o/_/rdzu 'phrul gyi rkang pa bzhi ni,2464,2500,1867622,1867660
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,27.2,ang rten cing 'brel par 'byung ba'i,ang rten cing 'brel par 'byung ba yi,6434,6469,332400,332436
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,27.2,ang rten cing 'brel par 'byung ba'i,"ang /_rten cing 'brel bar 
+[\[374a.6\]]'byung ba'i",6434,6469,1409743,1409793
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,27.199999999999996,nang rten cing 'brel par 'byung ba'i la,nang gi rten cing 'brel par 'byung ba ni 'di lta,6433,6472,341829,341877
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,27.199999999999996,rten cing 'brel par 'byung ba'i lam gyis s,rten cing 'brel par 'byung ba'i tshul gyis s,6438,6480,1308253,1308297
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,27.199999999999996,ba'i rdzu 'phrul gyi rkang pa bzhi ni/ las kyi,"ba/_rdzu 
+[\[216a.6\]]'phrul gyi rkang pa bzhi'i zhabs kyi",2463,2509,848288,848346
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,27.199999999999992,labs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,lags so/_/byang chub kyi phyogs kyi chos sum cu rtsa bdun,2357,2426,1143687,1143744
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,27.199999999999992,a'i dran pa nye bar gzhag pa bzhi ni/ yul 'gags pas rang,a'o/_/dran pa nye bar gzhag pa bzhi dang /_yang dag par spang,5258,5314,287520,287581
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,27.199999999999992,shes rab kyi pha rol tu phyin ma la sogs kyi pho brang du th,shes rab kyi pha rol tu phyin pa la rtogs par khong du ch,4233,4293,1073200,1073257
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.19999999999999,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel,"a 'am/_rten cing 'brel par 'byung ba 
+[\[227a.3\]]zhes bya ba 'am rten cing 'brel",1464,1520,869629,869710
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,27.19999999999999,a' rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel,a 'am/_rten cing 'brel par 'byung ba zhes bya ba 'am/_rten cing 'brel,1464,1520,1046532,1046601
+poc/rDo rje tshig rkang.txt,corpus/039_dkon_brtsegs_ka.txt,27.19999999999999,ang rten cing 'brel par 'byung ba'i lam gyis sprul sku rang bzhin,ad ni rten cing 'brel par 'byung ba'o zhes chos rnams kyi rang bzhin,6434,6499,276384,276452
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,27.0,rten cing 'brel par 'byung ba'i l,rten cing 'brel par 'byung ba'i l,6438,6471,66874,66907
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,27.0,yid kyi rtags 'phags pa'i lam yan lag brgyad,yod kyis 'phags pa'i lam yan lag brgyad,10166,10210,850347,850386
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,27.0,ang rten cing 'brel par 'byung ba,ang rten cing 'brel par 'byung ba,6434,6467,740798,740831
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,27.0,ang rten cing 'brel par 'byung ba,ang rten cing 'brel par 'byung ba,6434,6467,913841,913874
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,62302,62337
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,27.0,a'i rdzu 'phrul gyi rkang pa bzhi,a'i rdzu 'phrul gyi rkang pa bzhi,2464,2497,624755,624788
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,27.0,gs 'phags pa'i lam yan lag brgyad,gs/_'phags pa'i lam yan lag brgyad,10177,10210,126305,126339
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,335249,335284
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,142445,142480
+poc/rDo rje tshig rkang.txt,corpus/069_mdo_sde_ra.txt,27.0,ang rten cing 'brel par 'byung ba,ang rten cing 'brel par 'byung ba,6434,6467,988844,988877
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,905637,905672
+poc/rDo rje tshig rkang.txt,corpus/035_phal_chen_ka.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,1259388,1259423
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,27.0,a'i rdzu 'phrul gyi rkang pa bzhi,a'i rdzu 'phrul gyi rkang pa bzhi,2464,2497,569691,569724
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,1018253,1018288
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,27.0,g rten cing 'brel par 'byung ba'i,"g_/rten 
+[\[191b\]]
+[\[191b.1\]]cing 'brel par 'byung ba'i",6436,6469,757742,757800
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,491132,491167
+poc/rDo rje tshig rkang.txt,corpus/083_rgyud_'bum_ja.txt,27.0,rten cing 'brel par 'byung ba'i l,rten cing 'brel par 'byung ba'i l,6438,6471,909084,909117
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,27.0,ba'i dran pa nye bar gzhag pa bzhi,ba'i dran pa nye bar gzhag pa bzhi,5257,5291,824175,824209
+poc/rDo rje tshig rkang.txt,corpus/099_rnying_rgyud_ga.txt,27.0,s kyi dbyings/ /byang chub sems kyi,s kyi dbyings/_/byang chub sems kyi,10726,10761,203420,203455
+poc/rDo rje tshig rkang.txt,corpus/095_rgyud_'bum_dza.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_/rten cing 'brel par 'byung ba,6434,6467,772871,772907
+poc/rDo rje tshig rkang.txt,corpus/083_rgyud_'bum_ja.txt,27.0,rten cing 'brel par 'byung ba'i l,rten cing 'brel par 'byung ba'i l,6438,6471,1265037,1265070
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,123063,123098
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,27.0,ang rten cing 'brel par 'byung ba,ang rten cing 'brel par 'byung ba,6434,6467,839279,839312
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,27.0,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin ma,4230,4265,1368650,1368685
+poc/rDo rje tshig rkang.txt,corpus/061_mdo_sde_tsa.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,867393,867428
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,920059,920094
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,290983,291018
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,27.0,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par 'byung ba,6434,6467,711816,711851
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,27.0,i mtha' rten cing 'brel par 'byung ba/ g,"i mthun pa'i rten 
+[\[227b.3\]]cing 'brel par 'byung ba 'g",1459,1499,893360,893418
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,26.999999999999996,en mo shes rab kyi pha rol tu phyin ma la sogs,e ni/_shes rab kyi pha rol tu phyin pa las nges,4227,4273,1121337,1121384
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.999999999999993,rnam par dag pa'i lam/ /ngo bo nyid kyi sku shin tu rnam par dag pa,rnam par dag pa'i thugs mnga' ba ste/_sku shin tu rnam par dag pa,11051,11118,195870,195935
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.999999999999975,ad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba lnga,a/_rten cing 'brel bar 'byung ba ni skye ba med par rab tu shes so/_/de bzhin du rten cing 'brel bar 'byung ba 'ga,1559,1702,375878,375992
+poc/rDo rje tshig rkang.txt,corpus/067_mdo_sde_'a.txt,26.8,phyi nang rten cing 'brel par 'byung ba'i,phyir rten cing 'brel par 'byung ba'i,6428,6469,751441,751478
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.8,bdag byin gyis brlabs nas/ byang chub,bdag nyid byin gyis brlabs nas byang chub,2340,2377,168117,168158
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.8,nang rten cing 'brel par 'byung ba'i la,nams ni rten cing 'brel par 'byung ba'i ya,6433,6472,196810,196852
+poc/rDo rje tshig rkang.txt,corpus/035_phal_chen_ka.txt,26.8,phyi nang rten cing 'brel par 'byung ba'i,pa yin/_rten cing 'brel par 'byung ba'i,6428,6469,1103426,1103465
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,26.799999999999997,ams cad rten cing 'brel bar 'byung ba lo rgyus kyi,ams dang /_rten cing 'brel bar 'byung ba ste/_rigs kyi,1554,1604,90070,90124
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,26.799999999999994,ste/ sa chen dga' zhing rangs la mgu/ /de rnam pa drug tu g.yo/ /bdud gnas su,ste/_sa 'di dag dga' zhing mgu la rangs pas rnam pa drug tu g.yos nas bdud kyi gnas su,10261,10338,577078,577164
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,ag byang chub kyi phyogs kyi chos sum cu rtsa bdun t,2363,2429,957039,957091
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,26.79999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,n pa/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,19995,20048
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,26.79999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,n pa/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,399515,399568
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,a/_byang chub kyi phyogs kyi chos sum cu rtsa bdun t,2363,2429,630004,630056
+poc/rDo rje tshig rkang.txt,corpus/072_mdo_sde_sa.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,a ste/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,1038291,1038345
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,as so/_/byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,474666,474721
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,26.79999999999999,s brlabs nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s bya ba ni gang byang chub kyi phyogs kyi chos sum cu rtsa bdun,2353,2426,679230,679294
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,26.79999999999999,s nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,s par byang chub kyi phyogs kyi chos sum cu rtsa bdun,2360,2426,559443,559496
+poc/rDo rje tshig rkang.txt,corpus/077_rgyud_'bum_ka.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,a byang chub kyi phyogs kyi chos sum cu rtsa bdun t,2363,2429,1039602,1039653
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,26.79999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,a ste/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,82526,82580
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,26.79999999999995,dan byang chub sems dpa' la gsang ba sgrogs pa mthong / phyag rgya ma'i dngas ma'i dngas ma mthong na mngon shes la thogs pa med/ rtsa yig rnams su dngas ma 'drongs na rdzu 'phrul,dang /_byang chub sems dpa' mngon par grags pas mngon par grags pa/_gzungs thob pa/_spobs pa thogs pa med pa/_gnyis su med pa'i chos 'chad pa/_rdzu 'phrul,9489,9668,361737,361891
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,26.6,hams cad rten cing 'brel bar 'byung ba,hams dang /_rten cing 'brel bar 'byung ba,1553,1591,528124,528165
+poc/rDo rje tshig rkang.txt,corpus/070_mdo_sde_la.txt,26.6,ang rten cing 'brel par 'byung ba'i,ang gis rten cing 'brel par 'byung ba'i,6434,6469,247537,247576
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,26.6,i nang rten cing 'brel par 'byung ba,i nang nas rten cing 'brel par 'byung ba,6431,6467,549675,549715
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,728664,728704
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,26.599999999999998,spyi dang rang gi mtshan nyid la thogs,spyi dang rang gi mtshan nyid las/_/chos,8299,8337,922737,922777
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,"ang /_rten cing 'brel bar 
+[\[82a.7\]]'byung ba la m",6434,6473,321899,321951
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,571424,571464
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,26.599999999999998,nang rten cing 'brel par 'byung ba'i la,na rten cing 'brel par 'byung ba'i ya,6433,6472,56761,56798
+poc/rDo rje tshig rkang.txt,corpus/091_rgyud_'bum_ba.txt,26.599999999999998,n mo shes rab kyi pha rol tu phyin ma la,n mo shes rab kyi pha rol tu phyin pa bkla,4228,4268,734275,734317
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,770406,770446
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,26.599999999999998,'das pa'i lam la/ phyi nang rten cing 'brel par 'byung ba'i la,'das par mdzad cing rten cing 'brel bar 'byung ba'i ya,6410,6472,143795,143849
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,26.599999999999998,shes rab kyi pha rol tu phyin ma la sogs,shes rab kyi pha rol tu phyin pa las nges,4233,4273,52420,52461
+poc/rDo rje tshig rkang.txt,corpus/013_'dul_ba_pa.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,1092458,1092498
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,238989,239029
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.599999999999998,ang rten cing 'brel par 'byung ba'i lam,ang /_rten cing 'brel bar 'byung ba la m,6434,6473,803096,803136
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,26.599999999999998,ng rten cing 'brel par 'byung ba'i la,ng ba rten cing 'brel par 'byung ba'i ya,6435,6472,540963,541003
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,26.599999999999994,ags/ byang chub kyi yan lag bdun ni/ rtsa rin po che,"ang /_byang chub kyi yan lag 
+[\[16b.6\]]bdun gyi rin po che",6630,6682,60675,60735
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,26.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,byang chub kyi phyogs kyi chos sum cu rtsa bdun rt,2367,2429,538940,538990
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,26.59999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,270147,270197
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,26.59999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,1381844,1381894
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,26.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,byang chub kyi phyogs kyi chos sum cu rtsa bdun gt,2367,2429,863259,863309
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,26.59999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,a/_byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,451986,452036
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,26.59999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,1086353,1086403
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,26.59999999999999,as/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,ar byang chub kyi phyogs kyi chos sum cu rtsa bdun,2363,2426,376070,376120
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,26.59999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun lt,byang chub kyi phyogs kyi chos sum cu rtsa bdun t,2367,2429,485942,485991
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,26.599999999999987,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel byang chub,rten cing 'brel bar 'byung ba la mkhas pa gang zhe na/_'di ltar byang chub,1467,1531,744014,744088
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,26.599999999999987,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun ltar lam bgr,byang chub kyi phyogs kyi chos sum cu rtsa bdun po dag la br,2367,2439,659258,659318
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.400000000000002,s po'i mtha' rten cing 'brel par 'byung ba,sgo'i mtshan nyid/_rten cing 'brel par 'byung ba,1454,1496,669375,669423
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,26.400000000000002,rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba l,rnam par dag pa'i dbyangs dang ldan pa/_chos zab mo rten cing 'brel bar 'byung ba l,1628,1699,683580,683663
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.4,ng rten cing 'brel par 'byung ba'i la,ni rten cing 'brel par 'byung ba'i ya,6435,6472,817872,817909
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,26.4,nang rten cing 'brel par 'byung ba'i,nams rten cing 'brel par 'byung ba'i,6433,6469,571338,571374
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.4,rten cing 'brel bar 'byung ba lo rgyu,rten cing 'brel bar 'byung ba'i rgyu,1562,1599,865297,865333
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,26.4,ng rten cing 'brel par 'byung ba'i la,ng rten cing 'brel par 'byung ba la,6435,6472,1376084,1376119
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,26.4,nang rten cing 'brel par 'byung ba'i,na/_rten cing 'brel par 'byung ba'i,6433,6469,59387,59422
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,26.4,ba'i yang dag par spong ba bzhi ni/ spr,ba'o/_/yang dag par spong ba bzhi ni sgr,5584,5623,862711,862751
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,26.4,ang rten cing 'brel par 'byung ba'i,ang /_rten cing 'brel bar 'byung ba 'ji,6434,6469,1038108,1038147
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,26.4,mtshan nyid do/ /'jig rten las 'das pa',mtshan nyid ni 'jig rten las 'das pa',6379,6418,260537,260574
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,26.4,ags 'phags pa'i lam yan lag brgyad,ag gis 'phags pa'i lam yan lag brgyad,10176,10210,1252969,1253006
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,26.4,ng rten cing 'brel par 'byung ba'i la,ng rten cing 'brel par 'byung ba la,6435,6472,1024258,1024293
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,26.4,ags 'phags pa'i lam yan lag brgyad,a bgos/_'phags pa'i lam yan lag brgyad,10176,10210,20402,20440
+poc/rDo rje tshig rkang.txt,corpus/070_mdo_sde_la.txt,26.4,ams cad rten cing 'brel bar 'byung ba,ams las rten cing 'brel bar 'byung ba,1554,1591,408154,408191
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,26.4,spyi dang rang gi mtshan nyid la tho,"spyi dang rang gi mtshan 
+[\[228b.3\]]nyid la/_/'pho",8299,8335,850113,850165
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.4,ags 'phags pa'i lam yan lag brgyad,"a gnas/_'phags pa'i lam yan 
+[\[67a.3\]]lag brgyad",10176,10210,271476,271526
+poc/rDo rje tshig rkang.txt,corpus/071_mdo_sde_sha.txt,26.4,rten cing 'brel par 'byung ba'i lam,rten cing 'brel par 'byung ba'i gtam,6438,6473,1021222,1021258
+poc/rDo rje tshig rkang.txt,corpus/071_mdo_sde_sha.txt,26.4,rten cing 'brel par 'byung ba'i lam,rten cing 'brel par 'byung ba'i gtam,6438,6473,1027827,1027863
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,26.4,a' rten cing 'brel par 'byung ba/ gzh,"a'o/_/rten 
+[\[226b.2\]]cing 'brel par 'byung ba zh",1464,1501,864853,864904
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,26.4,i rdzu 'phrul gyi rkang pa bzhi ni/ las,i rdzu 'phrul gyi rkang pa bzhi las,2466,2505,111054,111089
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,26.399999999999995,ags 'phags pa'i lam yan lag brgyad ni/ rnam,"ang /_'phags pa'i lam yan lag 
+[\[407a.2\]]brgyad pa dang /_rnam",10176,10219,1582042,1582106
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,26.399999999999995,ags 'phags pa'i lam yan lag brgyad ni/ rnam,ang /_'phags pa'i lam yan lag brgyad pa dang /_rnam,10176,10219,776858,776909
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.399999999999995,ags 'phags pa'i lam yan lag brgyad ni/ rnam,ang /_'phags pa'i lam yan lag brgyad pa dang /_rnam,10176,10219,242600,242651
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,26.399999999999995,ags 'phags pa'i lam yan lag brgyad ni/ rnam,ang /_'phags pa'i lam yan lag brgyad pa dang /_rnam,10176,10219,875908,875959
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,26.399999999999995,ags 'phags pa'i lam yan lag brgyad ni/ rnam,"ang /_
+[\[162a.3\]]'phags pa'i lam yan lag brgyad pa dang /_rnam",10176,10219,626385,626449
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,26.399999999999995,a' rten cing 'brel par 'byung ba/ gzhan dbang,a rten cing 'brel par 'byung ba'i rgyan dang,1464,1509,265091,265135
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,26.39999999999999,ba'i dran pa nye bar gzhag pa bzhi ni/ yul 'gags pas rang,ba ni dran pa nye bar gzhag pa bzhi dang /_yang dag par spong,5257,5314,745613,745674
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,26.39999999999999,o/ /rten cing 'brel bar 'byung ba lnga yis lam yongs su rdzogs,o/_/rten cing 'brel bar 'byung ba'i snying po rdzogs,1664,1726,383515,383567
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,1107121,1107168
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,670123,670170
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,220928,220975
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,338010,338057
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,717459,717506
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,439609,439656
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,450666,450713
+poc/rDo rje tshig rkang.txt,corpus/067_mdo_sde_'a.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,102284,102331
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,374370,374417
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,164171,164218
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,435514,435561
+poc/rDo rje tshig rkang.txt,corpus/039_dkon_brtsegs_ka.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,263104,263151
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,610369,610416
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,171733,171780
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,708264,708311
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,439712,439759
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,1228169,1228216
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,1146543,1146590
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,26.39999999999999,ba'i dran pa nye bar gzhag pa bzhi ni/ yul 'gags pas rang,ba ni dran pa nye bar gzhag pa bzhi dang /_yang dag par spong,5257,5314,710195,710256
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,718093,718140
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,227917,227964
+poc/rDo rje tshig rkang.txt,corpus/067_mdo_sde_'a.txt,26.39999999999999,byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,byang chub kyi phyogs kyi chos sum cu rtsa bdun,2367,2426,637696,637743
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,26.399999999999988,rten cing 'brel bar 'byung ba lnga yis lam yongs su rdzogs pa,"rten cing 'brel bar 
+[\[278a.2\]]'byung ba la mkhas pa'i rnam pas yongs su dag pa",1668,1729,1072396,1072477
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,26.200000000000003,as/ byang chub kyi phyogs dang mthun pa'i chos,ar byang ba'i phyogs dang mthun pa'i chos,2363,2409,626080,626121
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,26.200000000000003,as/ byang chub kyi phyogs dang mthun pa'i chos,ar byang ba'i phyogs dang mthun pa'i chos,2363,2409,544394,544435
+poc/rDo rje tshig rkang.txt,corpus/091_rgyud_'bum_ba.txt,26.2,ag byin gyis brlabs nas/ byang chub,ar byin gyis brlabs nas/_byang chub,2342,2377,629424,629459
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,26.2,shes rab kyi pha rol tu phyin ma la s,"shes rab kyi pha rol tu phyin pa la 
+[\[196b\]]
+[\[196b.1\]]s",4233,4270,766138,766199
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as/_'phags pa'i lam yan lag brgyad,10176,10210,35974,36008
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,26.2,ag byin gyis brlabs nas/ byang chub,ar byin gyis brlabs nas byang chub,2342,2377,1028123,1028157
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,26.2,gs 'phags pa'i lam yan lag brgyad,gis 'phags pa'i lam yan lag brgyad,10177,10210,272710,272744
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,229896,229933
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.2,'i rdzu 'phrul gyi rkang pa bzhi ni,'o/_/rdzu 'phrul gyi rkang pa bzhi ni,2465,2500,265163,265200
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,649423,649460
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,871354,871391
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,1110748,1110785
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,1296435,1296472
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.2,a'i dran pa nye bar gzhag pa bzhi ni,a'o/_/dran pa nye bar gzhag pa bzhi ni,5258,5294,834768,834806
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as/_'phags pa'i lam yan lag brgyad,10176,10210,85416,85450
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,26.2,ng rten cing 'brel par 'byung ba'i,ng /_rten cing 'brel bar 'byung ba'i,6435,6469,93329,93365
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,788949,788986
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,651310,651343
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,458342,458375
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,26.2,a'i dran pa nye bar gzhag pa bzhi ni,a'o/_/dran pa nye bar gzhag pa bzhi ni,5258,5294,839657,839695
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa las,4233,4270,526179,526215
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,1097164,1097197
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,955424,955457
+poc/rDo rje tshig rkang.txt,corpus/061_mdo_sde_tsa.txt,26.2,kyi sku shin tu rnam par dag pa rang,kyi sku shin tu rnam par dag pa dang,11087,11123,634145,634181
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,26.2,han nyid do/ /'jig rten las 'das pa'i,"hin nyid do/_/'jig rten las 'das 
+[\[119b.3\]]pa'i",6382,6419,453137,453187
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,26.2,sher ba'i dran pa nye bar gzhag pa bzhi ni/ y,shA ri'i bu dran pa nye bar gzhag pa bzhi ni/_by,5252,5297,936384,936432
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,26.2,gs 'phags pa'i lam yan lag brgyad,gus 'phags pa'i lam yan lag brgyad,10177,10210,1085146,1085180
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,26.2,ag byin gyis brlabs nas/ byang chub,ar byin gyis brlabs nas/_byang chub,2342,2377,809858,809893
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,26.2,rten cing 'brel par 'byung ba'i la,rten cing 'brel par 'byung ba'i ya,6438,6472,415328,415362
+poc/rDo rje tshig rkang.txt,corpus/007_'dul_ba_ja.txt,26.2,rten cing 'brel par 'byung ba'i la,"rten cing 'brel par 'byung ba'i 
+[\[115a.2\]]ya",6438,6472,442768,442815
+poc/rDo rje tshig rkang.txt,corpus/007_'dul_ba_ja.txt,26.2,rten cing 'brel par 'byung ba'i la,rten cing 'brel par 'byung ba'i ya,6438,6472,244333,244367
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,26.2,las 'das pa'i lam la/ phyi nang rten cing 'brel par 'byung ba,ldan 'das kyis lha rnams la yang rten cing 'brel bar 'byung ba,6406,6467,566324,566386
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.2,o shes rab kyi pha rol tu phyin ma la,o/_/shes rab kyi pha rol tu phyin ma pa,4231,4268,877480,877519
+poc/rDo rje tshig rkang.txt,corpus/081_rgyud_'bum_ca.txt,26.2,hi bdag byin gyis brlab pa'i rim pa,he bdag byin gyis brlab pa'i rim pa,7892,7927,1089982,1090017
+poc/rDo rje tshig rkang.txt,corpus/081_rgyud_'bum_ca.txt,26.2,ag byin gyis brlabs nas/ byang chub,ar byin gyis brlabs nas byang chub,2342,2377,573115,573149
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.2,as pa'i lam la/ phyi nang rten cing 'brel par 'byung ba,ags pa'i bden pa bzhi dang /_rten cing 'brel bar 'byung ba,6412,6467,811726,811784
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,149903,149940
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,668781,668818
+poc/rDo rje tshig rkang.txt,corpus/008_'dul_ba_nya.txt,26.2,rten cing 'brel par 'byung ba'i la,rten cing 'brel par 'byung ba'i ya,6438,6472,416977,417011
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,26.2,rdzu 'phrul gyi rkang pa bzhi ni/ la,rdzu 'phrul gyi rkang pa bzhi ni ga,2468,2504,341777,341812
+poc/rDo rje tshig rkang.txt,corpus/070_mdo_sde_la.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,548578,548611
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,995605,995642
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,724717,724750
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.2,rdzu 'phrul gyi rkang pa bzhi ni/ la,rdzu 'phrul gyi rkang pa bzhi ni ra,2468,2504,505016,505051
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,26.2,gs 'phags pa'i lam yan lag brgyad,gos/_'phags pa'i lam yan lag brgyad,10177,10210,20405,20440
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,26.2,ba'i yang dag par spong ba bzhi ni/ s,ba'o/_/yang dag par spong ba bzhi ni s,5584,5621,1869185,1869223
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,26.2,han nyid do/ /'jig rten las 'das pa'i,hin nyid do/_/'jig rten las 'das pa'i,6382,6419,1049363,1049400
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,26.2,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la s,4233,4270,257915,257952
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,26.2,ags 'phags pa'i lam yan lag brgyad,as 'phags pa'i lam yan lag brgyad,10176,10210,476697,476730
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,26.2,ags 'phags pa'i lam yan lag brgyad,ag 'phags pa'i lam yan lag brgyad,10176,10210,568420,568453
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,26.199999999999996,byang chub kyi yan lag bdun ni/ rtsa rin po che,byang chub kyi yan lag bdun gyi rin po che,6635,6682,369216,369258
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,26.199999999999996,byang chub kyi yan lag bdun ni/ rtsa rin po che,byang chub kyi yan lag bdun gyi rin po che,6635,6682,21649,21691
+poc/rDo rje tshig rkang.txt,corpus/064_mdo_sde_wa.txt,26.199999999999996,de bzhin gshegs pa'i sku lnga/ byang chub,de bzhin gshegs pa'i sku la gsol to/_/byang chub,4848,4889,772575,772623
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,26.199999999999996,byang chub kyi yan lag bdun ni/ rtsa rin po che,byang chub kyi yan lag bdun gyi rin po che,6635,6682,826646,826688
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,26.199999999999996,d pa/ 'khor ba'i chos las 'das shing / mya ngan las 'das pa'i lam,dpa' 'khor ba'i lam yang mi spong la/_mya ngan las 'das pa'i lam,6125,6190,475274,475338
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,26.199999999999996,de bzhin gshegs pa'i sku lnga/ byang chub,de bzhin gshegs pa'i sku la gsol to/_/byang chub,4848,4889,1182841,1182889
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,26.199999999999996,rten cing 'brel par 'byung ba/ gzhan dbang rt,rten cing 'brel bar 'byung ba'i sman dang /_rt,1467,1512,524742,524788
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,26.19999999999999,s nas/ byang chub kyi phyogs dang mthun pa'i chos s,s pas byang chub kyi phyogs sum bcu rtsa bdun dang mthun pa'i chos bs,2360,2411,468749,468818
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.0,'i grong khyer chos kyi dbyings,'i grong khyer chos kyi dbyings,10708,10739,45753,45784
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,571416,571461
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,26.0,byin gyis brlabs nas/ byang chub,byin gyis brlabs nas byang chub,2345,2377,1092855,1092886
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,238981,239026
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,26.0,s 'phags pa'i lam yan lag brgyad,s/_'phags pa'i lam yan lag brgyad,10178,10210,449044,449077
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,26.0,bdag byin gyis brlab pa'i rim pa,bdag byin gyis brlab pa'i rim pa,7895,7927,101856,101888
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,26.0,byang chub sems kyi dkyil 'khor,byang chub sems kyi dkyil 'khor,9068,9099,1110864,1110895
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,226969,227000
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,77717,77748
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,26.0,i rtags 'phags pa'i lam yan lag brgyad,i rtogs pa'i 'phags pa'i lam yan lag brgyad,10172,10210,893465,893508
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,930333,930364
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,928785,928816
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,26.0,chen mo shes rab kyi pha rol tu phyin ma la,chen po ni/_shes rab kyi pha rol tu phyin pa za,4225,4268,727685,727732
+poc/rDo rje tshig rkang.txt,corpus/071_mdo_sde_sha.txt,26.0,rten cing 'brel par 'byung ba'i,"rten cing 
+[\[95b\]]
+[\[95b.1\]]'brel par 'byung ba'i",6438,6469,364213,364266
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,78310,78342
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,135118,135149
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,182966,182998
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,887198,887229
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.0,s 'phags pa'i lam yan lag brgyad,s 'phags pa'i lam yan lag brgyad,10178,10210,470542,470574
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,672153,672184
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,674551,674583
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,1137380,1137412
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,380326,380357
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,26.0,a'i dran pa nye bar gzhag pa bzhi,a'i dran pa nye bar gzhag pa bzhi,5258,5291,915975,916008
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,26.0,a/ shes rab dang ye shes kyi dbang,"a/_
+[\[174b.6\]]shes rab dang ye shes kyi dbang",8903,8937,627390,627437
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,1179448,1179493
+poc/rDo rje tshig rkang.txt,corpus/081_rgyud_'bum_ca.txt,26.0,byang chub sems kyi dkyil 'khor,byang chub sems kyi dkyil 'khor,9068,9099,584315,584346
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,26.0,s 'phags pa'i lam yan lag brgyad,s 'phags pa'i lam yan lag brgyad,10178,10210,55958,55990
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,1087410,1087442
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,821456,821501
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,848441,848486
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,878228,878259
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,26.0,ng rten cing 'brel par 'byung ba,ng rten cing 'brel par 'byung ba,6435,6467,201920,201952
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,26.0,rten cing 'brel par 'byung ba'i,"rten cing 'brel 
+[\[50b.7\]]par 'byung ba'i",6438,6469,192951,192994
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,265093,265124
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,869695,869726
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,26.0,rten cing 'brel par 'byung ba'i,rten cing 'brel par 'byung ba'i,6438,6469,825624,825655
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,26.0,o/ /rten cing 'brel bar 'byung ba l,o/_/rten cing 'brel bar 'byung ba l,1664,1699,529480,529515
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,26.0,rten cing 'brel par 'byung ba'i,"rten 
+[\[396b.6\]]cing 'brel par 'byung ba'i",6438,6469,1592906,1592950
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,770398,770443
+poc/rDo rje tshig rkang.txt,corpus/013_'dul_ba_pa.txt,26.0,hams cad rten cing 'brel bar 'byung ba l,has pa dang /_rten cing 'brel bar 'byung ba l,1553,1593,1092450,1092495
+poc/rDo rje tshig rkang.txt,corpus/022_'bum_ta.txt,26.0,s 'phags pa'i lam yan lag brgyad,s/_'phags pa'i lam yan lag brgyad,10178,10210,1380757,1380790
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,26.0,po/ /rten cing 'brel bar 'byung ba,po rten cing 'brel bar 'byung ba,1663,1697,864619,864651
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,26.0,as pa'i lam la/ phyi nang rten cing 'brel par 'byung ba,ags pa'i phyir rten cing 'brel par 'byung ba,6412,6467,94093,94137
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.999999999999996,o/ /rten cing 'brel bar 'byung ba lnga yi,o/_/rten cing 'brel bar 'byung ba stong pa nyi,1664,1705,337296,337342
+poc/rDo rje tshig rkang.txt,corpus/097_rnying_rgyud_ka.txt,25.999999999999993,rten cing 'brel bar 'byung ba lnga yis lam yongs su r,"rten cing 'brel bar 
+[\[209b.5\]]'byung ba bshad pa dang /_yongs su gr",1668,1721,738571,738641
+poc/rDo rje tshig rkang.txt,corpus/081_rgyud_'bum_ca.txt,25.99999999999999,zhugs nas skal ldan byang chub sems dpa' la gsang ba sgrogs pa m,zhugs nas/_/dpal ldan byang chub sems 'di gsungs/_/dngos po m,9473,9537,636690,636751
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.99999999999999,g rnam par shes pa la thim na mar me 'bar ba/ rnam par shes pa,gi rnam par shes pa ma bcings ma grol ba/_rna ba'i rnam par shes pa,3206,3268,235118,235185
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,25.99999999999999,mo shes rab kyi pha rol tu phyin ma la sogs kyi pho brang du,ma shes rab kyi pha rol tu phyin ma bri bar bya ste/_skyil mo krung du,4230,4290,596785,596855
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.999999999999964,lam/ chos thams cad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma'o/ /kun gzhi rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,"la mkhas par bya/_/rten cing 'brel bar 'byung ba'i yan lag bcu gnyis la mkhas par bya'o/_/phung po 
+[\[182a.4\]]lnga dang /_skye mched bcu gnyis dang /_khams [{]bcwa [,]bco [}]brgyad dang /_rten cing 'brel par 'byung ba",1542,1697,712304,712523
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.8,i rtags 'phags pa'i lam yan lag brgyad,i lta ste/_'phags pa'i lam yan lag brgyad,10172,10210,125857,125898
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,25.8,i rtags 'phags pa'i lam yan lag brgyad,"i lta ste/_'phags pa'i lam 
+[\[161a.6\]]yan lag brgyad",10172,10210,620166,620220
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,25.8,ar spos na sngon gyi gnas rjes su dran/ na,ar shes nas sngon gyi gnas rjes su dran pa,9696,9738,356137,356179
+poc/rDo rje tshig rkang.txt,corpus/091_rgyud_'bum_ba.txt,25.8,ar spos na sngon gyi gnas rjes su dran/ na,ar shes nas sngon gyi gnas rjes su dran pa,9696,9738,557694,557736
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,25.8,chen mo shes rab kyi pha rol tu phyin ma,"chen po'i 
+[\[135b.3\]]shes rab kyi pha rol tu phyin pa",4225,4265,557609,557664
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.8,yid kyi rtags 'phags pa'i lam yan lag brgyad,yad kyis skrag cing 'phags pa'i lam yan lag brgyad,10166,10210,566905,566955
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,25.8,i rtags 'phags pa'i lam yan lag brgyad,i lta ste/_'phags pa'i lam yan lag brgyad,10172,10210,207849,207890
+poc/rDo rje tshig rkang.txt,corpus/001_'dul_ba_ka.txt,25.8,i rtags 'phags pa'i lam yan lag brgyad,i lta ste/_'phags pa'i lam yan lag brgyad,10172,10210,426592,426633
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,25.799999999999997,i rdzu 'phrul gyi rkang pa bzhi ni/ las ky,i rdzu 'phrul gyi rkang pa bzhi la bsny,2466,2508,985634,985673
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,25.799999999999997,ang rten cing 'brel par 'byung ba'i lam,ang rten cing 'brel bar 'byung ba ni/_rnam,6434,6473,1155586,1155628
+poc/rDo rje tshig rkang.txt,corpus/092_rgyud_'bum_ma.txt,25.799999999999997,dag byin gyis brlabs nas/ byang chub,dag byin gyis brlabs so/_/de nas byang chub,2341,2377,1156859,1156902
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,25.799999999999997,ba'i rdzu 'phrul gyi rkang pa bzhi ni/ la,bya'o/_/rdzu 'phrul gyi rkang pa bzhi la,2463,2504,1525481,1525521
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.799999999999997,s thams cad rten cing 'brel bar 'byung ba,s thams cad rten cing 'brel te byung ba,1550,1591,540738,540777
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.799999999999994,a lnga de bzhin gshegs pa'i sku lnga/ byang chub chen po'i rt,an pas de bzhin gshegs pa thams cad kyi byang chub chen po'i t,4841,4902,454735,454797
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,25.79999999999999,rten cing 'brel bar 'byung ba lnga yis lam yongs su rdzogs pa,rten cing 'brel par 'byung ba dang 'thun pas yongs su dag pa,1668,1729,1075105,1075165
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,25.6,s las 'das shing / mya ngan las 'das pa'i,s pas klas shing mya ngan las 'das pa'i,6145,6186,378466,378505
+poc/rDo rje tshig rkang.txt,corpus/004_'dul_ba_nga.txt,25.6,lam/ chos thams cad rten cing 'brel bar 'byung ba l,"la 
+[\[242a\]]
+[\[242a.1\]]mkhas par byas/_rten cing 'brel bar 'byung ba l",1542,1593,950404,950478
+poc/rDo rje tshig rkang.txt,corpus/097_rnying_rgyud_ka.txt,25.6,chos kyi dbyings/ /byang chub sems kyis,chos dbyings byang chub sems kyis,10723,10762,189103,189136
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,25.6,ams cad rten cing 'brel bar 'byung ba l,a mkhas/_rten cing 'brel bar 'byung ba l,1554,1593,471900,471940
+poc/rDo rje tshig rkang.txt,corpus/014_'bum_ka.txt,25.6,hams cad rten cing 'brel bar 'byung ba,has pa/_rten cing 'brel bar 'byung ba,1553,1591,3948,3985
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,25.6,nang rten cing 'brel par 'byung ba',nams ni rten cing 'brel par 'byung ba ',6433,6468,772877,772916
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,25.6,rnam shes dag pa'i byang chub chen po/ /rten cing 'brel bar 'byung ba,rnams zhes bya ba'i bar dang /_rten cing 'brel bar 'byung ba,1628,1697,657397,657457
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,25.6,hams cad rten cing 'brel bar 'byung ba,hags pa rten cing 'brel bar 'byung ba,1553,1591,382726,382763
+poc/rDo rje tshig rkang.txt,corpus/002_'dul_ba_kha.txt,25.6,yi nang rten cing 'brel par 'byung ba,yin pa de rten cing 'brel par 'byung ba,6430,6467,184785,184824
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.599999999999998,o shes rab kyi pha rol tu phyin ma la s,"o/_/shes rab kyi pha rol 
+[\[287a.4\]]tu phyin pa'i las",4231,4270,1107418,1107473
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.599999999999998,o/ /rten cing 'brel bar 'byung ba lnga yi,o/_/rten cing 'brel bar 'byung ba nyi,1664,1705,429593,429630
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,25.599999999999998,ang rten cing 'brel par 'byung ba'i la,ang rten cing 'brel bar 'byung ba la,6434,6472,406699,406735
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,25.599999999999998,a'i rdzu 'phrul gyi rkang pa bzhi ni/ la,a ni rdzu 'phrul gyi rkang pa bzhi la,2464,2504,835434,835471
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,25.599999999999998,ang rten cing 'brel par 'byung ba'i la,ang /_rten cing 'brel bar 'byung ba la,6434,6472,450183,450221
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.599999999999998,a'i rdzu 'phrul gyi rkang pa bzhi ni/ la,a' rdzu 'phrul gyi rkang pa bzhi la,2464,2504,1111021,1111056
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,25.599999999999998,ang rten cing 'brel par 'byung ba'i la,a ni rten cing 'brel par 'byung ba la,6434,6472,455814,455851
+poc/rDo rje tshig rkang.txt,corpus/044_dkon_brtsegs_cha.txt,25.599999999999998,a'i rdzu 'phrul gyi rkang pa bzhi ni/ la,a' rdzu 'phrul gyi rkang pa bzhi la,2464,2504,895516,895551
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.599999999999998,rdzu 'phrul gyi rkang pa bzhi ni/ las ky,rdzu 'phrul gyi rkang pa bzhi la spy,2468,2508,881709,881745
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,25.599999999999998,an nyid do/ /'jig rten las 'das pa'i lam,a nyid do/_/'jig rten las 'das pa'i gtam,6383,6423,11163,11203
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.599999999999998,ting nge 'dzin mi 'dra ba brgya la snyoms par 'jug,ting nge 'dzin brgya la snyoms par 'jug,6870,6920,409008,409047
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.599999999999998,rten cing 'brel par 'byung ba'i lam g,rten cing 'brel par 'byung ba 'di yang,6438,6475,904993,905031
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.599999999999998,ting nge 'dzin mi 'dra ba brgya la snyoms par 'jug,"ting nge 'dzin 
+[\[234b.5\]]brgya la snyoms par 'jug",6870,6920,927692,927744
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,25.599999999999998,'i dran pa nye bar gzhag pa bzhi ni/ y,'i bu/_dran pa nye bar gzhag pa bzhi ni by,5259,5297,1137156,1137198
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,25.599999999999998,'i dran pa nye bar gzhag pa bzhi ni/ y,'i bu/_dran pa nye bar gzhag pa bzhi ni/_by,5259,5297,1403268,1403311
+poc/rDo rje tshig rkang.txt,corpus/097_rnying_rgyud_ka.txt,25.599999999999998,yi nang rten cing 'brel par 'byung ba,"yi dbang rten cing 'brel bar 
+[\[209b.5\]]'byung ba",6430,6467,738562,738613
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,25.599999999999994,'phags pa'i lam yan lag brgyad ni/ rnam shes brgya,"'phags 
+[\[192a.3\]]pa'i lam yan lag brgyad pa zhes bya",10180,10230,760310,760365
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,25.599999999999994,shes rab kyi pha rol tu phyin ma la sogs kyi ph,shes rab kyi pha rol tu phyin pa dang /_thabs kyi ph,4233,4280,68851,68903
+poc/rDo rje tshig rkang.txt,corpus/009_'dul_ba_ta.txt,25.599999999999994,'phags pa'i lam yan lag brgyad ni/ rnam shes brgy,"'phags pa'i lam yan lag brgyad ston pa/_mthar 
+[\[57b.7\]]gy",10180,10229,215182,215242
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,25.599999999999994,shes rab kyi pha rol tu phyin ma la sogs kyi ph,shes rab kyi pha rol tu phyin pa sangs rgyas kyi zh,4233,4280,1039427,1039478
+poc/rDo rje tshig rkang.txt,corpus/035_phal_chen_ka.txt,25.400000000000002,ogs pa med/ de nyid slar spos na sngon gyi gnas rjes su dran,ongs pa med pa'i dran pas sngon gyi gnas rjes su dran,9674,9734,1281404,1281457
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,25.4,o/ /rten cing 'brel bar 'byung ba lng,o/_/rten cing 'brel bar 'byung ba dang,1664,1701,892577,892615
+poc/rDo rje tshig rkang.txt,corpus/035_phal_chen_ka.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,1259881,1259917
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,25.4,ang rten cing 'brel par 'byung ba',ad ni rten cing 'brel par 'byung ba',6434,6468,685308,685344
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,839875,839911
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,25.4,shes rab kyi pha rol tu phyin ma la s,shes rab kyi pha rol tu phyin pa la bs,4233,4270,684499,684537
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,679319,679355
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin pa la,4230,4268,559148,559186
+poc/rDo rje tshig rkang.txt,corpus/054_mdo_sde_tha.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,577035,577071
+poc/rDo rje tshig rkang.txt,corpus/054_mdo_sde_tha.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,239397,239433
+poc/rDo rje tshig rkang.txt,corpus/076_mdo_sde_AMH.txt,25.4,chen po/ /rten cing 'brel bar 'byung ba lng,chen po dang /_rten cing 'brel par 'byung ba dang,1658,1701,905628,905677
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.4,en po/ /rten cing 'brel bar 'byung ba,en por rten cing 'brel par 'byung ba,1660,1697,681398,681434
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,287714,287750
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,121769,121805
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,25.4,o/ /rten cing 'brel bar 'byung ba lnga,o/_/rten cing 'brel bar 'byung ba mnya,1664,1702,830348,830386
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.4,o/ /rten cing 'brel bar 'byung ba lng,"o/_/rten cing 'brel bar 'byung 
+[\[281a.4\]]ba dang",1664,1701,1114738,1114789
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,"ang /_'phags pa'i lam yan 
+[\[157b.6\]]lag brgyad",10176,10210,622992,623041
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.4,nang rten cing 'brel par 'byung ba,n dang /_rten cing 'brel bar 'byung ba,6433,6467,736898,736936
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.4,a/ 'khor ba'i chos las 'das shing / mya ngan las 'das pa'i,a 'khor ba'i mi bsngags pa dang /_mya ngan las 'das pa'i,6128,6186,476847,476903
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,745795,745831
+poc/rDo rje tshig rkang.txt,corpus/015_'bum_kha.txt,25.4,'i dran pa nye bar gzhag pa bzhi ni,'i bu/_dran pa nye bar gzhag pa bzhi ni,5259,5294,182467,182506
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin pa la,4230,4268,367682,367720
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.4,n po/ /rten cing 'brel bar 'byung ba ln,n to/_/rten cing 'brel bar 'byung ba n,1661,1700,504546,504584
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,mo shes rab kyi pha rol tu phyin pa da,4230,4268,659917,659955
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,25.4,ba'i rdzu 'phrul gyi rkang pa bzhi,"bya'o/_/
+[\[235b.6\]]rdzu 'phrul gyi rkang pa bzhi",2463,2497,917368,917418
+poc/rDo rje tshig rkang.txt,corpus/095_rgyud_'bum_dza.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,1092529,1092565
+poc/rDo rje tshig rkang.txt,corpus/095_rgyud_'bum_dza.txt,25.4,g rten cing 'brel par 'byung ba'i la,g_/rten cing 'brel par 'byung ba la,6436,6472,1152014,1152049
+poc/rDo rje tshig rkang.txt,corpus/093_rgyud_'bum_tsa.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,135768,135804
+poc/rDo rje tshig rkang.txt,corpus/093_rgyud_'bum_tsa.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,"ma 
+[\[240b.3\]]shes rab kyi pha rol tu phyin ma da",4230,4268,933105,933156
+poc/rDo rje tshig rkang.txt,corpus/063_mdo_sde_dza.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,782954,782990
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,m shes rab kyi pha rol tu phyin pa la,4230,4268,795897,795934
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,25.4,ang rten cing 'brel par 'byung ba',"ad ni rten cing 'brel par 
+[\[62a.5\]]'byung ba'",6434,6468,240155,240203
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,25.4,ags 'phags pa'i lam yan lag brgyad,"ang /_'phags pa'i 
+[\[159b.7\]]lam yan lag brgyad",10176,10210,628599,628648
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,25.4,rten cing 'brel par 'byung ba/ gzhan,rten cing 'brel par 'byung ba gan,1467,1503,474931,474964
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,60791,60827
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,m shes rab kyi pha rol tu phyin pa la,4230,4268,1022458,1022495
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin pa la,4230,4268,1028370,1028408
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,25.4,o/ /rten cing 'brel bar 'byung ba lnga,o/_/rten cing 'brel bar 'byung ba rna,1664,1702,131592,131629
+poc/rDo rje tshig rkang.txt,corpus/048_mdo_sde_nga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,633040,633076
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,595242,595278
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,761202,761238
+poc/rDo rje tshig rkang.txt,corpus/007_'dul_ba_ja.txt,25.4,r ba'i dran pa nye bar gzhag pa bzhi,r bya'o/_/dran pa nye bar gzhag pa bzhi,5255,5291,215971,216010
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,"ang /_
+[\[226b.6\]]'phags pa'i lam yan lag brgyad",10176,10210,890295,890344
+poc/rDo rje tshig rkang.txt,corpus/103_dkar_chag.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,155804,155840
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin pa la,4230,4268,801695,801733
+poc/rDo rje tshig rkang.txt,corpus/096_rgyud_'bum_wa.txt,25.4,gs 'phags pa'i lam yan lag brgyad,gs pa/_'phags pa'i lam yan lag brgyad,10177,10210,853406,853443
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,195183,195219
+poc/rDo rje tshig rkang.txt,corpus/090_rgyud_'bum_pha.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,290795,290831
+poc/rDo rje tshig rkang.txt,corpus/048_mdo_sde_nga.txt,25.4,hen po/ /rten cing 'brel bar 'byung ba,he na/_rten cing 'brel bar 'byung ba,1659,1697,1105774,1105810
+poc/rDo rje tshig rkang.txt,corpus/010_'dul_ba_tha.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,956990,957026
+poc/rDo rje tshig rkang.txt,corpus/009_'dul_ba_ta.txt,25.4,r ba'i dran pa nye bar gzhag pa bzhi,r bya'o/_/dran pa nye bar gzhag pa bzhi,5255,5291,151493,151532
+poc/rDo rje tshig rkang.txt,corpus/021_'bum_nya.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,ma shes rab kyi pha rol tu phyin pa la,4230,4268,970348,970386
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,25.4,a'i rdzu 'phrul gyi rkang pa bzhi ni,a'o/_/rdzu 'phrul gyi rkang pa bzhi'i,2464,2500,547803,547840
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,25.4,rten cing 'brel par 'byung ba'i lam,rten cing 'brel par 'byung ba la m,6438,6473,1081663,1081697
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,479737,479773
+poc/rDo rje tshig rkang.txt,corpus/057_mdo_sde_pa.txt,25.4,o shes rab kyi pha rol tu phyin ma la,o/_/shes rab kyi pha rol tu phyin pas la,4231,4268,1162830,1162870
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang 'phags pa'i lam yan lag brgyad,10176,10210,269871,269905
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,25.4,ags 'phags pa'i lam yan lag brgyad,"ang /_
+[\[157b.7\]]'phags pa'i lam yan lag brgyad",10176,10210,620613,620662
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,25.4,mo shes rab kyi pha rol tu phyin ma la,mo shes rab kyi pha rol tu phyin pa da,4230,4268,656590,656628
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,53384,53420
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,25.4,g rten cing 'brel par 'byung ba'i la,g_/rten cing 'brel par 'byung ba la,6436,6472,112399,112434
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang /_'phags pa'i lam yan lag brgyad,10176,10210,390564,390600
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.4,r ba'i dran pa nye bar gzhag pa bzhi,"r bya'o/_/dran pa nye bar 
+[\[45a.4\]]gzhag pa bzhi",5255,5291,176795,176846
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.4,ags 'phags pa'i lam yan lag brgyad,ang 'phags pa'i lam yan lag brgyad,10176,10210,797241,797275
+poc/rDo rje tshig rkang.txt,corpus/050_mdo_sde_cha.txt,25.4,as 'das shing / mya ngan las 'das pa'i,as klas shing mya ngan las 'das pa'i,6148,6186,362649,362685
+poc/rDo rje tshig rkang.txt,corpus/028_nyi_khri_ga.txt,25.4,rten cing 'brel par 'byung ba/ gzhan,rten cing 'brel par 'byung ba gan,1467,1503,598819,598852
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,25.4,o/ /rten cing 'brel bar 'byung ba lnga,o/_/rten cing 'brel bar 'byung ba rna,1664,1702,1072646,1072683
+poc/rDo rje tshig rkang.txt,corpus/038_phal_chen_a.txt,25.399999999999995,rten cing 'brel par 'byung ba/ gzhan dbang rten,rten cing 'brel bar 'byung ba dang /_rten,1467,1514,1239998,1240039
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,25.399999999999995,r ba'i rdzu 'phrul gyi rkang pa bzhi ni/ las kyi,r ba'i rdzu 'phrul gyi rkang pa rnams kyi,2461,2509,458713,458754
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,25.399999999999995,rten cing 'brel bar 'byung ba lo rgyus kyis t,rten cing 'brel par 'byung ba bcu gnyis kyi bst,1562,1607,711822,711869
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,25.39999999999999,a'i dran pa nye bar gzhag pa bzhi ni/ yul 'gags pas rang,a ni dran pa nye bar gzhag pa bzhi dang /_yang dag par spong,5258,5314,1167227,1167287
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.39999999999999,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel,rten cing 'brel par 'byung ba'i don yin no/_/rten cing 'brel,1467,1520,1203869,1203929
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,25.399999999999988,rnam par dag pa'i lam/ /ngo bo nyid kyi sku shin tu rnam par dag pa rang,rnam par dag pa'o/_/ngo bo nyid stong pa nyid rnam par dag pa gang,11051,11123,1436182,1436248
+poc/rDo rje tshig rkang.txt,corpus/054_mdo_sde_tha.txt,25.399999999999988,rten cing 'brel par 'byung ba/ gzhan dbang rten 'brel bya,rten cing 'brel bar 'byung ba mthong ngo /_/gang gis rten cing 'brel ba,1467,1524,953174,953245
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.399999999999984,a rnam par dag pa'i lam/ /ngo bo nyid kyi sku shin tu rnam par dag pa rang bzhin gy,as rnam par dag pa dang /_yid kyi las rnam par dag pa mthong zhing y,11049,11132,340587,340655
+poc/rDo rje tshig rkang.txt,corpus/034_shes_rab_sna_tshogs.txt,25.399999999999984,g rnam par shes pa la thim na mar me 'bar ba/ rnam par shes pa 'od gsal la,g_/rnam par shes pa la mi spyod/_rnam par mi spyod do/_/rnam par shes pa'i dmigs pa la,3206,3280,276633,276719
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin pa,4230,4265,119754,119789
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin pa,4230,4265,412743,412778
+poc/rDo rje tshig rkang.txt,corpus/026_nyi_khri_ka.txt,25.2,rten cing 'brel bar 'byung ba lo r,rten cing 'brel bar 'byung ba la/_r,1562,1596,528997,529032
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,25.2,ang rten cing 'brel par 'byung ba,a ni rten cing 'brel par 'byung ba,6434,6467,63094,63128
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,657422,657457
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,25.2,a' rten cing 'brel par 'byung ba,a'o/_/rten cing 'brel par 'byung ba,1464,1496,22856,22891
+poc/rDo rje tshig rkang.txt,corpus/067_mdo_sde_'a.txt,25.2,shes rab kyi pha rol tu phyin ma la,shes rab kyi pha rol tu phyin pa la,4233,4268,479480,479515
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.2,gs 'phags pa'i lam yan lag brgyad,g /_'phags pa'i lam yan lag brgyad,10177,10210,474351,474385
+poc/rDo rje tshig rkang.txt,corpus/039_dkon_brtsegs_ka.txt,25.2,n po/ /rten cing 'brel bar 'byung ba,n to/_/rten cing 'brel bar 'byung ba,1661,1697,691460,691496
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.2,ang rten cing 'brel par 'byung ba,"ang /_rten cing 'brel bar 'byung 
+[\[269b.7\]]ba",6434,6467,1041586,1041634
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,360158,360193
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.2,ad rten cing 'brel bar 'byung ba l,a rten cing 'brel bar 'byung ba l,1559,1593,446638,446671
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,277512,277547
+poc/rDo rje tshig rkang.txt,corpus/033_brgyad_stong_pa.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin pa,4230,4265,106330,106365
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin pa,4230,4265,1176402,1176437
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.2,a' rten cing 'brel par 'byung ba/ g,a/_rten cing 'brel par 'byung ba/_g,1464,1499,1131522,1131557
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.2,shes rab kyi pha rol tu phyin ma la,shes rab kyi pha rol tu phyin pa la,4233,4268,1152416,1152451
+poc/rDo rje tshig rkang.txt,corpus/099_rnying_rgyud_ga.txt,25.2,as skal ldan byang chub sems dpa',ar/_/skal ldan byang chub sems dpa',9480,9513,344932,344967
+poc/rDo rje tshig rkang.txt,corpus/010_'dul_ba_tha.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel par byung ba,6434,6467,960368,960402
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,25.2,shes rab kyi pha rol tu phyin ma la,shes rab kyi pha rol tu phyin pa la,4233,4268,370194,370229
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo shes rab kyi pha rol tu phyin pa,4230,4265,491231,491266
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,143758,143793
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo/_/shes rab kyi pha rol tu phyin pa,4230,4265,1118800,1118837
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,25.2,ang rten cing 'brel par 'byung ba,ang rten cing 'brel par byung ba,6434,6467,52203,52235
+poc/rDo rje tshig rkang.txt,corpus/038_phal_chen_a.txt,25.2,ang rten cing 'brel par 'byung ba,ag rten cing 'brel par 'byung ba,6434,6467,1108688,1108720
+poc/rDo rje tshig rkang.txt,corpus/038_phal_chen_a.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,1239992,1240027
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,25.2,a'i rdzu 'phrul gyi rkang pa bzhi,"a'o/_/rdzu 'phrul gyi rkang pa 
+[\[280a.6\]]bzhi",2464,2497,1081909,1081957
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,1084259,1084294
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,283760,283795
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,25.2,gs 'phags pa'i lam yan lag brgyad,go/_/'phags pa'i lam yan lag brgyad,10177,10210,79250,79285
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo//_//shes rab kyi pha rol tu phyin pa,4230,4265,1230736,1230775
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.2,ad rten cing 'brel bar 'byung ba l,a rten cing 'brel bar 'byung ba l,1559,1593,348239,348272
+poc/rDo rje tshig rkang.txt,corpus/042_dkon_brtsegs_nga.txt,25.2,ad rten cing 'brel bar 'byung ba l,a rten cing 'brel bar 'byung ba l,1559,1593,345721,345754
+poc/rDo rje tshig rkang.txt,corpus/055_mdo_sde_da.txt,25.2,am la/ phyi nang rten cing 'brel par 'byung ba,a ma yin/_rten cing 'brel par 'byung ba,6421,6467,743320,743359
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,25.2,rten cing 'brel bar 'byung ba lo r,rten cing 'brel bar 'byung ba'o/_/r,1562,1596,725656,725691
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo//_//shes rab kyi pha rol tu phyin pa,4230,4265,336699,336738
+poc/rDo rje tshig rkang.txt,corpus/017_'bum_nga.txt,25.2,mo shes rab kyi pha rol tu phyin ma,"mo/_/shes 
+[\[260a.7\]]rab kyi pha rol tu phyin pa",4230,4265,1135098,1135148
+poc/rDo rje tshig rkang.txt,corpus/013_'dul_ba_pa.txt,25.2,ang rten cing 'brel par 'byung ba,ang rten cing 'brel bar 'byung ba,6434,6467,615757,615790
+poc/rDo rje tshig rkang.txt,corpus/019_'bum_cha.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo//_//shes rab kyi pha rol tu phyin pa,4230,4265,479565,479604
+poc/rDo rje tshig rkang.txt,corpus/037_phal_chen_ga.txt,25.2,rten cing 'brel bar 'byung ba lng,rten cing 'brel bar 'byung ba mng,1668,1701,13423,13456
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,25.2,rten cing 'brel bar 'byung ba lo r,"rten cing 'brel 
+[\[65a.7\]]bar 'byung ba la r",1562,1596,253148,253194
+poc/rDo rje tshig rkang.txt,corpus/078_rgyud_'bum_kha.txt,25.2,s 'phags pa'i lam yan lag brgyad,so/_/'phags pa'i lam yan lag brgyad,10178,10210,342309,342344
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.2,dran pa nye bar gzhag pa bzhi ni/ y,dran pa nye bar gzhag pa bzhi ni by,5262,5297,1087214,1087249
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.2,mo shes rab kyi pha rol tu phyin ma,mo//_//shes rab kyi pha rol tu phyin pa,4230,4265,329660,329699
+poc/rDo rje tshig rkang.txt,corpus/097_rnying_rgyud_ka.txt,25.2,mo shes rab kyi pha rol tu phyin ma,m shes rab kyi pha rol tu phyin ma,4230,4265,754297,754331
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,25.2,mo shes rab kyi pha rol tu phyin ma,ma shes rab kyi pha rol tu phyin ma,4230,4265,609047,609082
+poc/rDo rje tshig rkang.txt,corpus/100_gzungs_'dus_e.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,90075,90110
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,25.2,mo shes rab kyi pha rol tu phyin ma,ma shes rab kyi pha rol tu phyin ma,4230,4265,63473,63508
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,1088493,1088528
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.2,ang rten cing 'brel par 'byung ba,ang /_rten cing 'brel bar 'byung ba,6434,6467,878684,878719
+poc/rDo rje tshig rkang.txt,corpus/030_khri_brgyad_kha.txt,25.199999999999996,rnyes/ sems can rnams kyi skad du chos ston,rnams sems can rnams la 'di skad du chos ston,8245,8288,611222,611267
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,25.199999999999996,s brlabs nas/ byang chub kyi phyogs dang mthun pa'i chos,s bya ba ni byang chub kyi phyogs dang /_dge ba'i chos,2353,2409,635027,635081
+poc/rDo rje tshig rkang.txt,corpus/066_mdo_sde_za.txt,25.199999999999996,dran pa nye bar gzhag pa bzhi ni/ yul 'gags pa,"dran pa nye bar gzhag pa bzhi nas 
+[\[282a.7\]]'phags pa",5262,5308,1074445,1074501
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.199999999999996,dran pa nye bar gzhag pa bzhi ni/ yul 'gags pa,dran pa nye bar gzhag pa bzhi nas 'phags pa,5262,5308,880274,880317
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.199999999999992,de bzhin gshegs pa'i sku lnga/ byang chub chen po'i rt,de bzhin gshegs pa thams cad kyi byang chub chen po'i mt,4848,4902,754034,754090
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,25.199999999999992,sems can la nyon mongs pa'i snang ba la ma dag pa'i snang ba/ rn,shes rab la nyon mongs pa'i snang ba med par dga' ba dang /_byan,73,137,763210,763274
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.19999999999997,a ni/ byang chub kyi sems kyi rlung lnga bskyod pa'i dngas ma'i dngas ma/ rtsa ba byang chub sems kyi d,ang byang chub kyi sems kyi bsngags pa brjod pa thos nas bla na med pa yang dag par rdzogs pa'i byang chub tu sems skyed,8986,9089,656245,656365
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,25.0,ags/ byang chub kyi yan lag bdun,ags/_byang chub kyi yan lag bdun,6630,6662,917158,917190
+poc/rDo rje tshig rkang.txt,corpus/023_'bum_tha.txt,25.0,ags/ byang chub kyi yan lag bdun,"ags/_
+[\[250a.3\]]byang chub kyi yan lag bdun",6630,6662,961604,961649
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,119022,119053
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,729579,729610
+poc/rDo rje tshig rkang.txt,corpus/041_dkon_brtsegs_ga.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,746012,746043
+poc/rDo rje tshig rkang.txt,corpus/068_mdo_sde_ya.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,537172,537202
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,282670,282700
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,1142328,1142361
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.0,byang chub kyi yan lag bdun ni/ r,byang chub kyi yan lag bdun ni r,6635,6668,1182453,1182485
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,25.0,d rten cing 'brel bar 'byung ba,d/_rten cing 'brel bar 'byung ba,1560,1591,129966,129998
+poc/rDo rje tshig rkang.txt,corpus/058_mdo_sde_pha.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,472294,472324
+poc/rDo rje tshig rkang.txt,corpus/010_'dul_ba_tha.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,1127571,1127601
+poc/rDo rje tshig rkang.txt,corpus/088_rgyud_'bum_na.txt,25.0,shes rab kyi pha rol tu phyin ma,"shes rab kyi pha rol tu phyin 
+[\[137b.3\]]ma",4233,4265,542524,542569
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,32340,32370
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,25.0,an la brten nas dngos po'i mtha' rten cing 'brel par 'byung ba,a la brten nas skye'o/_/gang rten cing 'brel par byung ba,1434,1496,52178,52235
+poc/rDo rje tshig rkang.txt,corpus/056_mdo_sde_na.txt,25.0,rten cing 'brel bar 'byung ba l,"rten cing 'brel bar 
+[\[82a.7\]]'byung ba l",1562,1593,321905,321948
+poc/rDo rje tshig rkang.txt,corpus/044_dkon_brtsegs_cha.txt,25.0,rten cing 'brel bar 'byung ba l,"rten cing 'brel bar 
+[\[158a.4\]]'byung ba l",1562,1593,602621,602665
+poc/rDo rje tshig rkang.txt,corpus/047_mdo_sde_ga.txt,25.0,hing / mya ngan las 'das pa'i lam,hing /_mya ngan las 'das pa'i lam,6157,6190,717704,717737
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.0,dran pa nye bar gzhag pa bzhi ni,dran pa nye bar gzhag pa bzhi ni,5262,5294,262777,262809
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,25.0,dran pa nye bar gzhag pa bzhi ni,dran pa nye bar gzhag pa bzhi ni,5262,5294,385218,385250
+poc/rDo rje tshig rkang.txt,corpus/049_mdo_sde_ca.txt,25.0,g rten cing 'brel par 'byung ba,g rten cing 'brel par 'byung ba,6436,6467,31635,31666
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,25.0,o/ /rten cing 'brel bar 'byung ba,"o/_/rten 
+[\[263b.2\]]cing 'brel bar 'byung ba",1664,1697,1027618,1027664
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,25.0,rten cing 'brel par 'byung ba/ g,rten cing 'brel par 'byung ba g,1467,1499,422562,422593
+poc/rDo rje tshig rkang.txt,corpus/102_dri_med_'od_shrI.txt,25.0,rten cing 'brel par 'byung ba/ g,rten cing 'brel par 'byung ba g,1467,1499,775782,775813
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,5186,5219
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.0,shes rab kyi pha rol tu phyin ma,shes rab kyi pha rol tu phyin ma,4233,4265,561701,561733
+poc/rDo rje tshig rkang.txt,corpus/044_dkon_brtsegs_cha.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,5042,5075
+poc/rDo rje tshig rkang.txt,corpus/093_rgyud_'bum_tsa.txt,25.0,shes rab kyi pha rol tu phyin ma,shes rab kyi pha rol tu phyin ma,4233,4265,939566,939598
+poc/rDo rje tshig rkang.txt,corpus/032_khri_pa_nga.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,424093,424123
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.0,as shing / mya ngan las 'das pa'i,"as shing mya ngan las 'das 
+[\[254a.4\]]pa'i",6153,6186,982654,982698
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.0,rten cing 'brel bar 'byung ba l,"rten cing 'brel 
+[\[275b.4\]]bar 'byung ba l",1562,1593,1063356,1063400
+poc/rDo rje tshig rkang.txt,corpus/027_nyi_khri_kha.txt,25.0,rten cing 'brel par 'byung ba/ g,rten cing 'brel par 'byung ba g,1467,1499,863083,863114
+poc/rDo rje tshig rkang.txt,corpus/101_gzungs_'dus_waM.txt,25.0,o/ /rten cing 'brel bar 'byung ba,"o/_/rten cing 
+[\[24a.7\]]'brel bar 'byung ba",1664,1697,89179,89224
+poc/rDo rje tshig rkang.txt,corpus/046_mdo_sde_kha.txt,25.0,'phags pa'i lam yan lag brgyad,"'phags pa'i lam yan 
+[\[200b\]]
+[\[200b.1\]]lag brgyad",10180,10210,806012,806066
+poc/rDo rje tshig rkang.txt,corpus/045_mdo_sde_ka.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,252982,253015
+poc/rDo rje tshig rkang.txt,corpus/029_khri_brgyad_ka.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,657409,657440
+poc/rDo rje tshig rkang.txt,corpus/095_rgyud_'bum_dza.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,1128543,1128576
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.0,i rdzu 'phrul gyi rkang pa bzhi,i rdzu 'phrul gyi rkang pa bzhi,2466,2497,279757,279788
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.0,rten cing 'brel par 'byung ba',rten cing 'brel par 'byung ba',6438,6468,681405,681435
+poc/rDo rje tshig rkang.txt,corpus/075_mdo_sde_aM.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,436583,436613
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,295680,295710
+poc/rDo rje tshig rkang.txt,corpus/074_mdo_sde_a.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,674392,674422
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.0,byang chub kyi yan lag bdun ni/ r,"byang 
+[\[135b.2\]]chub kyi yan lag bdun ni r",6635,6668,505242,505287
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.0,dran pa nye bar gzhag pa bzhi ni,dran pa nye bar gzhag pa bzhi ni,5262,5294,504821,504853
+poc/rDo rje tshig rkang.txt,corpus/025_'bum_na.txt,25.0,ba'i yang dag par spong ba bzhi,ba'i yang dag par spong ba bzhi,5584,5615,824404,824435
+poc/rDo rje tshig rkang.txt,corpus/062_mdo_sde_tsha.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,131799,131830
+poc/rDo rje tshig rkang.txt,corpus/043_dkon_brtsegs_ca.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,1191205,1191238
+poc/rDo rje tshig rkang.txt,corpus/087_rgyud_'bum_da.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,1016692,1016722
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,58569,58599
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.0,shes rab kyi pha rol tu phyin ma,shes rab kyi pha rol tu phyin ma,4233,4265,198829,198861
+poc/rDo rje tshig rkang.txt,corpus/089_rgyud_'bum_pa.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,728670,728701
+poc/rDo rje tshig rkang.txt,corpus/082_rgyud_'bum_cha.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,654730,654763
+poc/rDo rje tshig rkang.txt,corpus/099_rnying_rgyud_ga.txt,25.0,shes rab dang ye shes kyi dbang,shes rab dang ye shes kyi dbang,8906,8937,472886,472917
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,25.0,yi phyogs dang mthun pa'i chos,yi phyogs dang mthun pa'i chos,2379,2409,773801,773831
+poc/rDo rje tshig rkang.txt,corpus/086_rgyud_'bum_tha.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,268747,268777
+poc/rDo rje tshig rkang.txt,corpus/060_mdo_sde_ma.txt,25.0,dran pa nye bar gzhag pa bzhi ni,dran pa nye bar gzhag pa bzhi ni,5262,5294,1094755,1094787
+poc/rDo rje tshig rkang.txt,corpus/031_khri_brgyad_ga.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,1032642,1032672
+poc/rDo rje tshig rkang.txt,corpus/044_dkon_brtsegs_cha.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,683861,683892
+poc/rDo rje tshig rkang.txt,corpus/065_mdo_sde_zha.txt,25.0,rten cing 'brel bar 'byung ba l,"rten cing 'brel bar 
+[\[63b.5\]]'byung ba l",1668,1699,243793,243836
+poc/rDo rje tshig rkang.txt,corpus/016_'bum_ga.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,803102,803133
+poc/rDo rje tshig rkang.txt,corpus/036_phal_chen_kha.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,533961,533994
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,816652,816682
+poc/rDo rje tshig rkang.txt,corpus/051_mdo_sde_ja.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,872339,872369
+poc/rDo rje tshig rkang.txt,corpus/003_'dul_ba_ga.txt,25.0,rten cing 'brel par 'byung ba',"rten 
+[\[227b.3\]]cing 'brel par 'byung ba '",6438,6468,893373,893417
+poc/rDo rje tshig rkang.txt,corpus/011_'dul_ba_da.txt,25.0,o/ /rten cing 'brel bar 'byung ba,o/_/rten cing 'brel bar 'byung ba,1664,1697,1239720,1239753
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,514735,514765
+poc/rDo rje tshig rkang.txt,corpus/052_mdo_sde_nya.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,784414,784444
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,25.0,i rdzu 'phrul gyi rkang pa bzhi,i rdzu 'phrul gyi rkang pa bzhi,2466,2497,1183997,1184028
+poc/rDo rje tshig rkang.txt,corpus/024_'bum_da.txt,25.0,dran pa nye bar gzhag pa bzhi ni,dran pa nye bar gzhag pa bzhi ni,5262,5294,341624,341656
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,339501,339531
+poc/rDo rje tshig rkang.txt,corpus/040_dkon_brtsegs_kha.txt,25.0,rten cing 'brel bar 'byung ba l,rten cing 'brel bar 'byung ba l,1562,1593,429823,429854
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,25.0,shes rab kyi pha rol tu phyin ma,"shes rab 
+[\[321b.2\]]kyi pha rol tu phyin ma",4233,4265,1215983,1216028
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,1238202,1238232
+poc/rDo rje tshig rkang.txt,corpus/080_rgyud_'bum_nga.txt,25.0,o/ /rten cing 'brel bar 'byung ba,"o/_/rten cing 
+[\[328b.4\]]'brel bar 'byung ba",1664,1697,1243416,1243462
+poc/rDo rje tshig rkang.txt,corpus/079_rgyud_'bum_ga.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,282023,282053
+poc/rDo rje tshig rkang.txt,corpus/053_mdo_sde_ta.txt,25.0,chos rnams kyi nang na mchog go,chos rnams kyi nang na mchog go,6213,6244,146064,146095
+poc/rDo rje tshig rkang.txt,corpus/059_mdo_sde_ba.txt,25.0,'phags pa'i lam yan lag brgyad,'phags pa'i lam yan lag brgyad,10180,10210,1183575,1183605
