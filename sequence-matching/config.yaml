@@ -1,6 +1,6 @@
 algorithm:
   match_score: 1.0
-  mismatch_score: -0.4
+  mismatch_score: -0.8
   open_gap_score: -0.8
   extend_gap_score: -0.8
   min_score: 20.0
@@ -10,7 +10,7 @@ seeding:
   k: 15
   max_gap: 100
   extend: 750
-  max_kmer_hits: 1
+  max_kmer_hits: 3
 
 preprocessing:
   strip_chars: "\\_"
