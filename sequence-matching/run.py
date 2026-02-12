@@ -529,6 +529,7 @@ def main():
                                             "text_a", "text_b",
                                             "start_a", "end_a",
                                             "start_b", "end_b"])
+    df = df.sort_values("score", ascending=False, ignore_index=True)
     df.to_csv(output_path, index=False)
     print(f"\nWrote {len(df)} results to {output_path}")
 
