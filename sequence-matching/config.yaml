@@ -16,14 +16,16 @@ preprocessing:
   strip_chars: "\\_"
 
 input:
-  dir: "test_data/test_data8_rebecca"
+  point_of_comparison: "test_data/test_data14_sonam"
+  corpus: "data/canon"
+  # dir: "test_data/test_data8_rebecca"
   # dir: "test_data/test_data5_rebecca"
   # dir: "test_data/test_data7_sonam"
   # dir: "test_data/test_data13_nicola"
   # dir: "test_data/test_data12_orna"
 
 output:
-  path: "output/test_data8_rebecca.csv"
+  path: "output/sonam_testdata14_vs_canon.csv"
   # path: "output/test_data5_rebecca.csv"
   # path: "output/test_data7_sonam.csv"
   # path: "output/test_data13_nicola.csv"
