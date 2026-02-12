@@ -16,8 +16,8 @@ preprocessing:
   strip_chars: "\\_"
 
 input:
-  point_of_comparison: "test_data/test_data14_sonam"
-  corpus: "data/canon"
+  point_of_comparison: "test_data/test_data15_sonam/point_of_comparison"
+  corpus: "test_data/test_data15_sonam/corpus"
   # dir: "test_data/test_data8_rebecca"
   # dir: "test_data/test_data5_rebecca"
   # dir: "test_data/test_data7_sonam"
@@ -25,7 +25,7 @@ input:
   # dir: "test_data/test_data12_orna"
 
 output:
-  path: "output/sonam_testdata14_vs_canon.csv"
+  path: "output/sonam_testdata15.csv"
   # path: "output/test_data5_rebecca.csv"
   # path: "output/test_data7_sonam.csv"
   # path: "output/test_data13_nicola.csv"

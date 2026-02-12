@@ -1,0 +1,28 @@
+file_a,file_b,score,text_a,text_b,start_a,end_a,start_b,end_b
+poc/D2284.txt,corpus/Gpb024.002.txt,53.200000000000024,o/ /gsang sngags rdo rje'i theg pa ni/ /rgyu dang lam dang 'bras bu'i dbang / /rtogs pas brtags,o// gsang sngags rdo rje'i theg pa nas// rgyu dang lam dang 'bras bu yis// rtogs pas bdag bs,11624,11719,772108,772200
+poc/D2284.txt,corpus/Gpb017.001.txt,38.599999999999994,ad rten cing 'brel bar 'byung ba lo rgyus kyis tshad ma,a' rten cing 'brel bar 'byung ba lo rgyas kyi tshad ma,1559,1614,4548,4602
+poc/D2284.txt,corpus/Gpb024.002.txt,36.4,s pa'i sku gsung thugs mi zad pa rgyan gyi 'khor lo,s par/ sku gsung thugs mi zad pa rgyan gyi 'khor lo,200,251,639706,639757
+poc/D2284.txt,corpus/Gpb024.002.txt,35.39999999999999,khams 'dus pa dang po/ rgyun gyi rlung po lag ca can gyis rtsa dral/ sems,khams ni 'dus pa dang po la// rgyun rlung lag cha can dag gis// rtsa bral lus sems,2582,2655,773061,773143
+poc/D2284.txt,corpus/Gpb024.002.txt,35.2,'i sku gsung thugs mi zad pa rgyan gyi 'khor lo,'i sku gsung thugs mi zad pa rgyan gyi 'khor mo,204,251,18972,19019
+poc/D2284.txt,corpus/Gpb024.002.txt,33.99999999999999,sku gsung thugs mi zad pa rgyan gyi 'khor lo la dag pa'i snang ba,sku gsung thugs// mi zad rgyan gyi 'khor lor snang // snang ba,207,272,12583,12645
+poc/D2284.txt,corpus/Gpb024.002.txt,32.99999999999999,a dang / nyam nga mya ngan 'dre'i rtsa/ mchi ma'i rtsar,a dang // nyam nga mya ngan 'dre yi rtsa// g.yal dang mchi ma'i rtsa r,3874,3929,776561,776631
+poc/D2284.txt,corpus/Gpb024.002.txt,32.0,gsung thugs mi zad pa rgyan gyi 'khor lo,gsung thugs mi zad pa rgyan gyi 'khor lo,211,251,8956,8996
+poc/D2284.txt,corpus/Gpb024.002.txt,31.4,sku gsung thugs mi zad pa rgyan gyi 'khor lo,sku gsung thugs mi zad rgyan gyi 'khor lo,207,251,264736,264777
+poc/D2284.txt,corpus/Gpb024.002.txt,31.0,phyag rgya chen po mchog gi dngos grub,phyag rgya chen po mchog gi dngos grub,9958,9996,562817,562855
+poc/D2284.txt,corpus/Gpb017.001.txt,30.8,rgyud/ phyag rgya chen po 'bras bu'i rgyud,rgyud dang / phyag rgya chen po 'bras bu'i rgyud,704,746,4165,4213
+poc/D2284.txt,corpus/Gpb024.002.txt,29.2,phyag rgya chen po 'bras bu'i rgyud ni,phyag rgya chen po 'bras bu'i rgyud yi,711,749,264782,264820
+poc/D2284.txt,corpus/Gpb017.001.txt,28.599999999999994,chos spyi dang rang gi mtshan nyid la thogs pa,chos spyi dang rang gi mtshan nyid gsal la ma chags pa,8294,8340,21301,21355
+poc/D2284.txt,corpus/Gpb024.002.txt,28.4,ng thugs mi zad pa rgyan gyi 'khor lo la,ni thugs mi zad pa rgyan gyi 'khor lo// lha,214,254,79282,79325
+poc/D2284.txt,corpus/Gpb024.002.txt,28.2,dkyil 'khor 'khor lo thabs kyi lam na,dkyil 'khor 'khor lo thabs kyi lam// la,8815,8852,831767,831806
+poc/D2284.txt,corpus/Gpb024.002.txt,28.0,rten cing 'brel bar 'byung ba lnga,rten cing 'brel bar 'byung ba lnga,1668,1702,774363,774397
+poc/D2284.txt,corpus/Gpb024.002.txt,27.59999999999999,nas/ byang chub kyi phyogs dang mthun pa'i chos sum cu rtsa bdun,na/ byang chub kyi phyogs kyi chos sum cu rtsa bdun,2362,2426,143929,143980
+poc/D2284.txt,corpus/Gpb024.002.txt,27.2,sems can la nyon mongs pa'i snang ba,sems can la// nyon mongs pa yi snang ba,73,109,11912,11951
+poc/D2284.txt,corpus/Gpb024.002.txt,26.4,ags 'phags pa'i lam yan lag brgyad,ag nas/ 'phags pa'i lam yan lag brgyad,10176,10210,143809,143847
+poc/D2284.txt,corpus/Gpb024.002.txt,26.2,rdzu 'phrul gyi rkang pa bzhi ni/ la,rdzu 'phrul gyi rkang pa bzhi ni/ ba,2468,2504,456732,456768
+poc/D2284.txt,corpus/Gpb024.002.txt,26.2,chos spyi dang rang gi mtshan nyid,chos spyi dang rang gis tshan nyid,8294,8328,563197,563231
+poc/D2284.txt,corpus/Gpb024.002.txt,26.0,rdzu 'phrul gyi rkang pa bzhi ni,rdzu 'phrul gyi rkang pa bzhi ni,2468,2500,145911,145943
+poc/D2284.txt,corpus/Gpb024.002.txt,25.799999999999965,rdo rje skyil krung bcas/ thig le rlung non pas rnga sgra la sogs mi thos pas/ chog shes pa sogs kyi bdud choms pa'o/ /nang gi sangs rgyas r,rdo rje skyil krung lus ngag yid// thig le rlung yang non pa'o// chos shes bdud choms sbyor lam drod// nang gi sangs rgyas sr,5837,5977,777929,778054
+poc/D2284.txt,corpus/Gpb024.002.txt,25.4,hos spyi dang rang gi mtshan nyid la,hes/ spyi dang rang gi mtshan nyid ma,8295,8331,28144,28181
+poc/D2284.txt,corpus/Gpb017.001.txt,25.200000000000003,ng ba/ bde bar gshegs pa'i sku gsung thugs,ng ba ni/ de bzhin gshegs pa'i sku gsung thugs,180,222,15241,15287
+poc/D2284.txt,corpus/Gpb024.002.txt,25.2,s spyi dang rang gi mtshan nyid la,s/ spyi dang rang gi mtshan nyid// ma,8297,8331,383449,383486
+poc/D2284.txt,corpus/Gpb024.002.txt,25.199999999999992,rnam par dag pa'i lam/ /ngo bo nyid kyi sku shin tu rnam par dag pa,rnam par dag pa'i thugs mnga' bas spu shin tu rnam par dag pa,11051,11118,545484,545545
