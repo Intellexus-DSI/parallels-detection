@@ -87,15 +87,29 @@ def find_seeds(dense_a, dense_b, k=15, max_kmer_hits=None):
         swapped = True
 
     index = build_kmer_index(short_text, k)
-    seeds = []
 
+    # Pre-filter: remove k-mers that appear too many times in the short text
+    if max_kmer_hits:
+        index = {kmer: positions for kmer, positions in index.items()
+                 if len(positions) <= max_kmer_hits}
+
+    # Count k-mer frequencies in the long text to filter from that side too
+    if max_kmer_hits:
+        long_kmer_counts = defaultdict(int)
+        for j in range(len(long_text) - k + 1):
+            kmer = long_text[j:j + k]
+            if kmer in index:
+                long_kmer_counts[kmer] += 1
+        # Remove k-mers that appear too many times in the long text
+        for kmer, count in long_kmer_counts.items():
+            if count > max_kmer_hits:
+                del index[kmer]
+
+    seeds = []
     for j in range(len(long_text) - k + 1):
         kmer = long_text[j:j + k]
         if kmer in index:
-            hits = index[kmer]
-            if max_kmer_hits and len(hits) > max_kmer_hits:
-                continue
-            for i in hits:
+            for i in index[kmer]:
                 if swapped:
                     seeds.append((j, i))
                 else:
@@ -415,9 +429,8 @@ def main():
         config = yaml.safe_load(f)
 
     algo = config["algorithm"]
-    input_dir = config["input"]["dir"]
     output_path = config["output"]["path"]
-    
+
     seed_cfg = config.get("seeding", {})
     seed_k = seed_cfg.get("k", 15)
     seed_max_gap = seed_cfg.get("max_gap", 100)
@@ -425,14 +438,46 @@ def main():
     seed_max_kmer_hits = seed_cfg.get("max_kmer_hits", None)
     strip_chars = config.get("preprocessing", {}).get("strip_chars", "")
 
-    txt_files = sorted([f for f in os.listdir(input_dir) if f.endswith(".txt")])
+    input_cfg = config["input"]
     documents = {}
-    for fname in txt_files:
-        with open(os.path.join(input_dir, fname), "r") as f:
-            documents[fname] = f.read()
+
+    if "dir" in input_cfg:
+        # Original mode: all-pairs from a single directory
+        input_dir = input_cfg["dir"]
+        txt_files = sorted([f for f in os.listdir(input_dir) if f.endswith(".txt")])
+        for fname in txt_files:
+            with open(os.path.join(input_dir, fname), "r") as f:
+                documents[fname] = f.read()
+        pairs = list(itertools.combinations(txt_files, 2))
+        print(f"Single-directory mode: {len(txt_files)} files, {len(pairs)} pairs")
+    elif "point_of_comparison" in input_cfg and "corpus" in input_cfg:
+        # Cross-comparison mode: point_of_comparison × corpus (recursive)
+        poc_dir = input_cfg["point_of_comparison"]
+        corpus_dir = input_cfg["corpus"]
+        poc_files = sorted([f for f in os.listdir(poc_dir) if f.endswith(".txt")])
+        corpus_files = []
+        for root, dirs, files in os.walk(corpus_dir):
+            dirs.sort()
+            for f in sorted(files):
+                if f.endswith(".txt"):
+                    corpus_files.append(os.path.relpath(os.path.join(root, f), corpus_dir))
+        for fname in poc_files:
+            key = f"poc/{fname}"
+            with open(os.path.join(poc_dir, fname), "r") as f:
+                documents[key] = f.read()
+        for rel_path in corpus_files:
+            key = f"corpus/{rel_path}"
+            with open(os.path.join(corpus_dir, rel_path), "r") as f:
+                documents[key] = f.read()
+        pairs = list(itertools.product(
+            [f"poc/{f}" for f in poc_files],
+            [f"corpus/{p}" for p in corpus_files],
+        ))
+        print(f"Cross-comparison mode: {len(poc_files)} point_of_comparison × {len(corpus_files)} corpus = {len(pairs)} pairs")
+    else:
+        raise ValueError("Config 'input' must specify either 'dir' or both 'point_of_comparison' and 'corpus'")
 
     all_matches = []
-    pairs = list(itertools.combinations(txt_files, 2))
 
     for file_a, file_b in tqdm(pairs, desc="Comparing pairs"):
         print(f"\n--- {file_a} vs {file_b} ---")
