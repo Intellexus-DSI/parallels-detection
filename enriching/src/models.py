@@ -14,6 +14,8 @@ class EnrichedParallel:
     similarity: float
     file_id_a: str
     file_id_b: str
+    source_file_id_a: str = ""  # Embedding file key for lexical lookup
+    source_file_id_b: str = ""
     file_id_tibetan_a: str
     file_id_tibetan_b: str
     text_tibetan_a: str
@@ -39,6 +41,8 @@ class EnrichedParallel:
             "similarity": data.get("similarity", 0.0),
             "file_id_a": data.get("file_id_a", ""),
             "file_id_b": data.get("file_id_b", ""),
+            "source_file_id_a": data.get("source_file_id_a", ""),
+            "source_file_id_b": data.get("source_file_id_b", ""),
             "file_id_tibetan_a": data.get("file_id_tibetan_a", ""),
             "file_id_tibetan_b": data.get("file_id_tibetan_b", ""),
             "text_tibetan_a": data.get("text_tibetan_a", ""),
@@ -60,6 +64,8 @@ class EnrichedParallel:
             "similarity": self.similarity,
             "file_id_a": self.file_id_a,
             "file_id_b": self.file_id_b,
+            "source_file_id_a": self.source_file_id_a,
+            "source_file_id_b": self.source_file_id_b,
             "file_id_tibetan_a": self.file_id_tibetan_a,
             "file_id_tibetan_b": self.file_id_tibetan_b,
             "text_tibetan_a": self.text_tibetan_a,

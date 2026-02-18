@@ -6,9 +6,10 @@ input:
   format: "csv"
 
 output:
-  path: "output/parallels_enriched.csv"
+  path: "../parallels_enriched.csv"
   format: "csv"
   max_lines_per_file: 0  # 0 = unlimited, single file
+  encoding: "utf-16-le"  # CSV encoding (not utf-8)
 
 enrichers:
   - name: "wylie_levenshtein"
@@ -17,9 +18,13 @@ enrichers:
   - name: "mapping_type"
     enabled: true
     params:
+      # Path to embedding output (for dual-layer sim_lexical). Relative to project root.
+      embeddings_dir: "../embedding/output/embeddings_by_line"
       overlap_textual: 0.40      # Unigram overlap >= this → textual
       overlap_semantic: 0.25    # Unigram overlap <= this → semantic (with other signals)
       norm_lev_textual: 0.25    # Normalized Levenshtein <= this → textual
       norm_lev_semantic: 0.40   # Normalized Levenshtein >= this → semantic
       bigram_textual: 0.25      # Bigram overlap >= this → textual
       bigram_semantic: 0.15     # Bigram overlap <= this → semantic
+      sim_lexical_textual: 0.85 # Lexical sim >= this → textual (from dual-layer embeddings)
+      sim_lexical_semantic: 0.55 # Lexical sim <= this + high semantic → semantic

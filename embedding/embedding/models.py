@@ -3,7 +3,7 @@ Pydantic models for embedding configuration and data structures.
 """
 
 from pathlib import Path
-from typing import Optional, Literal
+from typing import List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -39,6 +39,18 @@ class EmbeddingConfig(BaseModel):
     model_name: str = Field(
         default="Intellexus/Bi-Tib-mbert-v2",
         description="HuggingFace model name for embeddings"
+    )
+    dual_layer: bool = Field(
+        default=False,
+        description="Extract dual (lexical + semantic) embeddings. Lexical from early layers, semantic from late layers."
+    )
+    lexical_layers: List[int] = Field(
+        default=[2, 3],
+        description="Layer indices for lexical embedding (0=embeddings, 1-12=transformer). Early layers capture surface form."
+    )
+    semantic_layers: List[int] = Field(
+        default=[10, 11],
+        description="Layer indices for semantic embedding. Late layers capture meaning."
     )
     batch_size: int = Field(
         default=32,
@@ -155,11 +167,12 @@ class IndexingConfig(BaseModel):
 
 class EmbeddingMetadata(BaseModel):
     """Metadata about generated embeddings."""
-    
+
     model_name: str
     num_segments: int
-    embedding_dimension: int
+    embedding_dimension: int  # For FAISS: semantic dim (768). When dual_layer, stored array has 2x this.
     normalized: bool
     created_at: str
     config: dict
+    dual_layer: bool = False  # True if embeddings are [lexical | semantic] concatenated
 

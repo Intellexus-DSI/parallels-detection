@@ -98,7 +98,13 @@ Examples:
         choices=['combined', 'per_file', 'per_line'],
         help='Output mode: "combined" for one file, "per_file" for separate files per source, "per_line" for separate files per Source_Line_Number'
     )
-    
+
+    parser.add_argument(
+        '--dual-layer',
+        action='store_true',
+        help='Extract dual (lexical + semantic) embeddings for textual vs semantic parallel classification'
+    )
+
     parser.add_argument(
         '--quiet', '-q',
         action='store_true',
@@ -152,7 +158,10 @@ Examples:
     
     if parsed_args.mode:
         config.output.mode = parsed_args.mode
-    
+
+    if parsed_args.dual_layer:
+        config.embedding.dual_layer = True
+
     if parsed_args.quiet:
         config.embedding.show_progress = False
     

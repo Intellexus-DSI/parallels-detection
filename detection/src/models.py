@@ -31,6 +31,8 @@ class ParallelMatch:
     # Optional enriched fields (populated on output)
     file_id_a: Optional[str] = None  # Wylie version
     file_id_b: Optional[str] = None  # Wylie version
+    source_file_id_a: Optional[str] = None  # Embedding file key, e.g. line_000114
+    source_file_id_b: Optional[str] = None  # Embedding file key for lexical lookup
     file_id_tibetan_a: Optional[str] = None  # Original Tibetan
     file_id_tibetan_b: Optional[str] = None  # Original Tibetan
     text_a: Optional[str] = None
@@ -48,6 +50,8 @@ class ParallelMatch:
             "similarity": self.similarity,
             "file_id_a": self.file_id_a,
             "file_id_b": self.file_id_b,
+            "source_file_id_a": self.source_file_id_a,
+            "source_file_id_b": self.source_file_id_b,
             "file_id_tibetan_a": self.file_id_tibetan_a,
             "file_id_tibetan_b": self.file_id_tibetan_b,
         }

@@ -52,6 +52,7 @@ class CorpusLoader:
 
         self.embedding_dim = meta["embedding_dimension"]
         self.normalized = meta.get("normalized", True)
+        self.dual_layer = meta.get("dual_layer", False)
 
         for file_info in meta["files"]:
             file_id = Path(file_info["embeddings_file"]).stem.replace("_embeddings", "")
@@ -87,16 +88,23 @@ class CorpusLoader:
 
         Returns:
             Tuple of (segments DataFrame, embeddings ndarray).
+            When dual_layer: returns only the semantic half for detection (FAISS).
         """
         file_info = self._files[file_id]
 
         # Load segments
         segments = pd.read_csv(file_info.segments_path)
+        segments = segments.copy()
+        segments["source_file_id"] = file_id
 
         # Load embeddings
         embeddings = np.load(file_info.embeddings_path)
         if embeddings.dtype != np.float32:
             embeddings = embeddings.astype(np.float32)
+
+        # When dual_layer, use only the semantic half (second half) for detection
+        if getattr(self, "dual_layer", False) and embeddings.shape[1] == 2 * self.embedding_dim:
+            embeddings = embeddings[:, self.embedding_dim :].copy()
 
         return segments, embeddings
 

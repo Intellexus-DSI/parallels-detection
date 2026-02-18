@@ -98,6 +98,21 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
         help="Minimum syllables per segment (default: 4)",
     )
     parser.add_argument(
+        "--max-syllables",
+        type=int,
+        help="Maximum syllables per segment in exclusive mode",
+    )
+    parser.add_argument(
+        "--min-words",
+        type=int,
+        help="Minimum words per segment in exclusive mode (uses Botok)",
+    )
+    parser.add_argument(
+        "--max-words",
+        type=int,
+        help="Maximum words per segment in exclusive mode (uses Botok)",
+    )
+    parser.add_argument(
         "--overlapping",
         action="store_true",
         help="Use overlapping segmentation mode",
@@ -116,6 +131,12 @@ def setup_segment_parser(parser: argparse.ArgumentParser) -> None:
         "--remove-spaces",
         action="store_true",
         help="Remove all spaces from Tibetan text during cleaning",
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help="Number of parallel workers (default: 1, use e.g. 8 for multi-core)",
     )
 
     # Output options
@@ -195,6 +216,12 @@ def build_config(args: argparse.Namespace) -> Config:
         config.segmentation.engine = args.engine
     if hasattr(args, "min_syllables") and args.min_syllables:
         config.segmentation.min_syllables = args.min_syllables
+    if hasattr(args, "max_syllables") and args.max_syllables is not None:
+        config.segmentation.max_syllables = args.max_syllables
+    if hasattr(args, "min_words") and args.min_words is not None:
+        config.segmentation.min_words = args.min_words
+    if hasattr(args, "max_words") and args.max_words is not None:
+        config.segmentation.max_words = args.max_words
     if hasattr(args, "overlapping") and args.overlapping:
         config.segmentation.use_overlapping = True
     if hasattr(args, "exclusive") and args.exclusive:
@@ -203,6 +230,8 @@ def build_config(args: argparse.Namespace) -> Config:
         config.segmentation.overlap_max_atoms = args.max_atoms
     if hasattr(args, "remove_spaces") and args.remove_spaces:
         config.segmentation.remove_spaces = True
+    if hasattr(args, "workers") and args.workers is not None:
+        config.segmentation.workers = args.workers
 
     # Output config overrides
     if hasattr(args, "no_single_lines") and args.no_single_lines:

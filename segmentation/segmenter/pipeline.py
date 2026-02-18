@@ -3,6 +3,7 @@
 import json
 import os
 import re
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import pandas as pd
@@ -11,7 +12,11 @@ from tqdm import tqdm
 from .config import Config
 from .engines import BotokSegmenter, RegexSegmenter
 from .models import Segment, DocumentMetadata, SegmentationResult
-from .utils import make_overlapping_spans
+from .utils import (
+    make_overlapping_spans,
+    constrain_exclusive_segments,
+    constrain_exclusive_segments_by_words,
+)
 from .utils.text_normalizer import normalize_tibetan_text
 
 
@@ -72,6 +77,123 @@ def clean_non_tibetan_characters(text: str) -> str:
     cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
     
     return cleaned_text
+
+
+def _process_record_worker(args: tuple) -> tuple[int, list[dict]] | None:
+    """Worker for parallel processing. Must be module-level for pickling.
+
+    Args:
+        args: (line_num, record, seg_config_dict)
+
+    Returns:
+        (line_num, list of row dicts) or None to skip
+    """
+    line_num, record, seg_config = args
+    text_content = record.get("text") or record.get("content") or ""
+    if not text_content:
+        return None
+
+    text_content = clean_non_tibetan_characters(text_content)
+    if seg_config.get("remove_spaces", False):
+        text_content = normalize_tibetan_text(text_content, remove_spaces=True)
+    if not text_content.strip():
+        return None
+
+    file_id_tibetan = record.get("file_id", "Unknown_Source")
+
+    # Setup converter in worker process
+    from .converter_utils import setup_converter_path, get_converter
+    setup_converter_path()
+    Converter = get_converter()
+    if Converter is None:
+        return None
+    converter = Converter()
+
+    # Convert file_id to Wylie
+    tibetan_pattern = re.compile(r'[\u0F00-\u0FFF]+')
+    def _replace_tibetan(match):
+        try:
+            wylie = converter.convert(
+                match.group(0), "EWTS", text_scheme="Unicode", val_text_scheme=True
+            )
+            return wylie.strip()
+        except Exception:
+            return match.group(0)
+    file_id = tibetan_pattern.sub(_replace_tibetan, file_id_tibetan)
+
+    # Create segmenter in worker
+    engine = seg_config.get("engine", "regex")
+    min_syllables = seg_config.get("min_syllables", 4)
+    if engine == "botok":
+        segmenter = BotokSegmenter(min_syllables=min_syllables)
+    else:
+        segmenter = RegexSegmenter(min_syllables=min_syllables)
+
+    metadata = DocumentMetadata(
+        file_id=file_id,
+        file_id_tibetan=file_id_tibetan,
+        line_number=line_num,
+    )
+
+    # Segment
+    atoms = segmenter.segment_with_indices(text_content)
+
+    use_overlapping = seg_config.get("use_overlapping", True)
+    if use_overlapping:
+        raw_segments = make_overlapping_spans(
+            atoms,
+            text_content,
+            max_atoms=seg_config.get("overlap_max_atoms", 8),
+            min_chars=seg_config.get("overlap_min_chars", 8),
+            max_chars=seg_config.get("overlap_max_chars", 350),
+            max_spans=seg_config.get("max_spans_per_line", 300),
+        )
+    else:
+        min_words = seg_config.get("min_words")
+        max_words = seg_config.get("max_words")
+        if min_words is not None or max_words is not None:
+            min_words = min_words if min_words is not None else 1
+            max_words = max_words if max_words is not None else 9999
+            atoms = constrain_exclusive_segments_by_words(
+                atoms, text_content, min_words, max_words
+            )
+        else:
+            min_syl = seg_config.get("min_syllables", 4)
+            max_syl = seg_config.get("max_syllables")
+            atoms = constrain_exclusive_segments(atoms, min_syl, max_syl)
+        raw_segments = [(sent, start, end, None, None) for sent, start, end in atoms]
+
+    if not raw_segments:
+        return None
+
+    rows = []
+    for idx, segment_data in enumerate(raw_segments, 1):
+        if use_overlapping:
+            sent, start, end, num_atoms, span_type = segment_data
+        else:
+            sent, start, end, num_atoms, span_type = segment_data
+            num_atoms = None
+            span_type = None
+
+        ewts_text = f" {converter.convert(sent, 'EWTS', text_scheme='Unicode', val_text_scheme=True)}"
+
+        row = {
+            "Segmented_Text": sent,
+            "Segmented_Text_EWTS": ewts_text,
+            "Length": len(sent),
+            "File_ID": file_id,
+            "File_ID_Tibetan": file_id_tibetan,
+            "Source_Line_Number": line_num,
+            "Sentence_Order": idx,
+            "Start_Index": start,
+            "End_Index": end,
+        }
+        if use_overlapping:
+            row["Span_Num_Atoms"] = num_atoms
+            row["Span_Type"] = span_type
+        rows.append(row)
+
+    return (line_num, rows)
 
 
 class SegmentationPipeline:
@@ -208,7 +330,21 @@ class SegmentationPipeline:
                 max_spans=self.config.segmentation.max_spans_per_line,
             )
         else:
-            # Exclusive mode: use atoms as-is (convert to expected format)
+            # Exclusive mode: apply min/max constraints (words or syllables)
+            min_words = self.config.segmentation.min_words
+            max_words = self.config.segmentation.max_words
+            if min_words is not None or max_words is not None:
+                min_words = min_words if min_words is not None else 1
+                max_words = max_words if max_words is not None else 9999
+                atoms = constrain_exclusive_segments_by_words(
+                    atoms, text, min_words, max_words
+                )
+            else:
+                atoms = constrain_exclusive_segments(
+                    atoms,
+                    self.config.segmentation.min_syllables,
+                    self.config.segmentation.max_syllables,
+                )
             raw_segments = [(sent, start, end, None, None) for sent, start, end in atoms]
 
         # Convert to Segment objects
@@ -242,6 +378,165 @@ class SegmentationPipeline:
             segments=segments, metadata=metadata, atom_count=len(atoms)
         )
 
+    def _process_file_sequential(
+        self, input_path: Path, full_dir: Path, single_dir: Path
+    ) -> int:
+        """Process file sequentially (original logic)."""
+        file_groups = {}
+        total_lines = sum(1 for _ in open(input_path, "r", encoding="utf-8"))
+        desc_text = f"{self.config.segmentation.engine.title()} Processing"
+        if self.config.segmentation.use_overlapping:
+            desc_text += " (Overlapping Mode)"
+        else:
+            desc_text += " (Exclusive Mode)"
+        lines_processed = 0
+
+        with open(input_path, "r", encoding="utf-8") as infile:
+            for line_num, line in tqdm(
+                enumerate(infile, 1), total=total_lines, desc=desc_text
+            ):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                    text_content = record.get("text") or record.get("content") or ""
+                    if not text_content:
+                        continue
+                    text_content = clean_non_tibetan_characters(text_content)
+                    if self.config.segmentation.remove_spaces:
+                        text_content = normalize_tibetan_text(text_content, remove_spaces=True)
+                    if not text_content.strip():
+                        continue
+                    file_id_tibetan = record.get("file_id", "Unknown_Source")
+                    file_id = self._convert_file_id_to_wylie(file_id_tibetan)
+                    metadata = DocumentMetadata(
+                        file_id=file_id,
+                        file_id_tibetan=file_id_tibetan,
+                        line_number=line_num,
+                    )
+                    result = self.process_line(text_content, metadata)
+                    if result.segments:
+                        single_line_rows = []
+                        clean_name = "All_Segments"
+                        for segment in result.segments:
+                            row = {
+                                "Segmented_Text": segment.text,
+                                "Segmented_Text_EWTS": segment.text_ewts,
+                                "Length": segment.length,
+                                "File_ID": segment.file_id,
+                                "File_ID_Tibetan": segment.file_id_tibetan,
+                                "Source_Line_Number": segment.source_line_number,
+                                "Sentence_Order": segment.sentence_order,
+                                "Start_Index": segment.start_index,
+                                "End_Index": segment.end_index,
+                            }
+                            if self.config.segmentation.use_overlapping:
+                                row["Span_Num_Atoms"] = segment.span_num_atoms
+                                row["Span_Type"] = segment.span_type
+                            single_line_rows.append(row)
+                            if clean_name not in file_groups:
+                                file_groups[clean_name] = []
+                            file_groups[clean_name].extend(single_line_rows)
+                        if self.config.output.save_single_lines:
+                            single_df = pd.DataFrame(single_line_rows)
+                            for col in single_df.select_dtypes(include=["object"]).columns:
+                                single_df[col] = single_df[col].apply(
+                                    lambda x: sanitize_text(x) if isinstance(x, str) else x
+                                )
+                            single_filename = f"Line_{line_num}_{clean_name[:30]}.csv"
+                            single_df.to_csv(single_dir / single_filename, index=False)
+                        lines_processed += 1
+                except json.JSONDecodeError:
+                    continue
+
+        self._save_full_files(full_dir, file_groups)
+        return lines_processed
+
+    def _save_full_files(self, full_dir: Path, file_groups: dict) -> None:
+        """Save aggregated full files."""
+        if not self.config.output.save_full_files:
+            return
+        print(f"\nSaving {len(file_groups)} Full Files to {full_dir}...")
+        for filename, rows in tqdm(file_groups.items(), desc="Saving Full CSV"):
+            if not rows:
+                continue
+            df = pd.DataFrame(rows)
+            for col in df.select_dtypes(include=["object"]).columns:
+                df[col] = df[col].apply(
+                    lambda x: sanitize_text(x) if isinstance(x, str) else x
+                )
+            save_path = full_dir / f"{filename}.csv"
+            try:
+                df.to_csv(save_path, index=False)
+            except Exception as e:
+                print(f"Error saving {filename}: {e}")
+
+    def _process_file_parallel(
+        self, input_path: Path, full_dir: Path, single_dir: Path
+    ) -> int:
+        """Process file using multiple worker processes."""
+        workers = self.config.segmentation.workers
+        seg_config = self.config.segmentation.model_dump()
+
+        # Load all records
+        tasks = []
+        with open(input_path, "r", encoding="utf-8") as infile:
+            for line_num, line in enumerate(infile, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                    tasks.append((line_num, record, seg_config))
+                except json.JSONDecodeError:
+                    continue
+
+        total = len(tasks)
+        desc_text = f"{self.config.segmentation.engine.title()} Processing ({workers} workers)"
+        if self.config.segmentation.use_overlapping:
+            desc_text += " (Overlapping Mode)"
+        else:
+            desc_text += " (Exclusive Mode)"
+
+        file_groups = {"All_Segments": []}
+        lines_processed = 0
+        results_by_line = {}
+
+        with ProcessPoolExecutor(max_workers=workers) as executor:
+            futures = {
+                executor.submit(_process_record_worker, task): task[0]
+                for task in tasks
+            }
+            for future in tqdm(as_completed(futures), total=total, desc=desc_text):
+                line_num = futures[future]
+                try:
+                    result = future.result()
+                    if result is not None:
+                        _, rows = result
+                        results_by_line[line_num] = rows
+                        file_groups["All_Segments"].extend(rows)
+                        lines_processed += 1
+                except Exception as e:
+                    print(f"\nWorker error at line {line_num}: {e}")
+
+        # Sort and write single-line CSVs
+        if self.config.output.save_single_lines:
+            clean_name = "All_Segments"
+            for line_num in sorted(results_by_line.keys()):
+                rows = results_by_line[line_num]
+                single_df = pd.DataFrame(rows)
+                for col in single_df.select_dtypes(include=["object"]).columns:
+                    single_df[col] = single_df[col].apply(
+                        lambda x: sanitize_text(x) if isinstance(x, str) else x
+                    )
+                single_filename = f"Line_{line_num}_{clean_name[:30]}.csv"
+                single_df.to_csv(single_dir / single_filename, index=False)
+
+        self._save_full_files(full_dir, file_groups)
+
+        return lines_processed
+
     def process_file(self, input_path: Path) -> int:
         """Process a JSONL file and generate segmented output.
 
@@ -252,133 +547,26 @@ class SegmentationPipeline:
             Number of lines processed
         """
         full_dir, single_dir = self._setup_output_dirs()
-
-        file_groups = {}  # Aggregated data for full files
-
         print(f"Reading from: {input_path}")
 
-        # Count total lines
-        total_lines = sum(1 for _ in open(input_path, "r", encoding="utf-8"))
+        workers = self.config.segmentation.workers
+        if workers <= 1:
+            lines_processed = self._process_file_sequential(
+                input_path, full_dir, single_dir
+            )
+        else:
+            lines_processed = self._process_file_parallel(
+                input_path, full_dir, single_dir
+            )
 
         desc_text = f"{self.config.segmentation.engine.title()} Processing"
+        if workers > 1:
+            desc_text += f" ({workers} workers)"
         if self.config.segmentation.use_overlapping:
             desc_text += " (Overlapping Mode)"
         else:
             desc_text += " (Exclusive Mode)"
-
-        lines_processed = 0
-
-        with open(input_path, "r", encoding="utf-8") as infile:
-            for line_num, line in tqdm(
-                enumerate(infile, 1), total=total_lines, desc=desc_text
-            ):
-                line = line.strip()
-                if not line:
-                    continue
-
-                try:
-                    record = json.loads(line)
-                    text_content = record.get("text") or record.get("content") or ""
-
-                    if not text_content:
-                        continue
-
-                    # Clean non-Tibetan characters before processing
-                    text_content = clean_non_tibetan_characters(text_content)
-                    
-                    # Remove spaces from Tibetan text if configured
-                    if self.config.segmentation.remove_spaces:
-                        text_content = normalize_tibetan_text(text_content, remove_spaces=True)
-                    
-                    # Skip if text becomes empty after cleaning
-                    if not text_content.strip():
-                        continue
-
-                    # Get file_id from the record (primary field)
-                    file_id_tibetan = record.get("file_id", "Unknown_Source")
-                    
-                    # Convert Tibetan parts in file_id to Wylie
-                    file_id = self._convert_file_id_to_wylie(file_id_tibetan)
-
-                    metadata = DocumentMetadata(
-                        file_id=file_id,  # Wylie version
-                        file_id_tibetan=file_id_tibetan,  # Original Tibetan
-                        line_number=line_num,
-                    )
-
-                    result = self.process_line(text_content, metadata)
-
-                    if result.segments:
-                        # Convert segments to dictionaries
-                        single_line_rows = []
-                        
-                        # Always combine all segments into one file
-                        clean_name = "All_Segments"
-
-                        for segment in result.segments:
-                            row = {
-                                "Segmented_Text": segment.text,
-                                "Segmented_Text_EWTS": segment.text_ewts,
-                                "Length": segment.length,
-                                "File_ID": segment.file_id,  # Wylie version
-                                "File_ID_Tibetan": segment.file_id_tibetan,  # Original Tibetan
-                                "Source_Line_Number": segment.source_line_number,
-                                "Sentence_Order": segment.sentence_order,
-                                "Start_Index": segment.start_index,
-                                "End_Index": segment.end_index,
-                            }
-
-                            # Add overlapping-specific columns if enabled
-                            if self.config.segmentation.use_overlapping:
-                                row["Span_Num_Atoms"] = segment.span_num_atoms
-                                row["Span_Type"] = segment.span_type
-
-                            single_line_rows.append(row)
-
-                            # Add to full file groups
-                            if clean_name not in file_groups:
-                                file_groups[clean_name] = []
-                            file_groups[clean_name].append(row)
-
-                        # Save individual line CSV
-                        if self.config.output.save_single_lines:
-                            single_df = pd.DataFrame(single_line_rows)
-                            # Sanitize text columns
-                            for col in single_df.select_dtypes(include=['object']).columns:
-                                single_df[col] = single_df[col].apply(
-                                    lambda x: sanitize_text(x) if isinstance(x, str) else x
-                                )
-                            single_filename = (
-                                f"Line_{line_num}_{clean_name[:30]}.csv"
-                            )
-                            single_save_path = single_dir / single_filename
-                            single_df.to_csv(single_save_path, index=False)
-
-                    lines_processed += 1
-
-                except json.JSONDecodeError:
-                    continue
-
-        # Save aggregated full files
-        if self.config.output.save_full_files:
-            print(f"\nSaving {len(file_groups)} Full Files to {full_dir}...")
-
-            for filename, rows in tqdm(file_groups.items(), desc="Saving Full CSV"):
-                if not rows:
-                    continue
-                df = pd.DataFrame(rows)
-                # Sanitize text columns
-                for col in df.select_dtypes(include=['object']).columns:
-                    df[col] = df[col].apply(
-                        lambda x: sanitize_text(x) if isinstance(x, str) else x
-                    )
-                save_path = full_dir / f"{filename}.csv"
-                try:
-                    df.to_csv(save_path, index=False)
-                except Exception as e:
-                    print(f"Error saving {filename}: {e}")
-
-        print(f"\n✓ Completed using {desc_text}.")
+        print(f"\nCompleted using {desc_text}.")
         if self.config.output.save_full_files:
             print(f"Full files saved in: {full_dir}")
         if self.config.output.save_single_lines:
