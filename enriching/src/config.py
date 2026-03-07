@@ -29,6 +29,7 @@ class OutputConfig:
     output_path: Path
     format: Literal["csv", "parquet", "json"] = "csv"
     max_lines_per_file: int = 0  # 0 = unlimited
+    encoding: str = "utf-16-le"  # CSV encoding (utf-16-le, utf-8, etc.)
 
 
 @dataclass
@@ -51,6 +52,7 @@ class EnrichingConfig:
             output_path=Path(data["output"]["path"]),
             format=data["output"].get("format", "csv"),
             max_lines_per_file=data["output"].get("max_lines_per_file", 0),
+            encoding=data["output"].get("encoding", "utf-16-le"),
         )
         
         enrichers = [

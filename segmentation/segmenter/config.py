@@ -21,12 +21,16 @@ class SegmentationConfig(BaseModel):
 
     engine: Literal["botok", "regex"] = "regex"
     min_syllables: int = Field(default=4, ge=1)
+    max_syllables: Optional[int] = Field(default=None, ge=1, description="Max syllables per segment (exclusive mode)")
+    min_words: Optional[int] = Field(default=None, ge=1, description="Min words per segment (exclusive mode, uses Botok)")
+    max_words: Optional[int] = Field(default=None, ge=1, description="Max words per segment (exclusive mode, uses Botok)")
     use_overlapping: bool = True
     overlap_max_atoms: int = Field(default=8, ge=1)
     overlap_min_chars: int = Field(default=8, ge=1)
     overlap_max_chars: int = Field(default=350, ge=1)
     max_spans_per_line: int = Field(default=300, ge=1)
     remove_spaces: bool = Field(default=False, description="Remove all spaces from Tibetan text")
+    workers: int = Field(default=1, ge=1, le=64, description="Number of parallel workers (1=sequential)")
 
 
 class OutputConfig(BaseModel):

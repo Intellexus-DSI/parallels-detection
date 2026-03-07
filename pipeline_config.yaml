@@ -3,26 +3,29 @@
 
 # Stage 1: Segmentation
 segmentation:
-  input_file: "derge-kangyur.jsonl"
+  input_file: "derge-both.jsonl"  # Kangyur+Tengyur combined (run: Get-Content derge-kangyur.jsonl, derge-tengyur.jsonl | Set-Content derge-both.jsonl)
   output_dir: "segmentation/output"
-  engine: "regex"                 # "regex" (fast) or "botok" (accurate)
-  min_syllables: 4
+  engine: "botok"                 # "regex" (fast) or "botok" (accurate)
+  min_words: 5
+  max_words: 15
   use_overlapping: false
-  overlap_max_atoms: 8
+  overlap_max_atoms: 8  
   overlap_min_chars: 8
   overlap_max_chars: 350
   max_spans_per_line: 300
   remove_spaces: true             # Remove all spaces from Tibetan text
+  workers: 24                      # Parallel workers
 
 # Stage 2: Embedding
 embedding:
-  input_dir: "segmentation/output/overlapping/Full_Files"
+  input_dir: "segmentation/output/exclusive/Full_Files"
   output_dir: "embedding/output"
   model: "Intellexus/Bi-Tib-mbert-v2"
   batch_size: 32
   device: "auto"
   mode: "per_line"
   text_column: "Segmented_Text"
+  dual_layer: true              # Extract lexical + semantic embeddings for textual vs semantic separation
 
 # Stage 3: Detectionי
 detection:
@@ -41,9 +44,10 @@ enriching:
     path: "detection/output/parallels.csv"
     format: "csv"
   output:
-    path: "enriching/output/parallels_enriched.csv"
+    path: "parallels_enriched.csv"
     format: "csv"
     max_lines_per_file: 0           # 0 = unlimited, single file
+    encoding: "utf-16-le"           # CSV encoding (not utf-8)
   enrichers:
     - name: "wylie_levenshtein"
       enabled: true
@@ -51,9 +55,12 @@ enriching:
     - name: "mapping_type"
       enabled: true
       params:
+        embeddings_dir: "embedding/output/embeddings_by_line"
         overlap_textual: 0.40
         overlap_semantic: 0.25
         norm_lev_textual: 0.25
         norm_lev_semantic: 0.40
         bigram_textual: 0.25
         bigram_semantic: 0.15
+        sim_lexical_textual: 0.85
+        sim_lexical_semantic: 0.55

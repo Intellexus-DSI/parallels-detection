@@ -6,6 +6,9 @@ venv/
 # IDE
 .claude/
 
+# Generated config (from run_pipeline)
+enriching/.enriching_config_generated.yaml
+
 # Notebooks
 playground.ipynb
 
@@ -20,6 +23,14 @@ detection/output/
 # Data files
 data/*.jsonl
 data/*.json
+
+# Large corpus files (exceed GitHub 100MB limit)
+derge-kangyur.jsonl
+derge-tengyur.jsonl
+derge-both.jsonl
+
+# Segmentation output (can be large)
+data/segmented_output/
 # *.npy
 # *.xlsx
 **/Single_Lines/*

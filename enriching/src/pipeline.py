@@ -120,7 +120,7 @@ class EnrichingPipeline:
         logger.info(f"Writing {len(df)} enriched parallels to: {output_path}")
         
         if self.config.output.format == "csv":
-            df.to_csv(output_path, index=False)
+            df.to_csv(output_path, index=False, encoding=self.config.output.encoding)
         elif self.config.output.format == "parquet":
             df.to_parquet(output_path, index=False)
         elif self.config.output.format == "json":
@@ -152,7 +152,7 @@ class EnrichingPipeline:
         logger.info(f"Writing chunk {chunk_index} ({len(df)} parallels) to: {chunk_path}")
         
         if self.config.output.format == "csv":
-            df.to_csv(chunk_path, index=False)
+            df.to_csv(chunk_path, index=False, encoding=self.config.output.encoding)
         elif self.config.output.format == "parquet":
             df.to_parquet(chunk_path, index=False)
         elif self.config.output.format == "json":
