@@ -80,10 +80,20 @@ def run_segmentation(config: dict, root_dir: Path) -> int:
             cmd.extend(["--max-atoms", str(seg_config["overlap_max_atoms"])])
     else:
         cmd.append("--exclusive")
+        if seg_config.get("max_syllables") is not None:
+            cmd.extend(["--max-syllables", str(seg_config["max_syllables"])])
+        if seg_config.get("min_words") is not None:
+            cmd.extend(["--min-words", str(seg_config["min_words"])])
+        if seg_config.get("max_words") is not None:
+            cmd.extend(["--max-words", str(seg_config["max_words"])])
     
     if seg_config.get("remove_spaces", False):
         cmd.append("--remove-spaces")
-    
+
+    workers = seg_config.get("workers", 1)
+    if workers > 1:
+        cmd.extend(["--workers", str(workers)])
+
     # Use model from embedding section for token length calculation
     if emb_config.get("model"):
         cmd.extend(["--embedding-model", emb_config["model"]])
@@ -119,6 +129,9 @@ def run_embedding(config: dict, root_dir: Path) -> int:
 
     if emb_config.get("device"):
         cmd.extend(["--device", emb_config["device"]])
+
+    if emb_config.get("dual_layer"):
+        cmd.append("--dual-layer")
 
     return run_command(cmd, cwd=root_dir / "embedding")
 
@@ -180,28 +193,40 @@ def run_enriching(config: dict, root_dir: Path) -> int:
     # Ensure output directory exists
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Build command for enriching CLI
+    # Resolve embeddings_dir for mapping_type (relative to root)
+    enrichers_raw = enr_config.get("enrichers", [])
+    enrichers_cfg = []
+    for ec in enrichers_raw:
+        ec = dict(ec)
+        params = dict(ec.get("params", {}))
+        if "embeddings_dir" in params:
+            params["embeddings_dir"] = str(root_dir / params["embeddings_dir"])
+        ec["params"] = params
+        enrichers_cfg.append(ec)
+
+    # Write temp config so enricher params (e.g. embeddings_dir) are passed
+    enr_cfg = {
+        "input": {
+            "path": str(input_path),
+            "format": enr_config.get("input", {}).get("format", "csv"),
+        },
+        "output": {
+            "path": str(output_path),
+            "format": enr_config.get("output", {}).get("format", "csv"),
+            "max_lines_per_file": enr_config.get("output", {}).get("max_lines_per_file", 0),
+            "encoding": enr_config.get("output", {}).get("encoding", "utf-16-le"),
+        },
+        "enrichers": enrichers_cfg if enrichers_cfg else [
+            {"name": "wylie_levenshtein", "enabled": True, "params": {}},
+            {"name": "mapping_type", "enabled": True, "params": {}},
+        ],
+    }
+    temp_config = root_dir / "enriching" / ".enriching_config_generated.yaml"
+    with open(temp_config, "w", encoding="utf-8") as f:
+        yaml.dump(enr_cfg, f, default_flow_style=False, allow_unicode=True)
+
     python_exe = get_python_executable(root_dir)
-    cmd = [
-        python_exe, "-m", "src.cli",
-        "--input", str(input_path),
-        "--output", str(output_path),
-        "--input-format", enr_config.get("input", {}).get("format", "csv"),
-        "--output-format", enr_config.get("output", {}).get("format", "csv"),
-    ]
-
-    # Add enrichers
-    enrichers = enr_config.get("enrichers", [])
-    if enrichers:
-        for enricher in enrichers:
-            if enricher.get("enabled", True):
-                cmd.extend(["--enricher", enricher["name"]])
-    else:
-        # Default: use wylie_levenshtein and mapping_type
-        cmd.extend(["--enricher", "wylie_levenshtein", "--enricher", "mapping_type"])
-
-    if enr_config.get("output", {}).get("max_lines_per_file", 0) > 0:
-        cmd.extend(["--max-lines-per-file", str(enr_config["output"]["max_lines_per_file"])])
+    cmd = [python_exe, "-m", "src.cli", "--config", str(temp_config)]
 
     return run_command(cmd, cwd=root_dir / "enriching")
 

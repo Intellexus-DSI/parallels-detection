@@ -1,5 +1,8 @@
 """
 Main pipeline for generating embeddings from segmented text.
+
+Supports dual-layer mode: extract lexical (early layers) and semantic (late layers)
+embeddings separately to improve textual vs semantic parallel classification.
 """
 
 import json
@@ -8,6 +11,7 @@ from pathlib import Path
 from typing import List, Tuple, Optional
 import numpy as np
 import pandas as pd
+import torch
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
 
@@ -119,36 +123,113 @@ class EmbeddingPipeline:
         
         return self.segments_df
     
+    def _mean_pool(
+        self, hidden_states: torch.Tensor, attention_mask: torch.Tensor
+    ) -> torch.Tensor:
+        """Mean pool over token dimension, masking padding."""
+        mask = attention_mask.unsqueeze(-1).expand(hidden_states.size()).float()
+        sum_states = torch.sum(hidden_states * mask, dim=1)
+        sum_mask = mask.sum(dim=1).clamp(min=1e-9)
+        return sum_states / sum_mask
+
+    def _generate_dual_layer_embeddings(self, texts: List[str]) -> np.ndarray:
+        """
+        Generate lexical + semantic embeddings using layer-specific extraction.
+        Returns concatenated array [lexical | semantic] of shape (N, 2*dim).
+        """
+        # Get the underlying transformer (SentenceTransformer typically has it at [1])
+        auto_model = None
+        for i in range(len(self.model)):
+            mod = self.model[i]
+            if hasattr(mod, "auto_model"):
+                auto_model = mod.auto_model
+                break
+        if auto_model is None:
+            raise RuntimeError(
+                "Could not find underlying transformer. dual_layer requires a SentenceTransformer with an auto_model."
+            )
+
+        tokenizer = self.model.tokenizer
+        device = next(auto_model.parameters()).device
+        dim = auto_model.config.hidden_size
+        lexical_layers = self.config.embedding.lexical_layers
+        semantic_layers = self.config.embedding.semantic_layers
+
+        all_lexical = []
+        all_semantic = []
+        batch_size = self.config.embedding.batch_size
+
+        for start in tqdm(
+            range(0, len(texts), batch_size),
+            desc="Dual-layer embeddings",
+            disable=not self.config.embedding.show_progress,
+        ):
+            batch_texts = texts[start : start + batch_size]
+            encoded = tokenizer(
+                batch_texts,
+                padding=True,
+                truncation=True,
+                max_length=self.config.embedding.max_length,
+                return_tensors="pt",
+            )
+            encoded = {k: v.to(device) for k, v in encoded.items()}
+
+            with torch.no_grad():
+                outputs = auto_model(**encoded, output_hidden_states=True)
+            hidden_states = outputs.hidden_states  # tuple of (batch, seq, dim)
+
+            # Lexical: mean of specified early layers, then mean pool over tokens
+            lex_hidden = torch.stack([hidden_states[li] for li in lexical_layers]).mean(dim=0)
+            lexical = self._mean_pool(lex_hidden, encoded["attention_mask"])
+
+            # Semantic: mean of specified late layers, then mean pool over tokens
+            sem_hidden = torch.stack([hidden_states[li] for li in semantic_layers]).mean(dim=0)
+            semantic = self._mean_pool(sem_hidden, encoded["attention_mask"])
+
+            if self.config.embedding.normalize:
+                lexical = torch.nn.functional.normalize(lexical, p=2, dim=1)
+                semantic = torch.nn.functional.normalize(semantic, p=2, dim=1)
+
+            all_lexical.append(lexical.cpu().numpy())
+            all_semantic.append(semantic.cpu().numpy())
+
+        lexical_arr = np.vstack(all_lexical)
+        semantic_arr = np.vstack(all_semantic)
+        # Concatenate [lexical | semantic] for storage; detection will use semantic half
+        return np.concatenate([lexical_arr, semantic_arr], axis=1).astype(np.float32)
+
     def generate_embeddings(self) -> np.ndarray:
         """
         Generate embeddings for all segments.
         
         Returns:
-            Numpy array of embeddings (num_segments, embedding_dim)
+            Numpy array of embeddings.
+            If dual_layer: (num_segments, 2*embedding_dim) = [lexical | semantic].
+            Else: (num_segments, embedding_dim).
         """
         if self.model is None:
             self.load_model()
-        
+
         if self.segments_df is None:
             self.load_segments()
-        
+
         print(f"\nGenerating embeddings...")
-        
-        # Extract text to embed
         text_col = self.config.input.text_column
         texts = self.segments_df[text_col].fillna("").astype(str).tolist()
-        
-        # Generate embeddings
-        self.embeddings = self.model.encode(
-            texts,
-            batch_size=self.config.embedding.batch_size,
-            show_progress_bar=self.config.embedding.show_progress,
-            normalize_embeddings=self.config.embedding.normalize,
-            convert_to_numpy=True
-        )
-        
+
+        if getattr(self.config.embedding, "dual_layer", False):
+            print("Using dual-layer mode (lexical + semantic)")
+            self.embeddings = self._generate_dual_layer_embeddings(texts)
+        else:
+            self.embeddings = self.model.encode(
+                texts,
+                batch_size=self.config.embedding.batch_size,
+                show_progress_bar=self.config.embedding.show_progress,
+                normalize_embeddings=self.config.embedding.normalize,
+                convert_to_numpy=True,
+            )
+
         print(f"Generated embeddings: {self.embeddings.shape}")
-        
         return self.embeddings
     
     def save_outputs(self) -> Tuple[Path, Path, Path]:
@@ -183,14 +264,19 @@ class EmbeddingPipeline:
         
         self.segments_df.to_csv(segments_path, index=False)
         
-        # Save metadata
+        # Save metadata (embedding_dimension = semantic dim for FAISS; dual_layer halves stored dim)
+        emb_dim = self.embeddings.shape[1]
+        dual_layer = getattr(self.config.embedding, "dual_layer", False)
+        if dual_layer:
+            emb_dim = emb_dim // 2
         metadata = EmbeddingMetadata(
             model_name=self.config.embedding.model_name,
             num_segments=len(self.segments_df),
-            embedding_dimension=self.embeddings.shape[1],
+            embedding_dimension=emb_dim,
             normalized=self.config.embedding.normalize,
             created_at=datetime.now().isoformat(),
-            config=self.config.model_dump()
+            config=self.config.model_dump(),
+            dual_layer=dual_layer,
         )
         
         metadata_path = output_dir / self.config.output.metadata_file
@@ -244,15 +330,20 @@ class EmbeddingPipeline:
         print(f"Saved {len(saved_files)} separate embedding files ({total_segments} total segments)")
         
         # Save overall metadata
+        emb_dim = self.embeddings.shape[1]
+        dual_layer = getattr(self.config.embedding, "dual_layer", False)
+        if dual_layer:
+            emb_dim = emb_dim // 2
         metadata = EmbeddingMetadata(
             model_name=self.config.embedding.model_name,
             num_segments=total_segments,
-            embedding_dimension=self.embeddings.shape[1],
+            embedding_dimension=emb_dim,
             normalized=self.config.embedding.normalize,
             created_at=datetime.now().isoformat(),
-            config=self.config.model_dump()
+            config=self.config.model_dump(),
+            dual_layer=dual_layer,
         )
-        
+
         # Add per-file information
         metadata_dict = metadata.model_dump()
         metadata_dict['output_mode'] = 'per_file'
@@ -325,15 +416,20 @@ class EmbeddingPipeline:
             total_segments += len(line_segments)
         
         print(f"Saved {len(saved_files)} separate line files ({total_segments} total segments)")
-        
+
         # Save overall metadata
+        emb_dim = self.embeddings.shape[1]
+        dual_layer = getattr(self.config.embedding, "dual_layer", False)
+        if dual_layer:
+            emb_dim = emb_dim // 2
         metadata = EmbeddingMetadata(
             model_name=self.config.embedding.model_name,
             num_segments=total_segments,
-            embedding_dimension=self.embeddings.shape[1],
+            embedding_dimension=emb_dim,
             normalized=self.config.embedding.normalize,
             created_at=datetime.now().isoformat(),
-            config=self.config.model_dump()
+            config=self.config.model_dump(),
+            dual_layer=dual_layer,
         )
         
         # Add per-line information
