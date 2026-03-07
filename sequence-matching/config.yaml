@@ -1,7 +1,7 @@
 algorithm:
   match_score: 1.0
-  mismatch_score: -0.6
-  open_gap_score: -1.0
+  mismatch_score: -0.9
+  open_gap_score: -0.6
   extend_gap_score: -3.5
   min_score: 40.0
   max_iterations: 100
@@ -9,7 +9,7 @@ algorithm:
 seeding:
   k: 15
   max_gap: 10
-  extend: 100
+  extend: 500
   max_kmer_hits: 3
 
 preprocessing:
@@ -22,11 +22,11 @@ input:
   # dir: "test_data/test_data5_rebecca"
   # dir: "test_data/test_data7_sonam"
   # dir: "test_data/test_data13_nicola"
-  dir: "test_data/test_data12_orna"
+  dir: "test_data/test_data5_rebecca"
 
 output:
   # path: "output/sonam_testdata14_vs_kangyur.csv"
   # path: "output/test_data5_rebecca.csv"
   # path: "output/test_data7_sonam.csv"
   # path: "output/test_data13_nicola.csv"
-  path: "output/test_data12_orna_new.csv"
+  path: "output/test_data5_rebecca.csv"
