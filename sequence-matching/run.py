@@ -322,18 +322,25 @@ def seed_and_extend(text_a, text_b, match_score=1.0, mismatch_score=-1.5,
             all_matches.append((score, match_seg_a, match_seg_b,
                                 orig_start_a, orig_end_a, orig_start_b, orig_end_b))
 
-    # Deduplicate matches
-    seen = set()
-    unique_matches = []
-    for item in all_matches:
-        key = (item[3], item[4], item[5], item[6])
-        if key not in seen:
-            seen.add(key)
-            unique_matches.append(item)
-    all_matches = unique_matches
+    # Remove overlapping matches, keeping higher-scoring ones
+    all_matches.sort(key=lambda x: -x[0])
+    filtered = []
+    for match in all_matches:
+        _, _, _, start_a, end_a, start_b, end_b = match
+        overlaps = False
+        for kept in filtered:
+            _, _, _, ks_a, ke_a, ks_b, ke_b = kept
+            ov_a = start_a < ke_a and ks_a < end_a
+            ov_b = start_b < ke_b and ks_b < end_b
+            if ov_a and ov_b:
+                overlaps = True
+                break
+        if not overlaps:
+            filtered.append(match)
+    all_matches = filtered
 
     print(f"Found {len(all_matches)} total matches")
-    all_matches.sort(key=lambda x: -x[0])
+    all_matches.sort(key=lambda x: x[3])  # sort by start_a
     return all_matches
 
 
@@ -522,16 +529,58 @@ def main():
                 "end_a": end_a,
                 "start_b": start_b,
                 "end_b": end_b,
+                "len_a": end_a - start_a,
+                "len_b": end_b - start_b,
             })
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df = pd.DataFrame(all_matches, columns=["file_a", "file_b", "score",
                                             "text_a", "text_b",
                                             "start_a", "end_a",
-                                            "start_b", "end_b"])
-    df = df.sort_values("score", ascending=False, ignore_index=True)
+                                            "start_b", "end_b",
+                                            "len_a", "len_b"])
+    df = df.sort_values(["file_a", "file_b", "start_a"], ignore_index=True)
     df.to_csv(output_path, index=False)
     print(f"\nWrote {len(df)} results to {output_path}")
+
+    # Write a Word document with a review table
+    docx_path = os.path.splitext(output_path)[0] + ".docx"
+    _write_review_docx(df, docx_path)
+
+
+def _write_review_docx(df, docx_path):
+    from docx import Document
+    from docx.shared import Pt, Inches, RGBColor
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+    doc = Document()
+    style = doc.styles['Normal']
+    style.font.size = Pt(10)
+
+    for (file_a, file_b), group in df.groupby(["file_a", "file_b"], sort=False):
+        doc.add_heading(f"{file_a}  ↔  {file_b}", level=2)
+
+        table = doc.add_table(rows=1, cols=3)
+        table.style = 'Table Grid'
+        table.columns[0].width = Inches(0.6)
+        table.columns[1].width = Inches(3.0)
+        table.columns[2].width = Inches(3.0)
+
+        hdr = table.rows[0].cells
+        for cell, text in zip(hdr, ["#", file_a, file_b]):
+            cell.text = text
+            cell.paragraphs[0].runs[0].bold = True
+
+        for idx, (_, row) in enumerate(group.iterrows(), 1):
+            cells = table.add_row().cells
+            cells[0].text = str(idx)
+            cells[1].text = str(row["text_a"])
+            cells[2].text = str(row["text_b"])
+
+        doc.add_paragraph("")
+
+    doc.save(docx_path)
+    print(f"Wrote review document to {docx_path}")
 
 
 if __name__ == "__main__":

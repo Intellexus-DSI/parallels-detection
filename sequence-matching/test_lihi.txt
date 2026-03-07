@@ -1,3 +1,0 @@
-This is a test file for lihi.py.
-It contains exactly fifteen words to verify the script is working.
-One two three.

@@ -1,15 +1,15 @@
 algorithm:
   match_score: 1.0
-  mismatch_score: -0.8
-  open_gap_score: -0.8
-  extend_gap_score: -0.8
-  min_score: 25.0
+  mismatch_score: -0.6
+  open_gap_score: -1.0
+  extend_gap_score: -3.5
+  min_score: 40.0
   max_iterations: 100
 
 seeding:
   k: 15
-  max_gap: 100
-  extend: 150
+  max_gap: 10
+  extend: 100
   max_kmer_hits: 3
 
 preprocessing:
