@@ -1,32 +1,28 @@
 algorithm:
   match_score: 1.0
-  mismatch_score: -0.9
-  open_gap_score: -0.6
-  extend_gap_score: -3.5
-  min_score: 40.0
+  mismatch_score: -0.7
+  open_gap_score: -0.5
+  extend_gap_score: -3.0
+  min_score: 20.0
   max_iterations: 100
+  dedupe_overlaps: true
+  dedupe_prefer: length
+  # Drop if span ratio exceeds this on original coords, dense (alignment) coords, or both (default).
+  max_span_ratio: 2.0
+  max_span_ratio_basis: both  # original | dense | both
 
 seeding:
   k: 15
-  max_gap: 10
-  extend: 300
-  max_kmer_hits: 3
+  max_gap: 14
+  extend: 450
+  max_region_length: 6000
+  max_kmer_hits: 7
 
 preprocessing:
   strip_chars: "\\_"
 
 input:
-  point_of_comparison: "test_data/test_data16_rebecca"
-  corpus: "bjornpixel/derge_tshad_split_ewts"
-  # dir: "test_data/test_data8_rebecca"
-  # dir: "test_data/test_data5_rebecca"
-  # dir: "test_data/test_data7_sonam"
-  # dir: "test_data/test_data13_nicola"
-  # dir: "test_data/test_data5_rebecca"
+  dir: "data"
 
 output:
-  # path: "output/sonam_testdata14_vs_kangyur.csv"
-  # path: "output/test_data5_rebecca.csv"
-  # path: "output/test_data7_sonam.csv"
-  # path: "output/test_data13_nicola.csv"
-  path: "output/rebecca_D2672_vs_derge.csv"
+  path: "output/Gpb023_vs_ex_2.csv"

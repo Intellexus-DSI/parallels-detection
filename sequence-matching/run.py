@@ -3,10 +3,33 @@ import os
 import re
 import itertools
 from collections import defaultdict
+from pathlib import Path
 import yaml
 import pandas as pd
 from tqdm import tqdm
 from Bio.Align import PairwiseAligner
+
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def _resolve_config_path(config_arg: str) -> Path:
+    """Config path: absolute as-is; else prefer file next to run.py, then cwd."""
+    p = Path(config_arg)
+    if p.is_absolute():
+        return p
+    next_to_script = (BASE_DIR / p).resolve()
+    if next_to_script.exists():
+        return next_to_script
+    return (Path.cwd() / p).resolve()
+
+
+def _resolve_under_config_dir(config_dir: Path, path_str: str) -> Path:
+    """Paths in YAML are relative to the config file's directory unless absolute."""
+    p = Path(path_str)
+    if p.is_absolute():
+        return p
+    return (config_dir / p).resolve()
+
 
 # ---------------------------------------------------------------------------
 # 1. TEXT PREPROCESSING
@@ -56,6 +79,16 @@ def dense_range_to_original(coord_map, dense_start, dense_end):
     orig_start = coord_map[dense_start]
     orig_end = coord_map[dense_end - 1] + 1
     return orig_start, orig_end
+
+
+def span_length_ratio_exceeds(len_a, len_b, max_ratio):
+    """True if max(len_a, len_b) / min(len_a, len_b) > max_ratio (strictly)."""
+    if max_ratio is None:
+        return False
+    if len_a <= 0 or len_b <= 0:
+        return False
+    lo, hi = min(len_a, len_b), max(len_a, len_b)
+    return hi / lo > max_ratio
 
 
 # ---------------------------------------------------------------------------
@@ -123,7 +156,7 @@ def find_seeds(dense_a, dense_b, k=15, max_kmer_hits=None):
 # 3. MERGING — The Critical Fix (Diagonal Lock + Slicer)
 # ---------------------------------------------------------------------------
 
-def merge_seeds_into_regions(seeds, k, max_gap=100, extend=200):
+def merge_seeds_into_regions(seeds, k, max_gap=100, extend=200, max_region_length=5000):
     """
     Group seeds into candidate regions, enforcing diagonal consistency to prevent 
     drifting into massive noise regions, and enforcing a size limit.
@@ -139,9 +172,8 @@ def merge_seeds_into_regions(seeds, k, max_gap=100, extend=200):
     curr_seeds = [seeds[0]]
     ref_diag = seeds[0][0] - seeds[0][1]
 
-    # --- SAFETY LIMIT: Cut region if it gets too long ---
-    # 5,000 chars = ~25 million cells = ~1 second to process.
-    MAX_REGION_LENGTH = 5000 
+    # --- SAFETY LIMIT: Cut cluster if span along text A exceeds this (dense indices).
+    # Lower values → more regions → smaller maximum single-alignment windows.
 
     for i in range(1, len(seeds)):
         seed = seeds[i]
@@ -149,16 +181,23 @@ def merge_seeds_into_regions(seeds, k, max_gap=100, extend=200):
         
         curr_diag = seed[0] - seed[1]
         
-        # 1. Gap Check (Connectivity)
-        dist_ok = (seed[0] - prev[0]) <= max_gap
+        # 1. Gap Check — must move forward on BOTH dense axes (sorted order can step
+        # backward in pos_a if keyed by diagonal first; negative deltas were merging
+        # unrelated seeds into huge bounding boxes).
+        da = seed[0] - prev[0]
+        db = seed[1] - prev[1]
+        dist_ok = (0 <= da <= max_gap) and (0 <= db <= max_gap)
         
         # 2. Diagonal Check (Drift prevention)
         # Prevents "Daisy Chaining" across the text structure
         diag_ok = abs(curr_diag - ref_diag) <= max_gap
         
-        # 3. Size Check (Hard Limit)
-        # Prevents infinite regions even if the text matches perfectly
-        len_ok = (seed[0] - curr_seeds[0][0]) < MAX_REGION_LENGTH
+        # 3. Size Check — bounding-box span of the whole cluster (+ k-mer), not only
+        # distance from the first seed (backward-then-forward chains broke the old test).
+        cand = curr_seeds + [seed]
+        span_a = max(s[0] for s in cand) - min(s[0] for s in cand) + k
+        span_b = max(s[1] for s in cand) - min(s[1] for s in cand) + k
+        len_ok = (span_a < max_region_length) and (span_b < max_region_length)
 
         if dist_ok and diag_ok and len_ok:
             curr_seeds.append(seed)
@@ -254,7 +293,9 @@ def seed_and_extend(text_a, text_b, match_score=1.0, mismatch_score=-1.5,
                     open_gap_score=-1.0, extend_gap_score=-1.0,
                     min_score=15.0, max_iterations=100,
                     seed_k=15, seed_max_gap=100, seed_extend=200,
-                    seed_max_kmer_hits=None, strip_chars=""):
+                    seed_max_region_length=5000,
+                    seed_max_kmer_hits=None, strip_chars="",
+                    dedupe_overlaps=True, dedupe_prefer="score"):
     
     dense_a, map_a = build_alignment_map(text_a, strip_chars=strip_chars)
     dense_b, map_b = build_alignment_map(text_b, strip_chars=strip_chars)
@@ -269,7 +310,10 @@ def seed_and_extend(text_a, text_b, match_score=1.0, mismatch_score=-1.5,
     if not seeds:
         return []
 
-    regions = merge_seeds_into_regions(seeds, k=seed_k, max_gap=seed_max_gap, extend=seed_extend)
+    regions = merge_seeds_into_regions(
+        seeds, k=seed_k, max_gap=seed_max_gap, extend=seed_extend,
+        max_region_length=seed_max_region_length,
+    )
     
     # Clamp to text boundaries
     regions = [
@@ -319,25 +363,35 @@ def seed_and_extend(text_a, text_b, match_score=1.0, mismatch_score=-1.5,
             match_seg_a = text_a[orig_start_a:orig_end_a]
             match_seg_b = text_b[orig_start_b:orig_end_b]
 
-            all_matches.append((score, match_seg_a, match_seg_b,
-                                orig_start_a, orig_end_a, orig_start_b, orig_end_b))
+            dense_len_a = glob_end_a - glob_start_a
+            dense_len_b = glob_end_b - glob_start_b
 
-    # Remove overlapping matches, keeping higher-scoring ones
-    all_matches.sort(key=lambda x: -x[0])
-    filtered = []
-    for match in all_matches:
-        _, _, _, start_a, end_a, start_b, end_b = match
-        overlaps = False
-        for kept in filtered:
-            _, _, _, ks_a, ke_a, ks_b, ke_b = kept
-            ov_a = start_a < ke_a and ks_a < end_a
-            ov_b = start_b < ke_b and ks_b < end_b
-            if ov_a and ov_b:
-                overlaps = True
-                break
-        if not overlaps:
-            filtered.append(match)
-    all_matches = filtered
+            all_matches.append((score, match_seg_a, match_seg_b,
+                                orig_start_a, orig_end_a, orig_start_b, orig_end_b,
+                                dense_len_a, dense_len_b))
+
+    # Remove overlapping matches on both axes. Prefer highest score or longest span (config).
+    if dedupe_overlaps:
+        if dedupe_prefer == "length":
+            all_matches.sort(
+                key=lambda x: (-((x[4] - x[3]) + (x[6] - x[5])), -x[0])
+            )
+        else:
+            all_matches.sort(key=lambda x: -x[0])
+        filtered = []
+        for match in all_matches:
+            _, _, _, start_a, end_a, start_b, end_b, _, _ = match
+            overlaps = False
+            for kept in filtered:
+                _, _, _, ks_a, ke_a, ks_b, ke_b, _, _ = kept
+                ov_a = start_a < ke_a and ks_a < end_a
+                ov_b = start_b < ke_b and ks_b < end_b
+                if ov_a and ov_b:
+                    overlaps = True
+                    break
+            if not overlaps:
+                filtered.append(match)
+        all_matches = filtered
 
     print(f"Found {len(all_matches)} total matches")
     all_matches.sort(key=lambda x: x[3])  # sort by start_a
@@ -403,8 +457,11 @@ def smith_waterman_waterfall(text_a, text_b, match_score=1.0, mismatch_score=-1.
 
         match_seg_a = text_a[orig_start_a:orig_end_a]
         match_seg_b = text_b[orig_start_b:orig_end_b]
+        dense_len_a = dense_end_a - dense_start_a
+        dense_len_b = dense_end_b - dense_start_b
         matches.append((best.score, match_seg_a, match_seg_b,
-                        orig_start_a, orig_end_a, orig_start_b, orig_end_b))
+                        orig_start_a, orig_end_a, orig_start_b, orig_end_b,
+                        dense_len_a, dense_len_b))
 
         # Simple masking (not index-mapped) for legacy waterfall
         idx = 0
@@ -432,16 +489,20 @@ def main():
     parser.add_argument("--mode", default="seed")
     args = parser.parse_args()
 
-    with open(args.config, "r") as f:
+    config_path = _resolve_config_path(args.config)
+    config_dir = config_path.parent
+
+    with open(config_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
     algo = config["algorithm"]
-    output_path = config["output"]["path"]
+    output_path = str(_resolve_under_config_dir(config_dir, config["output"]["path"]))
 
     seed_cfg = config.get("seeding", {})
     seed_k = seed_cfg.get("k", 15)
     seed_max_gap = seed_cfg.get("max_gap", 100)
     seed_extend = seed_cfg.get("extend", 200)
+    seed_max_region_length = seed_cfg.get("max_region_length", 5000)
     seed_max_kmer_hits = seed_cfg.get("max_kmer_hits", None)
     strip_chars = config.get("preprocessing", {}).get("strip_chars", "")
 
@@ -450,17 +511,17 @@ def main():
 
     if "dir" in input_cfg:
         # Original mode: all-pairs from a single directory
-        input_dir = input_cfg["dir"]
+        input_dir = str(_resolve_under_config_dir(config_dir, input_cfg["dir"]))
         txt_files = sorted([f for f in os.listdir(input_dir) if f.endswith(".txt")])
         for fname in txt_files:
-            with open(os.path.join(input_dir, fname), "r") as f:
+            with open(os.path.join(input_dir, fname), "r", encoding="utf-8") as f:
                 documents[fname] = f.read()
         pairs = list(itertools.combinations(txt_files, 2))
         print(f"Single-directory mode: {len(txt_files)} files, {len(pairs)} pairs")
     elif "point_of_comparison" in input_cfg and "corpus" in input_cfg:
         # Cross-comparison mode: point_of_comparison × corpus (recursive)
-        poc_dir = input_cfg["point_of_comparison"]
-        corpus_dir = input_cfg["corpus"]
+        poc_dir = str(_resolve_under_config_dir(config_dir, input_cfg["point_of_comparison"]))
+        corpus_dir = str(_resolve_under_config_dir(config_dir, input_cfg["corpus"]))
         poc_files = sorted([f for f in os.listdir(poc_dir) if f.endswith(".txt")])
         corpus_files = []
         for root, dirs, files in os.walk(corpus_dir):
@@ -470,11 +531,11 @@ def main():
                     corpus_files.append(os.path.relpath(os.path.join(root, f), corpus_dir))
         for fname in poc_files:
             key = f"poc/{fname}"
-            with open(os.path.join(poc_dir, fname), "r") as f:
+            with open(os.path.join(poc_dir, fname), "r", encoding="utf-8") as f:
                 documents[key] = f.read()
         for rel_path in corpus_files:
             key = f"corpus/{rel_path}"
-            with open(os.path.join(corpus_dir, rel_path), "r") as f:
+            with open(os.path.join(corpus_dir, rel_path), "r", encoding="utf-8") as f:
                 documents[key] = f.read()
         pairs = list(itertools.product(
             [f"poc/{f}" for f in poc_files],
@@ -502,8 +563,11 @@ def main():
                 seed_k=seed_k,
                 seed_max_gap=seed_max_gap,
                 seed_extend=seed_extend,
+                seed_max_region_length=seed_max_region_length,
                 seed_max_kmer_hits=seed_max_kmer_hits,
                 strip_chars=strip_chars,
+                dedupe_overlaps=algo.get("dedupe_overlaps", True),
+                dedupe_prefer=str(algo.get("dedupe_prefer", "score")).lower(),
             )
         else:
             matches = smith_waterman_waterfall(
@@ -518,7 +582,24 @@ def main():
                 strip_chars=strip_chars,
             )
 
-        for score, text_a, text_b, start_a, end_a, start_b, end_b in matches:
+        max_span_ratio = algo.get("max_span_ratio")
+        max_span_ratio_basis = str(algo.get("max_span_ratio_basis", "both")).lower()
+        max_original_span = algo.get("max_original_span")
+
+        for score, text_a, text_b, start_a, end_a, start_b, end_b, dlen_a, dlen_b in matches:
+            len_a = end_a - start_a
+            len_b = end_b - start_b
+            if max_span_ratio is not None:
+                check_orig = max_span_ratio_basis in ("original", "both")
+                check_dense = max_span_ratio_basis in ("dense", "both")
+                if check_orig and span_length_ratio_exceeds(len_a, len_b, max_span_ratio):
+                    continue
+                if check_dense and span_length_ratio_exceeds(dlen_a, dlen_b, max_span_ratio):
+                    continue
+            if max_original_span is not None:
+                if max(len_a, len_b) > max_original_span:
+                    continue
+
             all_matches.append({
                 "file_a": file_a,
                 "file_b": file_b,
@@ -529,16 +610,21 @@ def main():
                 "end_a": end_a,
                 "start_b": start_b,
                 "end_b": end_b,
-                "len_a": end_a - start_a,
-                "len_b": end_b - start_b,
+                "len_a": len_a,
+                "len_b": len_b,
+                "len_dense_a": dlen_a,
+                "len_dense_b": dlen_b,
             })
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    out_parent = os.path.dirname(output_path)
+    if out_parent:
+        os.makedirs(out_parent, exist_ok=True)
     df = pd.DataFrame(all_matches, columns=["file_a", "file_b", "score",
                                             "text_a", "text_b",
                                             "start_a", "end_a",
                                             "start_b", "end_b",
-                                            "len_a", "len_b"])
+                                            "len_a", "len_b",
+                                            "len_dense_a", "len_dense_b"])
     df = df.sort_values(["file_a", "file_b", "start_a"], ignore_index=True)
     df.to_csv(output_path, index=False)
     print(f"\nWrote {len(df)} results to {output_path}")
