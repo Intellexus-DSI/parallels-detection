@@ -13,12 +13,23 @@ enriching/.enriching_config_generated.yaml
 playground.ipynb
 
 # Output files (keep directories with .gitkeep)
-output/*.csv
+output/*
+!output/.gitkeep
 # output/*.json
 # output/*.parquet
 segmentation/output/
 # embedding/output/
 detection/output/
+
+# Sequence matching — generated outputs and regen corpora
+sequence-matching/output/
+sequence-matching/**/corpus_derge/
+sequence-matching/**/corpus_ab/
+sequence-matching/.pytest_cache/
+sequence-matching/data/canon/
+
+# Word lock files
+~$*
 
 # Data files
 data/*.jsonl
